@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3 from "@assets/extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3.png";
+
 export const MainContentSection = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState(1);
 
@@ -109,7 +111,7 @@ export const MainContentSection = (): JSX.Element => {
                       <img
                         className="w-full max-w-[400px] h-[300px] object-cover bg-gray-200 pl-[0px] pr-[0px] ml-[22px] mr-[22px] mt-[22px] mb-[22px]"
                         alt="Placeholder image"
-                        src={tab.image}
+                        src={extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3}
                       />
                     </div>
                   </div>
