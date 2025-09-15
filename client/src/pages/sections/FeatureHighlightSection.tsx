@@ -2,6 +2,8 @@ import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 
+import ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1 from "@assets/ultra_close-up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1.png";
+
 export const FeatureHighlightSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
@@ -56,7 +58,7 @@ export const FeatureHighlightSection = (): JSX.Element => {
           <img
             className="flex-1 grow h-[608px] relative object-cover"
             alt="Placeholder image"
-            src="/figmaAssets/placeholder-image-16.png"
+            src={ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1}
           />
         </div>
       </div>
