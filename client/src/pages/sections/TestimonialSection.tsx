@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 
 import macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3 from "@assets/macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3.png";
 
+import close_up_of_wrist_with_floating_interface_projecting_above_skin_geometric_elements_hovering_just_ab_hwr3891441e6jxr1qg05_1 from "@assets/close-up_of_wrist_with_floating_interface_projecting_above_skin_geometric_elements_hovering_just_ab_hwr3891441e6jxr1qg05_1.png";
+
 export const TestimonialSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-[#e6e6e6]">
@@ -65,7 +67,7 @@ export const TestimonialSection = (): JSX.Element => {
             <img
               className="w-full h-[416px] relative object-cover"
               alt="Placeholder image"
-              src="/figmaAssets/placeholder-image-16.png"
+              src={close_up_of_wrist_with_floating_interface_projecting_above_skin_geometric_elements_hovering_just_ab_hwr3891441e6jxr1qg05_1}
             />
           </div>
         </div>
