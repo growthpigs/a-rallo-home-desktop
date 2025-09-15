@@ -7,6 +7,8 @@ import extreme_close_up_of_closed_eye_with_geometric_light_patterns_projecting_t
 
 import finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2 from "@assets/finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2.png";
 
+import extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0 from "@assets/extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0.png";
+
 const solutionsData = [
   {
     id: "rallo-agent",
@@ -101,7 +103,7 @@ export const ContentWrapperSection = (): JSX.Element => {
                 <img
                   className="w-[400px] h-[400px] relative object-cover"
                   alt="Placeholder image"
-                  src={solutionsData[1].image}
+                  src={extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0}
                 />
 
                 <div className="flex-col items-start gap-4 self-stretch w-full flex-[0_0_auto] flex relative mt-8">
