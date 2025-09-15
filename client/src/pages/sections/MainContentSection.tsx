@@ -1,44 +1,48 @@
 import React, { useState } from "react";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 
 export const MainContentSection = (): JSX.Element => {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState("01");
 
-  const tabData = [
+  const features = [
     {
-      id: 1,
+      id: "01",
       number: "01",
-      title: "Feature one",
-      content: "Comprehensive AI presence across video, chat, and voice channels.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      name: "Feature one",
+      title: "Short heading goes here",
+      description:
+        "Rallo empowers businesses to scale customer engagement effortlessly.",
+      image: "/figmaAssets/placeholder-image-3.png",
     },
     {
-      id: 2,
-      number: "02", 
-      title: "Feature two",
-      content: "Always-on website and app chat support for instant customer engagement.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      id: "02",
+      number: "02",
+      name: "Feature two",
+      title: "Feature two heading",
+      description: "Description for feature two goes here.",
+      image: "/figmaAssets/placeholder-image-3.png",
     },
     {
-      id: 3,
+      id: "03",
       number: "03",
-      title: "Feature three", 
-      content: "Real-time two-way video conversations powered by advanced AI technology.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      name: "Feature three",
+      title: "Feature three heading",
+      description: "Description for feature three goes here.",
+      image: "/figmaAssets/placeholder-image-3.png",
     },
     {
-      id: 4,
+      id: "04",
       number: "04",
-      title: "Feature four",
-      content: "Instant video content generation from simple text prompts.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      name: "Feature four",
+      title: "Feature four heading",
+      description: "Description for feature four goes here.",
+      image: "/figmaAssets/placeholder-image-3.png",
     },
-    {
-      id: 5,
-      number: "05",
-      title: "Feature five",
-      content: "Advanced analytics and insights to optimize customer interactions.",
-      image: "/figmaAssets/placeholder-image-2.png"
-    }
   ];
 
   return (
@@ -62,48 +66,59 @@ export const MainContentSection = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="basis-0 content-stretch flex grow items-start justify-start min-h-px min-w-px relative shrink-0 w-full" data-name="Row">
-          {tabData.map((tab) => (
-            <div 
-              key={tab.id}
-              className={`${activeTab === tab.id ? 'basis-0 grow min-w-px' : ''} bg-white content-stretch flex h-full items-start justify-start relative shrink-0 cursor-pointer transition-all duration-300 ${activeTab === tab.id ? 'min-w-[400px]' : 'min-w-[80px]'}`}
-              onClick={() => setActiveTab(tab.id)}
-              data-name={`Tab Pane ${tab.id}`}
-              data-testid={`tab-pane-${tab.id}`}
+        <Tabs
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="flex-col h-[720px] items-start self-stretch w-full border border-solid border-black flex relative"
+        >
+          <TabsList className="flex items-start relative flex-1 self-stretch w-full grow bg-transparent h-auto p-0 rounded-none">
+            {features.map((feature, index) => (
+              <TabsTrigger
+                key={feature.id}
+                value={feature.id}
+                className={`flex flex-1 grow items-start relative self-stretch bg-white data-[state=active]:bg-white hover:bg-white ${
+                  index < features.length - 1
+                    ? "border-r border-r-solid border-black"
+                    : ""
+                } h-auto p-0 rounded-none data-[state=active]:shadow-none`}
+              >
+                <div className="inline-flex flex-col items-center justify-between px-6 py-8 relative self-stretch flex-[0_0_auto] overflow-hidden">
+                  <div className="relative self-stretch mt-[-1.00px] font-heading-h5 font-[number:var(--heading-h5-font-weight)] text-black text-[length:var(--heading-h5-font-size)] text-center tracking-[var(--heading-h5-letter-spacing)] leading-[var(--heading-h5-line-height)] [font-style:var(--heading-h5-font-style)]">
+                    {feature.number}
+                  </div>
+
+                  <div className="relative w-fit ml-[-47.00px] mr-[-47.00px] -rotate-90 font-heading-h5 font-[number:var(--heading-h5-font-weight)] text-black text-[length:var(--heading-h5-font-size)] tracking-[var(--heading-h5-letter-spacing)] leading-[var(--heading-h5-line-height)] whitespace-nowrap [font-style:var(--heading-h5-font-style)]">
+                    {feature.name}
+                  </div>
+                </div>
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {features.map((feature) => (
+            <TabsContent
+              key={feature.id}
+              value={feature.id}
+              className="flex-col w-[640px] items-start gap-12 px-12 py-16 self-stretch flex relative m-0 data-[state=inactive]:hidden"
             >
-              <div aria-hidden="true" className="absolute border-[0px_1px_0px_0px] border-black border-solid inset-0 pointer-events-none" />
+              <header className="inline-flex flex-col items-start gap-6 relative flex-[0_0_auto] bg-transparent">
+                <h3 className="self-stretch mt-[-1.00px] text-[length:var(--heading-h3-font-size)] leading-[var(--heading-h3-line-height)] relative font-heading-h3 font-[number:var(--heading-h3-font-weight)] text-black tracking-[var(--heading-h3-letter-spacing)] [font-style:var(--heading-h3-font-style)]">
+                  {feature.title}
+                </h3>
 
-              {/* Tab Header */}
-              <div className="box-border content-stretch flex flex-col h-full items-center justify-between overflow-clip px-6 py-8 relative shrink-0" data-name="Feature Tab">
-                <div className="font-bold leading-[0] min-w-full relative shrink-0 text-[24px] text-black text-center" style={{ fontFamily: "'JetBrains Mono', monospace", fontVariationSettings: "'wdth' 100", width: "min-content" }}>
-                  <p className="leading-[1.4]">{tab.number}</p>
-                </div>
-                <div className="flex h-[136.031px] items-center justify-center relative shrink-0 w-[33.594px]">
-                  <div className="flex-none rotate-[270deg]">
-                    <div className="font-['Roboto:Bold',_sans-serif] font-bold leading-[0] relative text-[24px] text-black text-nowrap" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <p className="leading-[1.4] whitespace-pre">{tab.title}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <p className="relative w-[544px] font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                  {feature.description}
+                </p>
+              </header>
 
-              {/* Tab Content - Only show when active */}
-              {activeTab === tab.id && (
-                <div className="content-stretch flex flex-col gap-6 items-start justify-start overflow-clip p-8 relative shrink-0" data-name="Content">
-                  <div className="content-stretch flex flex-col gap-6 items-start justify-start leading-[0] relative shrink-0 text-black w-full" data-name="Header">
-                    <div className="font-bold min-w-full relative shrink-0 text-[40px] text-black" style={{ fontFamily: "'JetBrains Mono', monospace", fontVariationSettings: "'wdth' 100", width: "min-content" }}>
-                      <p className="leading-[1.2] uppercase">Short heading goes here</p>
-                    </div>
-                    <div className="font-['Inter',_sans-serif] font-normal relative shrink-0 text-[16px] w-[544px]" style={{ fontVariationSettings: "'wdth' 100" }}>
-                      <p className="leading-[1.5]">{tab.content}</p>
-                    </div>
-                  </div>
-                  <div className="bg-center bg-cover bg-no-repeat h-[400px] shrink-0 w-[544px]" data-name="Placeholder Image" style={{ backgroundImage: `url('${tab.image}')` }} />
-                </div>
-              )}
-            </div>
+              <img
+                className="w-[544px] h-[400px] relative object-cover"
+                alt="Placeholder image"
+                src={feature.image}
+              />
+            </TabsContent>
           ))}
-        </div>
+        </Tabs>
       </div>
     </section>
   );
