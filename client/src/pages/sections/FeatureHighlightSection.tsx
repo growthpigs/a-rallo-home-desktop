@@ -6,6 +6,8 @@ import ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_
 
 import close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__si7n4pzw11pfkxj5appa_3 from "@assets/close-up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__si7n4pzw11pfkxj5appa_3.png";
 
+import professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1 from "@assets/professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1.png";
+
 export const FeatureHighlightSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
@@ -53,7 +55,7 @@ export const FeatureHighlightSection = (): JSX.Element => {
             <img
               className="w-80 h-80 relative object-cover"
               alt="Placeholder image"
-              src={close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__si7n4pzw11pfkxj5appa_3}
+              src={professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1}
             />
           </div>
 
