@@ -44,13 +44,13 @@ export const GeneralLayoutSection = (): JSX.Element => {
 
           <div className="flex items-start gap-8 relative flex-1 grow">
             <img
-              className="w-[444px] h-[666px] relative object-cover"
+              className="w-[444px] h-[444px] relative object-cover"
               alt="Placeholder image"
               src={ultra_macro_of_multiple_facial_features_with_geometric_mapping_interface_translucent_grid_overlay_a_0f5lrlnl9rpvw7lkx913_0}
             />
 
             <img
-              className="flex-1 grow h-[302px] relative object-cover"
+              className="w-[302px] h-[302px] relative object-cover"
               alt="Placeholder image"
               src={ultra_close_up_of_jawline_edge_with_geometric_light_patterns_following_facial_contour_interface_ele_31ob0uahcvqdm59bcvmp_0}
             />

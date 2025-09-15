@@ -121,7 +121,7 @@ export const ContentWrapperSection = (): JSX.Element => {
             <Card className="flex-col items-start gap-8 self-stretch w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent">
               <CardContent className="p-0 w-full">
                 <img
-                  className="w-[608px] h-[414px] relative object-cover"
+                  className="w-[400px] h-[400px] relative object-cover"
                   alt="Placeholder image"
                   src={finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2}
                 />

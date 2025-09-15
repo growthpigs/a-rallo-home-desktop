@@ -109,7 +109,7 @@ export const MainContentSection = (): JSX.Element => {
                     
                     <div className="mt-auto">
                       <img
-                        className="w-full max-w-[400px] h-[300px] object-cover bg-gray-200 pl-[0px] pr-[0px] ml-[22px] mr-[22px] mt-[22px] mb-[22px]"
+                        className="w-[400px] h-[400px] object-cover bg-gray-200"
                         alt="Placeholder image"
                         src={extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3}
                       />
