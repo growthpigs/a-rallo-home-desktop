@@ -7,7 +7,7 @@ import ultra_close_up_of_jawline_edge_with_geometric_light_patterns_following_fa
 
 export const GeneralLayoutSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#000000]">
+    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#000000] ml-[0px] mr-[0px] mt-[0px] mb-[0px] pt-[222px] pb-[222px]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
         <div className="flex items-start gap-16 relative self-stretch w-full flex-[0_0_auto]">
           <div className="flex-col w-[438px] items-start justify-between self-stretch flex relative">
