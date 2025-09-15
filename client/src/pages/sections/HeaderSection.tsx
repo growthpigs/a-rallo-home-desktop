@@ -12,24 +12,24 @@ export const HeaderSection = (): JSX.Element => {
       data-testid="section-hero"
     >
       {/* Navigation Header */}
-      <nav className="flex items-center justify-between px-8 py-6 relative z-10">
+      <nav className="flex items-center justify-between px-8 py-6 fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/20">
         <div className="flex items-center">
           <img 
             src="https://p129.p0.n0.cdn.zight.com/items/E0uvyDD2/0bd8c304-3c98-4392-9f51-b70b775b9cf6.svg?source=client&v=2ac38ca59d73980b9f612d511347a846" 
             alt="Rallo" 
-            className="h-11 brightness-0 invert"
+            className="h-14 brightness-0 invert"
             data-testid="logo"
           />
         </div>
         
         <div className="flex items-center gap-8">
-          <a href="#" className="text-white font-['Inter'] text-sm font-medium tracking-wider hover:opacity-80" data-testid="nav-product">PRODUCT</a>
-          <a href="#" className="text-white font-['Inter'] text-sm font-medium tracking-wider hover:opacity-80" data-testid="nav-pricing">PRICING</a>
-          <a href="#" className="text-white font-['Inter'] text-sm font-medium tracking-wider hover:opacity-80" data-testid="nav-services">SERVICES</a>
-          <a href="#" className="text-white font-['Inter'] text-sm font-medium tracking-wider hover:opacity-80" data-testid="nav-about">ABOUT</a>
+          <a href="#" className="text-white font-['JetBrains_Mono'] text-sm font-medium tracking-wider hover:opacity-80" data-testid="nav-product">PRODUCT</a>
+          <a href="#" className="text-white font-['JetBrains_Mono'] text-sm font-medium tracking-wider hover:opacity-80" data-testid="nav-pricing">PRICING</a>
+          <a href="#" className="text-white font-['JetBrains_Mono'] text-sm font-medium tracking-wider hover:opacity-80" data-testid="nav-services">SERVICES</a>
+          <a href="#" className="text-white font-['JetBrains_Mono'] text-sm font-medium tracking-wider hover:opacity-80" data-testid="nav-about">ABOUT</a>
           <Button 
             variant="outline" 
-            className="border-white text-white bg-transparent hover:bg-white hover:text-black font-['Inter'] text-sm font-medium tracking-wider px-6 py-2"
+            className="border-white text-white bg-transparent hover:bg-white hover:text-black font-['JetBrains_Mono'] text-sm font-medium tracking-wider px-6 py-2"
             data-testid="button-book-demo"
           >
             BOOK DEMO
@@ -41,7 +41,7 @@ export const HeaderSection = (): JSX.Element => {
         <div className="flex flex-col items-center max-w-4xl w-full" style={{ transform: 'translateX(-300px)' }}>
           <div className="flex flex-col items-end mb-4">
             <div className="text-right mb-2">
-              <span className="italic text-white font-['Libre_Baskerville'] ml-[22px] mr-[22px] text-[74px] pl-[0px] pr-[0px] pt-[0px] pb-[0px] mt-[0px] mb-[0px]" style={{ transform: 'translateY(30px)' }}>You,</span>
+              <span className="italic text-white font-['Libre_Baskerville'] ml-[22px] mr-[22px] text-[74px] pl-[0px] pr-[0px] pt-[0px] pb-[0px] mt-[0px] mb-[0px]" style={{ transform: 'translateY(80px)' }}>You,</span>
             </div>
             <div className="text-white font-['JetBrains_Mono'] text-7xl font-light tracking-[0.3em] leading-tight">
               MULTIPLIED
