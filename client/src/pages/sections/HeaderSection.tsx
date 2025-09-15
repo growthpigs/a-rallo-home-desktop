@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 export const HeaderSection = (): JSX.Element => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section 
       className="flex flex-col h-screen relative w-full bg-no-repeat"
@@ -13,12 +25,16 @@ export const HeaderSection = (): JSX.Element => {
       data-testid="section-hero"
     >
       {/* Navigation Header */}
-      <nav className="flex items-center justify-between px-8 py-6 fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/20">
+      <nav className={`flex items-center justify-between px-8 py-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'backdrop-blur-md bg-white/20' 
+          : 'bg-orange-500'
+      }`}>
         <div className="flex items-center">
           <img 
             src="https://p129.p0.n0.cdn.zight.com/items/E0uvyDD2/0bd8c304-3c98-4392-9f51-b70b775b9cf6.svg?source=client&v=2ac38ca59d73980b9f612d511347a846" 
             alt="Rallo" 
-            className="h-14 brightness-0 invert"
+            className="h-20 brightness-0 invert"
             data-testid="logo"
           />
         </div>
