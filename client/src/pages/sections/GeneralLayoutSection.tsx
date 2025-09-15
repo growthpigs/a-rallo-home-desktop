@@ -18,7 +18,7 @@ export const GeneralLayoutSection = (): JSX.Element => {
                 </div>
               </div>
 
-              <h1 className="relative self-stretch font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black text-[length:var(--heading-h2-font-size)] tracking-[var(--heading-h2-letter-spacing)] leading-[var(--heading-h2-line-height)] [font-style:var(--heading-h2-font-style)]">
+              <h1 className="relative self-stretch font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-[length:var(--heading-h2-font-size)] tracking-[var(--heading-h2-letter-spacing)] leading-[var(--heading-h2-line-height)] [font-style:var(--heading-h2-font-style)] text-[#ffffff]">
                 NEVER MISS A CUSTOMER. NEVER MISS A SALE.
               </h1>
             </div>
