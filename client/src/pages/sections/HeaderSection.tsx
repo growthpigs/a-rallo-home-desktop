@@ -19,7 +19,7 @@ export const HeaderSection = (): JSX.Element => {
       className="flex flex-col h-screen relative w-full bg-no-repeat"
       style={{
         backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-        backgroundPosition: 'calc(65% + 5vw) center',
+        backgroundPosition: 'calc(55% + 3vw) center',
         backgroundSize: 'cover'
       }}
       data-testid="section-hero"
@@ -72,7 +72,7 @@ export const HeaderSection = (): JSX.Element => {
         {/* Desktop & Tablet: 3/7 - 1/7 - 3/7 proportions with original background */}
         <div className="hidden md:grid grid-cols-7 h-full">
           {/* Left 3/7: Text Content */}
-          <div className="col-span-3 flex flex-col items-end justify-center px-4 lg:px-8">
+          <div className="col-span-3 flex flex-col items-end justify-center px-8 lg:px-16">
             <div className="flex flex-col items-end mb-4">
               <div className="text-right mb-2">
                 <span className="italic text-white font-['Libre_Baskerville'] lg:text-6xl md:text-5xl" style={{ transform: 'translateY(60px)' }}>You,</span>
@@ -82,8 +82,8 @@ export const HeaderSection = (): JSX.Element => {
               </div>
             </div>
             
-            <div className="text-right max-w-lg mt-8">
-              <p className="text-white font-['Inter'] lg:text-lg md:text-sm tracking-[0.05em] leading-snug ml-[9px] mr-[9px] font-light" style={{ transform: 'translateY(0px) translateX(10px)' }}>
+            <div className="text-right max-w-lg mt-4">
+              <p className="text-white font-['Inter'] lg:text-lg md:text-sm tracking-[0.05em] leading-snug font-light">
                 Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
               </p>
             </div>
