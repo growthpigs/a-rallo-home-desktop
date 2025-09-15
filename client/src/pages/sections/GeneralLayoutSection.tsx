@@ -32,7 +32,7 @@ export const GeneralLayoutSection = (): JSX.Element => {
               <div className="inline-flex items-center gap-6 relative flex-[0_0_auto]">
                 <Button
                   variant="outline"
-                  className="h-auto inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] ml-[-1.00px] mr-[-1.00px] border border-solid border-black bg-transparent hover:bg-black hover:text-white"
+                  className="h-auto inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] ml-[-1.00px] mr-[-1.00px] border border-solid border-black hover:bg-black hover:text-white text-[#050505] bg-[#ffffff]"
                 >
                   <span className="relative w-fit font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] whitespace-nowrap [font-style:var(--text-regular-normal-font-style)]">
                     WATCH DEMO
