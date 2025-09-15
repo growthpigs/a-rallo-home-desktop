@@ -6,7 +6,7 @@ import macro_shot_looking_into_ear_with_holographic_interface_elements_visible_i
 
 export const TestimonialSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-white">
+    <section className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-[#e6e6e6]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full">
         <div className="flex flex-col items-start gap-4 relative w-full">
           <div className="flex-col max-w-screen-md items-start gap-8 w-full flex relative">
