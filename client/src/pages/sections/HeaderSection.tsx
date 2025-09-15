@@ -96,12 +96,12 @@ export const HeaderSection = (): JSX.Element => {
           <div className="col-span-3"></div>
         </div>
 
-        {/* Mobile Only: Centered with dark overlay and eye background */}
+        {/* Mobile & Tablet: Focus on right side where eye is */}
         <div 
           className="md:hidden flex flex-col items-center justify-center h-full px-8 relative bg-cover"
           style={{
             backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-            backgroundPosition: '50% 50%',
+            backgroundPosition: '75% 50%',
             backgroundSize: 'cover'
           }}
         >
