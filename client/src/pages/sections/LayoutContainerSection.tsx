@@ -1,15 +1,16 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 
+import abstract_representation_of_data_flowing_through_geometric_channels_translucent_tubes_and_pathways_s_lcz904f18v0j06fnuwh7_0 from "@assets/abstract_representation_of_data_flowing_through_geometric_channels_translucent_tubes_and_pathways_s_lcz904f18v0j06fnuwh7_0.png";
+
 export const LayoutContainerSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center relative w-full bg-white">
       <img
         className="w-full h-[810px] object-cover"
         alt="Placeholder image"
-        src="/figmaAssets/placeholder-image-2.png"
+        src={abstract_representation_of_data_flowing_through_geometric_channels_translucent_tubes_and_pathways_s_lcz904f18v0j06fnuwh7_0}
       />
-
       <div className="flex flex-col items-center gap-20 px-16 py-28 w-full">
         <div className="flex flex-col max-w-screen-xl items-center gap-20 w-full">
           <div className="flex flex-col max-w-screen-md items-center gap-8 w-full">
