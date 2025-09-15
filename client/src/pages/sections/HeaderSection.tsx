@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 export const HeaderSection = (): JSX.Element => {
   return (
     <section 
-      className="flex flex-col h-screen relative w-full bg-cover"
+      className="flex flex-col h-screen relative w-full bg-no-repeat"
       style={{
         backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-        backgroundPosition: '-450px center'
+        backgroundPosition: 'right center',
+        backgroundSize: 'cover'
       }}
       data-testid="section-hero"
     >
@@ -41,7 +42,7 @@ export const HeaderSection = (): JSX.Element => {
         <div className="flex flex-col items-center max-w-4xl w-full" style={{ transform: 'translateX(-300px)' }}>
           <div className="flex flex-col items-end mb-4">
             <div className="text-right mb-2">
-              <span className="italic text-white font-['Libre_Baskerville'] ml-[22px] mr-[22px] text-[74px] pl-[0px] pr-[0px] pt-[0px] pb-[0px] mt-[0px] mb-[0px]" style={{ transform: 'translateY(105px)' }}>You,</span>
+              <span className="italic text-white font-['Libre_Baskerville'] ml-[22px] mr-[22px] text-[74px] pl-[0px] pr-[0px] pt-[0px] pb-[0px] mt-[0px] mb-[0px]" style={{ transform: 'translateY(60px)' }}>You,</span>
             </div>
             <div className="text-white font-['JetBrains_Mono'] text-7xl font-light tracking-[0.3em] leading-tight">
               MULTIPLIED
