@@ -27,26 +27,40 @@ export const HeaderSection = (): JSX.Element => {
       {/* Navigation Header */}
       <nav className={`flex items-center justify-between px-8 py-2 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'backdrop-blur-md bg-white/20' 
+          ? 'backdrop-blur-md bg-white/80' 
           : 'bg-transparent'
       }`}>
         <div className="flex items-center">
           <img 
             src="https://p129.p0.n0.cdn.zight.com/items/E0uvyDD2/0bd8c304-3c98-4392-9f51-b70b775b9cf6.svg?source=client&v=2ac38ca59d73980b9f612d511347a846" 
             alt="Rallo" 
-            className="h-20 brightness-0 invert"
+            className={`h-20 brightness-0 transition-all duration-300 ${
+              isScrolled ? '' : 'invert'
+            }`}
             data-testid="logo"
           />
         </div>
         
         <div className="flex items-center gap-8">
-          <a href="#" className="text-white font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80" data-testid="nav-product">PRODUCT</a>
-          <a href="#" className="text-white font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80" data-testid="nav-pricing">PRICING</a>
-          <a href="#" className="text-white font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80" data-testid="nav-services">SERVICES</a>
-          <a href="#" className="text-white font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80" data-testid="nav-about">ABOUT</a>
+          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
+            isScrolled ? 'text-black' : 'text-white'
+          }`} data-testid="nav-product">PRODUCT</a>
+          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
+            isScrolled ? 'text-black' : 'text-white'
+          }`} data-testid="nav-pricing">PRICING</a>
+          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
+            isScrolled ? 'text-black' : 'text-white'
+          }`} data-testid="nav-services">SERVICES</a>
+          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
+            isScrolled ? 'text-black' : 'text-white'
+          }`} data-testid="nav-about">ABOUT</a>
           <Button 
             variant="outline" 
-            className="border-white text-white bg-transparent hover:bg-white hover:text-black font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] px-6 py-2"
+            className={`bg-transparent font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] px-6 py-2 transition-colors duration-300 ${
+              isScrolled 
+                ? 'border-black text-black hover:bg-black hover:text-white' 
+                : 'border-white text-white hover:bg-white hover:text-black'
+            }`}
             data-testid="button-book-demo"
           >
             BOOK DEMO
