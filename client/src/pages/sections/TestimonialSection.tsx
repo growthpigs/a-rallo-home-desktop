@@ -71,7 +71,7 @@ export const TestimonialSection = (): JSX.Element => {
             <img
               className="w-full h-[416px] relative object-cover"
               alt="Placeholder image"
-              src={finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_ptbyrto9jwtro5o129ra_3}
+              src={close_up_of_wrist_with_floating_interface_projecting_above_skin_geometric_elements_hovering_just_ab_hwr3891441e6jxr1qg05_1}
             />
           </div>
         </div>
