@@ -28,12 +28,7 @@ export const ImageGallerySection = (): JSX.Element => {
   return (
     <section className="gap-20 px-16 py-28 flex flex-col items-center relative w-full bg-white">
       <div className="flex-col max-w-screen-xl items-start gap-20 w-full flex relative">
-        <div className="items-start gap-20 w-full flex relative">
-          <div className="flex flex-col items-start relative flex-1">
-            <div className="w-full h-[58px] relative" />
-          </div>
-          <div className="relative flex-1 h-60" />
-        </div>
+        
 
         <div className="gap-16 flex items-start relative w-full">
           <div className="flex flex-col items-start gap-28 relative flex-1">
