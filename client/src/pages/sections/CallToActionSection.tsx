@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 
+import single_professional_at_clean_desk_with_multiple_translucent_screens_showing_data_flows_overhead_sho_jvba04vzdp9ow2gv89cz_3 from "@assets/single_professional_at_clean_desk_with_multiple_translucent_screens_showing_data_flows_overhead_sho_jvba04vzdp9ow2gv89cz_3.png";
+
 export const CallToActionSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
@@ -37,7 +39,7 @@ export const CallToActionSection = (): JSX.Element => {
           <img
             className="flex-1 grow h-[400px] relative object-cover"
             alt="Placeholder image"
-            src="/figmaAssets/placeholder-image-17.png"
+            src={single_professional_at_clean_desk_with_multiple_translucent_screens_showing_data_flows_overhead_sho_jvba04vzdp9ow2gv89cz_3}
           />
         </div>
       </div>
