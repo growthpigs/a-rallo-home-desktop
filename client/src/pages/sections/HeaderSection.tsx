@@ -16,10 +16,10 @@ export const HeaderSection = (): JSX.Element => {
 
   return (
     <section 
-      className="flex flex-col h-screen relative w-full bg-no-repeat"
+      className="flex flex-col h-screen relative w-full bg-no-repeat
+                 bg-[position:95%_center] sm:bg-[position:85%_center] lg:bg-[position:75%_center]"
       style={{
         backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-        backgroundPosition: '85% center',
         backgroundSize: 'cover'
       }}
       data-testid="section-hero"
@@ -83,7 +83,7 @@ export const HeaderSection = (): JSX.Element => {
             </div>
             
             <div className="text-right max-w-lg mt-8">
-              <p className="text-white font-['Inter'] lg:text-lg md:text-sm tracking-[0.05em] leading-snug ml-[9px] mr-[9px] font-light" style={{ transform: 'translateY(-50px) translateX(10px)' }}>
+              <p className="text-white font-['Inter'] lg:text-lg md:text-sm tracking-[0.05em] leading-snug ml-[9px] mr-[9px] font-light" style={{ transform: 'translateY(-100px) translateX(10px)' }}>
                 Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
               </p>
             </div>
