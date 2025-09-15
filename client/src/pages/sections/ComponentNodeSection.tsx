@@ -6,6 +6,8 @@ import clean_minimal_control_room_with_large_geometric_displays_showing_organize
 
 import extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0 from "@assets/extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0.png";
 
+import professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_35c315trc3vo2sfe4ki2_0 from "@assets/professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_35c315trc3vo2sfe4ki2_0.png";
+
 export const ComponentNodeSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
@@ -45,7 +47,7 @@ export const ComponentNodeSection = (): JSX.Element => {
                 <img
                   className="flex-1 grow h-[296px] relative object-cover"
                   alt="Placeholder image"
-                  src="/figmaAssets/placeholder-image-16.png"
+                  src={professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_35c315trc3vo2sfe4ki2_0}
                 />
               </div>
             </div>
