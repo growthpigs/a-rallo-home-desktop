@@ -69,21 +69,21 @@ export const HeaderSection = (): JSX.Element => {
       </nav>
       {/* Hero Content */}
       <div className="flex-1 relative">
-        {/* Desktop: 3/7 - 1/7 - 3/7 proportions with original background */}
-        <div className="hidden lg:grid grid-cols-7 h-full">
+        {/* Desktop & Tablet: 3/7 - 1/7 - 3/7 proportions with original background */}
+        <div className="hidden md:grid grid-cols-7 h-full">
           {/* Left 3/7: Text Content */}
-          <div className="col-span-3 flex flex-col items-end justify-center px-8">
+          <div className="col-span-3 flex flex-col items-end justify-center px-4 lg:px-8">
             <div className="flex flex-col items-end mb-4">
               <div className="text-right mb-2">
-                <span className="italic text-white font-['Libre_Baskerville'] text-6xl" style={{ transform: 'translateY(60px)' }}>You,</span>
+                <span className="italic text-white font-['Libre_Baskerville'] lg:text-6xl md:text-5xl" style={{ transform: 'translateY(60px)' }}>You,</span>
               </div>
-              <div className="text-white font-['JetBrains_Mono'] text-6xl font-light tracking-[0.25em] leading-tight">
+              <div className="text-white font-['JetBrains_Mono'] lg:text-6xl md:text-5xl font-light lg:tracking-[0.25em] md:tracking-[0.15em] leading-tight">
                 MULTIPLIED
               </div>
             </div>
             
-            <div className="text-right max-w-xl mt-8">
-              <p className="text-white font-['Inter'] text-lg tracking-[0.05em] leading-relaxed ml-[9px] mr-[9px] font-light" style={{ transform: 'translateY(-50px) translateX(10px)' }}>
+            <div className="text-right max-w-lg mt-8">
+              <p className="text-white font-['Inter'] lg:text-lg md:text-base tracking-[0.05em] leading-relaxed ml-[9px] mr-[9px] font-light" style={{ transform: 'translateY(-50px) translateX(10px)' }}>
                 Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
               </p>
             </div>
@@ -96,12 +96,12 @@ export const HeaderSection = (): JSX.Element => {
           <div className="col-span-3"></div>
         </div>
 
-        {/* Tablet & Mobile: Centered with dark overlay and eye background */}
+        {/* Mobile Only: Centered with dark overlay and eye background */}
         <div 
-          className="lg:hidden flex flex-col items-center justify-center h-full px-8 relative bg-cover bg-center"
+          className="md:hidden flex flex-col items-center justify-center h-full px-8 relative bg-cover"
           style={{
             backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-            backgroundPosition: 'center center',
+            backgroundPosition: '50% 50%',
             backgroundSize: 'cover'
           }}
         >
@@ -110,15 +110,15 @@ export const HeaderSection = (): JSX.Element => {
           
           <div className="flex flex-col items-center mb-2 relative z-10">
             <div className="text-center mb-2">
-              <span className="italic text-white font-['Libre_Baskerville'] md:text-7xl text-6xl">You,</span>
+              <span className="italic text-white font-['Libre_Baskerville'] text-6xl">You,</span>
             </div>
-            <div className="text-white font-['JetBrains_Mono'] md:text-6xl text-5xl font-light md:tracking-[0.2em] tracking-[0.1em] leading-tight">
+            <div className="text-white font-['JetBrains_Mono'] text-5xl font-light tracking-[0.1em] leading-tight">
               MULTIPLIED
             </div>
           </div>
           
-          <div className="text-center max-w-md mt-4 relative z-10">
-            <p className="text-white font-['Inter'] md:text-lg text-base font-normal tracking-[0.05em] leading-relaxed">
+          <div className="text-center max-w-sm mt-4 relative z-10">
+            <p className="text-white font-['Inter'] text-base font-normal tracking-[0.05em] leading-relaxed">
               Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
             </p>
           </div>
