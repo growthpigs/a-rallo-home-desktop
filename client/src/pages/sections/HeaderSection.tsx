@@ -19,7 +19,7 @@ export const HeaderSection = (): JSX.Element => {
       className="flex flex-col h-screen relative w-full bg-no-repeat"
       style={{
         backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-        backgroundPosition: 'calc(75% + 20vw) center',
+        backgroundPosition: 'calc(65% + 5vw) center',
         backgroundSize: 'cover'
       }}
       data-testid="section-hero"
