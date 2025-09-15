@@ -44,7 +44,7 @@ export const MainContentSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
+    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
         <div className="flex flex-col max-w-screen-md items-start gap-4 flex-[0_0_auto] relative w-full">
           <div className="inline-flex items-center relative flex-[0_0_auto]">
