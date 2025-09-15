@@ -96,27 +96,28 @@ export const HeaderSection = (): JSX.Element => {
           <div className="col-span-3"></div>
         </div>
 
-        {/* Tablet & Mobile: Centered with dark overlay and full eye background */}
+        {/* Tablet & Mobile: Centered with dark overlay and eye background */}
         <div 
           className="lg:hidden flex flex-col items-center justify-center h-full px-8 relative bg-cover bg-center"
           style={{
             backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-            backgroundPosition: 'center center'
+            backgroundPosition: 'center center',
+            backgroundSize: 'cover'
           }}
         >
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black/50"></div>
           
-          <div className="flex flex-col items-center mb-4 relative z-10">
+          <div className="flex flex-col items-center mb-2 relative z-10">
             <div className="text-center mb-2">
-              <span className="italic text-white font-['Libre_Baskerville'] md:text-6xl text-5xl">You,</span>
+              <span className="italic text-white font-['Libre_Baskerville'] md:text-7xl text-6xl">You,</span>
             </div>
-            <div className="text-white font-['JetBrains_Mono'] md:text-5xl text-4xl font-light md:tracking-[0.2em] tracking-[0.1em] leading-tight">
+            <div className="text-white font-['JetBrains_Mono'] md:text-6xl text-5xl font-light md:tracking-[0.2em] tracking-[0.1em] leading-tight">
               MULTIPLIED
             </div>
           </div>
           
-          <div className="text-center max-w-md mt-8 relative z-10">
+          <div className="text-center max-w-md mt-4 relative z-10">
             <p className="text-white font-['Inter'] md:text-lg text-base font-normal tracking-[0.05em] leading-relaxed">
               Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
             </p>
