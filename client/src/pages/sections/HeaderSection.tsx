@@ -83,7 +83,7 @@ export const HeaderSection = (): JSX.Element => {
             </div>
             
             <div className="text-right max-w-xl mt-8">
-              <p className="text-white font-['Inter'] text-lg font-normal tracking-[0.05em] leading-relaxed" style={{ transform: 'translateY(-50px) translateX(10px)' }}>
+              <p className="text-white font-['Inter'] text-lg font-normal tracking-[0.05em] leading-relaxed ml-[9px] mr-[9px]" style={{ transform: 'translateY(-50px) translateX(10px)' }}>
                 Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
               </p>
             </div>
