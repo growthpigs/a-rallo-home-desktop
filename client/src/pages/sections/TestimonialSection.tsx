@@ -2,6 +2,8 @@ import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 
+import macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3 from "@assets/macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3.png";
+
 export const TestimonialSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-white">
@@ -50,7 +52,7 @@ export const TestimonialSection = (): JSX.Element => {
           <img
             className="flex-1 grow h-[624px] relative object-cover"
             alt="Placeholder image"
-            src="/figmaAssets/placeholder-image-16.png"
+            src={macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3}
           />
 
           <div className="flex-col items-start gap-16 flex-1 grow flex relative">
