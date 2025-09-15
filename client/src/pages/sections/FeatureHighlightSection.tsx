@@ -6,7 +6,7 @@ import ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_
 
 export const FeatureHighlightSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
+    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
         <div className="items-start gap-16 flex relative self-stretch w-full flex-[0_0_auto]">
           <div className="flex-col items-start gap-20 flex-1 grow flex relative">
