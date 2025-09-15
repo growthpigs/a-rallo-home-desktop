@@ -16,7 +16,7 @@ export const HeaderSection = (): JSX.Element => {
           <img 
             src="https://p129.p0.n0.cdn.zight.com/items/E0uvyDD2/0bd8c304-3c98-4392-9f51-b70b775b9cf6.svg?source=client&v=2ac38ca59d73980b9f612d511347a846" 
             alt="Rallo" 
-            className="h-8"
+            className="h-11 brightness-0 invert"
             data-testid="logo"
           />
         </div>
@@ -38,7 +38,7 @@ export const HeaderSection = (): JSX.Element => {
 
       {/* Hero Content */}
       <div className="flex-1 flex items-center justify-center px-16 relative">
-        <div className="flex flex-col items-center max-w-4xl w-full text-center">
+        <div className="flex flex-col items-center max-w-4xl w-full">
           <div className="flex flex-col items-end mb-4">
             <div className="text-right mb-2">
               <span className="text-6xl italic text-white font-['Libre_Baskerville'] leading-tight">You,</span>
@@ -48,9 +48,11 @@ export const HeaderSection = (): JSX.Element => {
             </div>
           </div>
           
-          <p className="text-white font-['Inter'] text-lg font-normal max-w-xl mt-8 tracking-[0.1em] leading-relaxed">
-            AI THAT AMPLIFIES WHO YOU ARE, WHAT YOU DO BEST, AND WHAT YOU COULD BE
-          </p>
+          <div className="text-right max-w-xl mt-8">
+            <p className="text-white font-['Inter'] text-lg font-normal tracking-[0.05em] leading-relaxed">
+              Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
+            </p>
+          </div>
         </div>
       </div>
     </section>
