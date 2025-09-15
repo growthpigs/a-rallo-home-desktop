@@ -2,6 +2,8 @@ import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 
+import clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3 from "@assets/clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3.png";
+
 export const ComponentNodeSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
@@ -23,7 +25,7 @@ export const ComponentNodeSection = (): JSX.Element => {
             <img
               className="self-stretch w-full h-[624px] relative object-cover"
               alt="Placeholder image"
-              src="/figmaAssets/placeholder-image-16.png"
+              src={clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3}
             />
           </div>
 
