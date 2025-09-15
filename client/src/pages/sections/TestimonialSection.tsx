@@ -8,6 +8,8 @@ import close_up_of_wrist_with_floating_interface_projecting_above_skin_geometric
 
 import finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_ptbyrto9jwtro5o129ra_3 from "@assets/finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_ptbyrto9jwtro5o129ra_3.png";
 
+import ultra_macro_of_half_face_with_geometric_interface_overlay_on_one_side_translucent_technology_integr_h4l9v89ghecyj7gkytzs_3 from "@assets/ultra_macro_of_half_face_with_geometric_interface_overlay_on_one_side_translucent_technology_integr_h4l9v89ghecyj7gkytzs_3.png";
+
 export const TestimonialSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-[#e6e6e6]">
@@ -63,7 +65,7 @@ export const TestimonialSection = (): JSX.Element => {
             <img
               className="w-60 h-60 relative object-cover"
               alt="Placeholder image"
-              src="/figmaAssets/placeholder-image-16.png"
+              src={ultra_macro_of_half_face_with_geometric_interface_overlay_on_one_side_translucent_technology_integr_h4l9v89ghecyj7gkytzs_3}
             />
 
             <img
