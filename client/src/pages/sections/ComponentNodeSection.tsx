@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 
 import clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3 from "@assets/clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3.png";
 
+import extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0 from "@assets/extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0.png";
+
 export const ComponentNodeSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
@@ -35,7 +37,7 @@ export const ComponentNodeSection = (): JSX.Element => {
                 <img
                   className="flex-1 grow h-[296px] relative object-cover"
                   alt="Placeholder image"
-                  src="/figmaAssets/placeholder-image-16.png"
+                  src={extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0}
                 />
               </div>
 
