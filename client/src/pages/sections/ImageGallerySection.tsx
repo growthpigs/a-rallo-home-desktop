@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__xio25a8gqhbcn1vd88kw_0 from "@assets/close-up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__xio25a8gqhbcn1vd88kw_0.png";
 
+import ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_hdrkrns7demlr81y8tz4_3 from "@assets/ultra_close-up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_hdrkrns7demlr81y8tz4_3.png";
+
 const galleryItems = [
   {
     id: 1,
@@ -64,7 +66,7 @@ export const ImageGallerySection = (): JSX.Element => {
                 <img
                   className={`relative w-full ${galleryItems[1].imageHeight} object-cover`}
                   alt="Placeholder image"
-                  src={galleryItems[1].image}
+                  src={ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_hdrkrns7demlr81y8tz4_3}
                 />
                 <div className="flex-col items-start gap-4 w-full flex-[0_0_auto] flex relative mt-8">
                   <h3 className="mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
