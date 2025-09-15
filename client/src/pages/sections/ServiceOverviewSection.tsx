@@ -41,7 +41,7 @@ export const ServiceOverviewSection = (): JSX.Element => {
             key={index}
             className="items-center justify-center gap-20 self-stretch w-full flex-[0_0_auto] flex relative"
           >
-            <div className="w-fit text-[224px] leading-[268.8px] whitespace-nowrap relative [font-family:'Roboto',Helvetica] font-bold text-black tracking-[0]">
+            <div className="w-fit text-[224px] leading-[268.8px] whitespace-nowrap relative [font-family:'JetBrains_Mono',monospace] font-bold text-black tracking-[0]">
               {item.number}
             </div>
 
