@@ -1,89 +1,106 @@
-import React, { useState } from 'react';
+import React from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
 export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
-  const [activeTab, setActiveTab] = useState(1);
-
-  const tabData = [
+  const faqData = [
     {
-      id: 1,
-      number: "01",
-      title: "Feature one",
-      content: "Comprehensive AI presence across video, chat, and voice channels.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      id: "item-1",
+      question: "What is Rallo?",
+      answer:
+        "Rallo is an AI agent platform designed to enhance your digital presence. It creates video, chat, and voice agents that work for you 24/7. With Rallo, you can engage your audience effortlessly.",
     },
     {
-      id: 2,
-      number: "02", 
-      title: "Feature two",
-      content: "Always-on website and app chat support for instant customer engagement.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      id: "item-2",
+      question: "How does it work?",
+      answer:
+        "Simply record your content once, and Rallo distributes it across multiple channels. Our AI agents handle interactions in real-time, ensuring you never miss an opportunity. It's designed to streamline your customer engagement.",
     },
     {
-      id: 3,
-      number: "03",
-      title: "Feature three", 
-      content: "Real-time two-way video conversations powered by advanced AI technology.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      id: "item-3",
+      question: "Is it customizable?",
+      answer:
+        "Yes, Rallo offers extensive customization options for your AI agents. You can tailor their responses, appearance, and functionality to align with your brand. This ensures a consistent experience for your customers.",
     },
     {
-      id: 4,
-      number: "04",
-      title: "Feature four",
-      content: "Instant video content generation from simple text prompts.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      id: "item-4",
+      question: "What industries can use it?",
+      answer:
+        "Rallo is versatile and can be utilized across various industries. From coaching to retail, our AI agents adapt to meet diverse needs. Any business looking to enhance customer interactions can benefit.",
     },
     {
-      id: 5,
-      number: "05",
-      title: "Feature five",
-      content: "Advanced analytics and insights to optimize customer interactions.",
-      image: "/figmaAssets/placeholder-image-2.png"
-    }
+      id: "item-5",
+      question: "How do I start?",
+      answer:
+        "Getting started with Rallo is easy. Sign up for a free trial to explore our features. You can also book a demo to see our AI agents in action.",
+    },
+    {
+      id: "item-6",
+      question: "Question text goes here",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
+    },
   ];
 
   return (
-    <section className="flex flex-col items-center px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
-      <div className="basis-0 content-stretch flex grow items-start justify-start min-h-px min-w-px relative shrink-0 w-full" data-name="Row">
-        {tabData.map((tab) => (
-          <div 
-            key={tab.id}
-            className={`${activeTab === tab.id ? 'basis-0 grow min-w-px' : ''} bg-white content-stretch flex h-full items-start justify-start relative shrink-0 cursor-pointer transition-all duration-300 ${activeTab === tab.id ? 'min-w-[400px]' : 'min-w-[80px]'}`}
-            onClick={() => setActiveTab(tab.id)}
-            data-name={`Tab Pane ${tab.id}`}
-            data-testid={`tab-pane-${tab.id}`}
-          >
-            <div aria-hidden="true" className="absolute border-[0px_1px_0px_0px] border-black border-solid inset-0 pointer-events-none" />
+    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
+      <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
+        <header className="flex flex-col max-w-screen-md items-start gap-6 flex-[0_0_auto] relative w-full">
+          <h2 className="self-stretch mt-[-1.00px] text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
+            FAQs
+          </h2>
 
-            {/* Tab Header */}
-            <div className="box-border content-stretch flex flex-col h-full items-center justify-between overflow-clip px-6 py-8 relative shrink-0" data-name="Feature Tab">
-              <div className="font-bold leading-[0] min-w-full relative shrink-0 text-[24px] text-black text-center" style={{ fontFamily: "'JetBrains Mono', monospace", fontVariationSettings: "'wdth' 100", width: "min-content" }}>
-                <p className="leading-[1.4]">{tab.number}</p>
-              </div>
-              <div className="flex h-[136.031px] items-center justify-center relative shrink-0 w-[33.594px]">
-                <div className="flex-none rotate-[270deg]">
-                  <div className="font-['Roboto:Bold',_sans-serif] font-bold leading-[0] relative text-[24px] text-black text-nowrap" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    <p className="leading-[1.4] whitespace-pre">{tab.title}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+            Find answers to common questions about Rallo and how our AI agents
+            can help you.
+          </p>
+        </header>
 
-            {/* Tab Content - Only show when active */}
-            {activeTab === tab.id && (
-              <div className="content-stretch flex flex-col gap-6 items-start justify-start overflow-clip p-8 relative shrink-0" data-name="Content">
-                <div className="content-stretch flex flex-col gap-6 items-start justify-start leading-[0] relative shrink-0 text-black w-full" data-name="Header">
-                  <div className="font-bold min-w-full relative shrink-0 text-[40px] text-black" style={{ fontFamily: "'JetBrains Mono', monospace", fontVariationSettings: "'wdth' 100", width: "min-content" }}>
-                    <p className="leading-[1.2] uppercase">Short heading goes here</p>
-                  </div>
-                  <div className="font-['Inter',_sans-serif] font-normal relative shrink-0 text-[16px] w-[544px]" style={{ fontVariationSettings: "'wdth' 100" }}>
-                    <p className="leading-[1.5]">{tab.content}</p>
-                  </div>
-                </div>
-                <div className="bg-center bg-cover bg-no-repeat h-[400px] shrink-0 w-[544px]" data-name="Placeholder Image" style={{ backgroundImage: `url('${tab.image}')` }} />
-              </div>
-            )}
+        <Accordion
+          type="multiple"
+          className="flex-col items-start gap-4 self-stretch w-full flex-[0_0_auto] flex relative"
+        >
+          {faqData.map((faq) => (
+            <AccordionItem
+              key={faq.id}
+              value={faq.id}
+              className="border-b border-gray-200 pb-4"
+            >
+              <AccordionTrigger className="text-left font-text-medium-bold font-[number:var(--text-medium-bold-font-weight)] text-black text-[length:var(--text-medium-bold-font-size)] tracking-[var(--text-medium-bold-letter-spacing)] leading-[var(--text-medium-bold-line-height)] [font-style:var(--text-medium-bold-font-style)] hover:no-underline">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] pt-4">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+
+        <div className="flex-col max-w-[560px] items-start gap-6 w-full flex-[0_0_auto] flex relative">
+          <div className="flex-col items-center gap-4 self-stretch w-full flex-[0_0_auto] flex relative">
+            <h3 className="self-stretch mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
+              Still have questions?
+            </h3>
+
+            <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+              We're here to help you!
+            </p>
           </div>
-        ))}
+
+          <div className="inline-flex items-center gap-6 relative flex-[0_0_auto]">
+            <Button
+              variant="outline"
+              className="h-auto inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] ml-[-1.00px] mr-[-1.00px] border border-solid border-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+            >
+              Contact
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   );
