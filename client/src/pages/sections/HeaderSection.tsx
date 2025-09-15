@@ -38,7 +38,7 @@ export const HeaderSection = (): JSX.Element => {
 
       {/* Hero Content */}
       <div className="flex-1 flex items-center justify-center px-16 relative">
-        <div className="flex flex-col items-center max-w-4xl w-full">
+        <div className="flex flex-col items-center max-w-4xl w-full" style={{ transform: 'translateX(-150px)' }}>
           <div className="flex flex-col items-end mb-4">
             <div className="text-right mb-2">
               <span className="text-6xl italic text-white font-['Libre_Baskerville'] leading-tight">You,</span>
