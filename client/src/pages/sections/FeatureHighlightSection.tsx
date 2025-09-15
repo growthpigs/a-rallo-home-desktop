@@ -58,7 +58,7 @@ export const FeatureHighlightSection = (): JSX.Element => {
           </div>
 
           <img
-            className="flex-1 grow h-[608px] relative object-cover"
+            className="w-[608px] h-[608px] relative object-cover"
             alt="Placeholder image"
             src={ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1}
           />

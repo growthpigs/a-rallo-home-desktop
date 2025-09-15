@@ -27,7 +27,7 @@ export const ComponentNodeSection = (): JSX.Element => {
             </header>
 
             <img
-              className="self-stretch w-full h-[624px] relative object-cover"
+              className="w-[400px] h-[400px] relative object-cover"
               alt="Placeholder image"
               src={clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3}
             />
@@ -37,7 +37,7 @@ export const ComponentNodeSection = (): JSX.Element => {
             <div className="items-start justify-end gap-8 self-stretch w-full flex-[0_0_auto] flex relative">
               <div className="justify-end gap-2 pt-[148px] pb-0 px-0 flex-1 grow flex items-start relative">
                 <img
-                  className="flex-1 grow h-[296px] relative object-cover"
+                  className="w-[296px] h-[296px] relative object-cover"
                   alt="Placeholder image"
                   src={extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0}
                 />
@@ -45,7 +45,7 @@ export const ComponentNodeSection = (): JSX.Element => {
 
               <div className="justify-end gap-2 pt-[74px] pb-0 px-0 flex-1 grow flex items-start relative">
                 <img
-                  className="flex-1 grow h-[296px] relative object-cover"
+                  className="w-[296px] h-[296px] relative object-cover"
                   alt="Placeholder image"
                   src={professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_35c315trc3vo2sfe4ki2_0}
                 />
