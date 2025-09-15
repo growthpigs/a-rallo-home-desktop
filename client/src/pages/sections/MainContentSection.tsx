@@ -68,7 +68,7 @@ export const MainContentSection = (): JSX.Element => {
           {tabData.map((tab) => (
             <div 
               key={tab.id}
-              className="flex-1 flex cursor-pointer transition-all duration-300 border-r border-black last:border-r-0 bg-[#e6e6e6]"
+              className={`${activeTab === tab.id ? 'flex-1' : 'w-[120px]'} bg-white flex cursor-pointer transition-all duration-300 border-r border-r-solid border-black last:border-r-0`}
               onClick={() => setActiveTab(tab.id)}
               data-testid={`tab-pane-${tab.id}`}
             >
