@@ -68,19 +68,58 @@ export const HeaderSection = (): JSX.Element => {
         </div>
       </nav>
       {/* Hero Content */}
-      <div className="flex-1 flex items-center justify-center px-16 relative">
-        <div className="flex flex-col items-center max-w-4xl w-full" style={{ transform: 'translateX(-300px)' }}>
-          <div className="flex flex-col items-end mb-4">
-            <div className="text-right mb-2">
-              <span className="italic text-white font-['Libre_Baskerville'] ml-[22px] mr-[22px] text-[74px] pl-[0px] pr-[0px] pt-[0px] pb-[0px] mt-[0px] mb-[0px]" style={{ transform: 'translateY(60px)' }}>You,</span>
+      <div className="flex-1 relative">
+        {/* Mobile overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50 md:hidden"></div>
+        
+        {/* Desktop/Tablet: Two column grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:gap-12 md:gap-6 h-full px-16">
+          {/* Left Column - Text Content */}
+          <div className="flex flex-col items-end justify-center">
+            <div className="flex flex-col items-end mb-4">
+              <div className="text-right mb-2">
+                <span className="italic text-white font-['Libre_Baskerville'] text-[74px]" style={{ transform: 'translateY(60px)' }}>You,</span>
+              </div>
+              <div className="text-white font-['JetBrains_Mono'] lg:text-7xl md:text-6xl font-light lg:tracking-[0.3em] md:tracking-[0.2em] leading-tight">
+                MULTIPLIED
+              </div>
             </div>
-            <div className="text-white font-['JetBrains_Mono'] text-7xl font-light tracking-[0.3em] leading-tight">
+            
+            <div className="text-right max-w-xl mt-8">
+              <p className="text-white font-['Inter'] text-lg font-normal tracking-[0.05em] leading-relaxed" style={{ transform: 'translateY(-50px) translateX(10px)' }}>
+                Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
+              </p>
+            </div>
+          </div>
+          
+          {/* Right Column - Eye Image */}
+          <div className="flex items-center justify-center">
+            <img 
+              src="https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3"
+              alt="Eye with geometric interface"
+              className="max-w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Mobile: Centered single column with background */}
+        <div 
+          className="md:hidden flex flex-col items-center justify-center h-full px-8 relative bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`
+          }}
+        >
+          <div className="flex flex-col items-center mb-4 relative z-10">
+            <div className="text-center mb-2">
+              <span className="italic text-white font-['Libre_Baskerville'] text-5xl">You,</span>
+            </div>
+            <div className="text-white font-['JetBrains_Mono'] text-4xl font-light tracking-[0.1em] leading-tight">
               MULTIPLIED
             </div>
           </div>
           
-          <div className="text-right max-w-xl mt-8">
-            <p className="text-white font-['Inter'] text-lg font-normal tracking-[0.05em] leading-relaxed" style={{ transform: 'translateY(-50px) translateX(10px)' }}>
+          <div className="text-center max-w-sm mt-8 relative z-10">
+            <p className="text-white font-['Inter'] text-base font-normal tracking-[0.05em] leading-relaxed">
               Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
             </p>
           </div>
