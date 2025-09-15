@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 export const HeaderSection = (): JSX.Element => {
   return (
     <section 
-      className="flex flex-col h-screen relative w-full bg-cover bg-left"
+      className="flex flex-col h-screen relative w-full bg-cover"
       style={{
-        backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`
+        backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
+        backgroundPosition: '-200px center'
       }}
       data-testid="section-hero"
     >
@@ -35,13 +36,12 @@ export const HeaderSection = (): JSX.Element => {
           </Button>
         </div>
       </nav>
-
       {/* Hero Content */}
       <div className="flex-1 flex items-center justify-center px-16 relative">
         <div className="flex flex-col items-center max-w-4xl w-full" style={{ transform: 'translateX(-300px)' }}>
           <div className="flex flex-col items-end mb-4">
             <div className="text-right mb-2">
-              <span className="text-6xl italic text-white font-['Libre_Baskerville'] leading-tight">You,</span>
+              <span className="text-6xl italic text-white font-['Libre_Baskerville'] leading-tight ml-[22px] mr-[22px]">You,</span>
             </div>
             <div className="text-white font-['JetBrains_Mono'] text-7xl font-bold tracking-[0.3em] leading-tight">
               MULTIPLIED
