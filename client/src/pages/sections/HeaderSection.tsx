@@ -40,8 +40,8 @@ export const HeaderSection = (): JSX.Element => {
       <div className="flex-1 flex items-center justify-center px-16 relative">
         <div className="flex flex-col items-center max-w-4xl w-full" style={{ transform: 'translateX(-300px)' }}>
           <div className="flex flex-col items-end mb-4">
-            <div className="text-right mb-2">
-              <span className="italic text-white font-['Libre_Baskerville'] ml-[22px] mr-[22px] text-[74px] pl-[0px] pr-[0px] pt-[0px] pb-[0px] mt-[0px] mb-[0px]" style={{ transform: 'translateY(105px)' }}>You,</span>
+            <div className="text-right mb-2" style={{ transform: 'translateY(105px)' }}>
+              <span className="italic text-white font-['Libre_Baskerville'] ml-[22px] mr-[22px] text-[74px] pl-[0px] pr-[0px] pt-[0px] pb-[0px] mt-[0px] mb-[0px]">You,</span>
             </div>
             <div className="text-white font-['JetBrains_Mono'] text-7xl font-light tracking-[0.3em] leading-tight">
               MULTIPLIED
