@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 
 import ultra_macro_of_multiple_facial_features_with_geometric_mapping_interface_translucent_grid_overlay_a_0f5lrlnl9rpvw7lkx913_0 from "@assets/ultra_macro_of_multiple_facial_features_with_geometric_mapping_interface_translucent_grid_overlay_a_0f5lrlnl9rpvw7lkx913_0.png";
 
+import ultra_close_up_of_jawline_edge_with_geometric_light_patterns_following_facial_contour_interface_ele_31ob0uahcvqdm59bcvmp_0 from "@assets/ultra_close-up_of_jawline_edge_with_geometric_light_patterns_following_facial_contour_interface_ele_31ob0uahcvqdm59bcvmp_0.png";
+
 export const GeneralLayoutSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
@@ -50,7 +52,7 @@ export const GeneralLayoutSection = (): JSX.Element => {
             <img
               className="flex-1 grow h-[302px] relative object-cover"
               alt="Placeholder image"
-              src="/figmaAssets/placeholder-image-16.png"
+              src={ultra_close_up_of_jawline_edge_with_geometric_light_patterns_following_facial_contour_interface_ele_31ob0uahcvqdm59bcvmp_0}
             />
           </div>
         </div>
