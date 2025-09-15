@@ -56,7 +56,7 @@ const socialIcons = [
 
 export const FooterSection = (): JSX.Element => {
   return (
-    <footer className="flex flex-col items-center gap-20 px-16 py-20 w-full bg-white">
+    <footer className="flex flex-col items-center gap-20 px-16 py-20 w-full bg-[#e6e6e6]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 w-full">
         <div className="flex items-start justify-between w-full">
           <div className="flex-col max-w-[560px] items-start flex-1 grow flex">
