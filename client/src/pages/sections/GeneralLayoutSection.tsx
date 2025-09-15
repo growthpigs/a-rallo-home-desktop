@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 
+import ultra_macro_of_multiple_facial_features_with_geometric_mapping_interface_translucent_grid_overlay_a_0f5lrlnl9rpvw7lkx913_0 from "@assets/ultra_macro_of_multiple_facial_features_with_geometric_mapping_interface_translucent_grid_overlay_a_0f5lrlnl9rpvw7lkx913_0.png";
+
 export const GeneralLayoutSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
@@ -42,7 +44,7 @@ export const GeneralLayoutSection = (): JSX.Element => {
             <img
               className="w-[444px] h-[666px] relative object-cover"
               alt="Placeholder image"
-              src="/figmaAssets/placeholder-image.png"
+              src={ultra_macro_of_multiple_facial_features_with_geometric_mapping_interface_translucent_grid_overlay_a_0f5lrlnl9rpvw7lkx913_0}
             />
 
             <img
