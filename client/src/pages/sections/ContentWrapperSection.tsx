@@ -79,7 +79,7 @@ export const ContentWrapperSection = (): JSX.Element => {
             <Card className="flex-col max-w-[400px] items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent">
               <CardContent className="p-0 w-full">
                 <img
-                  className="relative self-stretch w-full h-[532px] object-cover"
+                  className="w-[400px] h-[400px] relative object-cover"
                   alt="Placeholder image"
                   src={extreme_close_up_of_closed_eye_with_geometric_light_patterns_projecting_through_eyelashes_transluce_ru05jm4ljm73ohmxqa7m_3}
                 />
