@@ -19,7 +19,7 @@ export const HeaderSection = (): JSX.Element => {
       className="flex flex-col h-screen relative w-full bg-no-repeat"
       style={{
         backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-        backgroundPosition: 'calc(55% + 3vw) center',
+        backgroundPosition: 'calc(52% + 1vw) center',
         backgroundSize: 'cover'
       }}
       data-testid="section-hero"
@@ -69,10 +69,10 @@ export const HeaderSection = (): JSX.Element => {
       </nav>
       {/* Hero Content */}
       <div className="flex-1 relative">
-        {/* Desktop & Tablet: 3/7 - 1/7 - 3/7 proportions with original background */}
-        <div className="hidden md:grid grid-cols-7 h-full">
+        {/* Desktop & Tablet: Custom proportions with smaller center gap */}
+        <div className="hidden md:grid h-full md:grid-cols-[3fr_0.4fr_3fr] lg:grid-cols-[3fr_0.35fr_3fr] xl:grid-cols-[3fr_0.3fr_3fr]">
           {/* Left 3/7: Text Content */}
-          <div className="col-span-3 flex flex-col items-end justify-center px-8 lg:px-16">
+          <div className="col-span-1 flex flex-col items-end justify-center px-8 lg:px-12">
             <div className="flex flex-col items-end mb-4">
               <div className="text-right mb-2">
                 <span className="italic text-white font-['Libre_Baskerville'] lg:text-6xl md:text-5xl" style={{ transform: 'translateY(60px)' }}>You,</span>
@@ -89,11 +89,11 @@ export const HeaderSection = (): JSX.Element => {
             </div>
           </div>
           
-          {/* Middle 1/7: Gap (background shows through) */}
+          {/* Middle: Small gap (background shows through) */}
           <div className="col-span-1"></div>
           
-          {/* Right 3/7: Eye shows through background */}
-          <div className="col-span-3"></div>
+          {/* Right: Eye shows through background */}
+          <div className="col-span-1"></div>
         </div>
 
         {/* Mobile & Tablet: Focus on right side where eye is */}
