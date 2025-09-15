@@ -107,7 +107,7 @@ export const MainContentSection = (): JSX.Element => {
                     
                     <div className="mt-auto">
                       <img
-                        className="w-full max-w-[400px] h-[300px] object-cover bg-gray-200"
+                        className="w-full max-w-[400px] h-[300px] object-cover bg-gray-200 pl-[0px] pr-[0px] ml-[22px] mr-[22px] mt-[22px] mb-[22px]"
                         alt="Placeholder image"
                         src={tab.image}
                       />
