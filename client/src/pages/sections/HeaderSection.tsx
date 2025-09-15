@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export const HeaderSection = (): JSX.Element => {
   return (
     <section 
-      className="flex flex-col h-screen relative w-full bg-cover bg-center"
+      className="flex flex-col h-screen relative w-full bg-cover bg-left"
       style={{
         backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`
       }}
@@ -38,7 +38,7 @@ export const HeaderSection = (): JSX.Element => {
 
       {/* Hero Content */}
       <div className="flex-1 flex items-center justify-center px-16 relative">
-        <div className="flex flex-col items-center max-w-4xl w-full" style={{ transform: 'translateX(-150px)' }}>
+        <div className="flex flex-col items-center max-w-4xl w-full" style={{ transform: 'translateX(-300px)' }}>
           <div className="flex flex-col items-end mb-4">
             <div className="text-right mb-2">
               <span className="text-6xl italic text-white font-['Libre_Baskerville'] leading-tight">You,</span>
