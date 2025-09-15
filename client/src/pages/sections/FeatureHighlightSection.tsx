@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 
 import ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1 from "@assets/ultra_close-up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1.png";
 
+import close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__si7n4pzw11pfkxj5appa_3 from "@assets/close-up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__si7n4pzw11pfkxj5appa_3.png";
+
 export const FeatureHighlightSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
@@ -51,7 +53,7 @@ export const FeatureHighlightSection = (): JSX.Element => {
             <img
               className="w-80 h-80 relative object-cover"
               alt="Placeholder image"
-              src="/figmaAssets/placeholder-image-16.png"
+              src={close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__si7n4pzw11pfkxj5appa_3}
             />
           </div>
 
