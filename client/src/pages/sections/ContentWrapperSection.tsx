@@ -3,6 +3,10 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+import extreme_close_up_of_closed_eye_with_geometric_light_patterns_projecting_through_eyelashes_transluce_ru05jm4ljm73ohmxqa7m_3 from "@assets/extreme_close-up_of_closed_eye_with_geometric_light_patterns_projecting_through_eyelashes_transluce_ru05jm4ljm73ohmxqa7m_3.png";
+
+import finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2 from "@assets/finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2.png";
+
 const solutionsData = [
   {
     id: "rallo-agent",
@@ -75,7 +79,7 @@ export const ContentWrapperSection = (): JSX.Element => {
                 <img
                   className="relative self-stretch w-full h-[532px] object-cover"
                   alt="Placeholder image"
-                  src={solutionsData[0].image}
+                  src={extreme_close_up_of_closed_eye_with_geometric_light_patterns_projecting_through_eyelashes_transluce_ru05jm4ljm73ohmxqa7m_3}
                 />
 
                 <div className="flex-col items-start gap-4 self-stretch w-full flex-[0_0_auto] flex relative mt-8">
@@ -117,7 +121,7 @@ export const ContentWrapperSection = (): JSX.Element => {
                 <img
                   className="w-[608px] h-[414px] relative object-cover"
                   alt="Placeholder image"
-                  src={solutionsData[2].image}
+                  src={finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2}
                 />
 
                 <div className="flex-col items-start gap-4 self-stretch w-full flex-[0_0_auto] flex relative mt-8">
