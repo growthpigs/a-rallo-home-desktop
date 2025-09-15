@@ -24,7 +24,7 @@ export const GeneralLayoutSection = (): JSX.Element => {
             </div>
 
             <div className="flex flex-col items-start gap-8 relative self-stretch w-full flex-[0_0_auto]">
-              <p className="relative self-stretch mt-[-1.00px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+              <p className="relative self-stretch mt-[-1.00px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] text-[#ffffff]">
                 Rallo Agents transform missed interactions into revenue
                 opportunities. Engage customers instantly, day or night.
               </p>
