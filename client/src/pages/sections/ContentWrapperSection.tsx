@@ -1,40 +1,9 @@
 import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-
-import extreme_close_up_of_closed_eye_with_geometric_light_patterns_projecting_through_eyelashes_transluce_ru05jm4ljm73ohmxqa7m_3 from "@assets/extreme_close-up_of_closed_eye_with_geometric_light_patterns_projecting_through_eyelashes_transluce_ru05jm4ljm73ohmxqa7m_3.png";
-
-import finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2 from "@assets/finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2.png";
-
-import extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0 from "@assets/extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0.png";
-
-const solutionsData = [
-  {
-    id: "rallo-agent",
-    title: "Rallo Agent",
-    description:
-      "Comprehensive AI presence across video, chat, and voice channels.",
-    image: "/figmaAssets/placeholder-image-8.png",
-    className: "pt-[200px]",
-  },
-  {
-    id: "rallo-chat",
-    title: "Rallo Chat",
-    description: "Always-on website and app chat support.",
-    image: "/figmaAssets/placeholder-image-8.png",
-    className: "",
-  },
-  {
-    id: "rallo-interactive",
-    title: "Rallo Interactive",
-    description: "Real-time two-way video conversations powered by AI.",
-    image: "/figmaAssets/placeholder-image-8.png",
-    className: "",
-  },
-];
 
 export const ContentWrapperSection = (): JSX.Element => {
+
   return (
     <section className="gap-20 px-16 py-28 flex flex-col items-center relative w-full bg-white">
       <div className="flex-col max-w-screen-xl items-start gap-20 w-full flex-[0_0_auto] mb-[-73.00px] flex relative">

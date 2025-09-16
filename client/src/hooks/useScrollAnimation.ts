@@ -1,19 +1,58 @@
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 interface ScrollAnimationOptions {
   once?: boolean;
   amount?: number;
   margin?: string;
+  debugName?: string;
 }
 
 export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
   const ref = useRef(null);
+  const debugName = options.debugName || "Unknown Section";
+  
   const isInView = useInView(ref, {
     once: options.once ?? true,
-    amount: options.amount ?? 0.3,
-    margin: options.margin ?? "0px",
+    amount: options.amount ?? 0.1, // Reduced to 0.1 for much earlier triggering
+    margin: options.margin ?? "-100px 0px", // Increased negative margin for earlier trigger
   });
+
+  // Comprehensive logging for scroll detection
+  useEffect(() => {
+    console.log(`🔍 [${debugName}] Scroll hook initialized`, {
+      once: options.once ?? true,
+      amount: options.amount ?? 0.1,
+      margin: options.margin ?? "-100px 0px",
+      refElement: ref.current
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(`📊 [${debugName}] InView state changed:`, {
+      isInView,
+      timestamp: new Date().toISOString(),
+      element: ref.current,
+      elementHeight: ref.current?.offsetHeight,
+      elementTop: ref.current?.offsetTop,
+      scrollY: window.scrollY,
+      viewportHeight: window.innerHeight
+    });
+    
+    // Additional debugging for element positioning
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      console.log(`📐 [${debugName}] Element bounds:`, {
+        top: rect.top,
+        bottom: rect.bottom,
+        height: rect.height,
+        inViewport: rect.top < window.innerHeight && rect.bottom > 0,
+        visibilityPercentage: Math.max(0, Math.min(100, 
+          (Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)) / rect.height * 100
+        ))
+      });
+    }
+  }, [isInView, debugName]);
 
   return { ref, isInView };
 };

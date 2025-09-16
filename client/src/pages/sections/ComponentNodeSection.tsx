@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useScrollAnimation, slideInLeftVariants, slideInRightVariants, fadeUpVariants } from "@/hooks/useScrollAnimation";
@@ -8,9 +8,49 @@ import clean_minimal_control_room_with_large_geometric_displays_showing_organize
 import extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0 from "@assets/extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0.png";
 
 export const ComponentNodeSection = (): JSX.Element => {
-  const { ref, isInView } = useScrollAnimation();
+  const { ref, isInView } = useScrollAnimation({ 
+    debugName: "ComponentNodeSection (Build Your Own AI SaaS Business)",
+    amount: 0.05, // Extra aggressive for this section
+    margin: "-150px 0px" // Even earlier trigger
+  });
+
+  // CSS Conflict Detection Helper
+  const detectCSSConflicts = (element: HTMLElement, debugName: string) => {
+    if (!element) return;
+    
+    const computedStyle = window.getComputedStyle(element);
+    const conflicts = [];
+    
+    if (computedStyle.transform !== 'none' && computedStyle.transform !== 'matrix(1, 0, 0, 1, 0, 0)') {
+      conflicts.push(`transform: ${computedStyle.transform}`);
+    }
+    if (computedStyle.opacity !== '1') {
+      conflicts.push(`opacity: ${computedStyle.opacity}`);
+    }
+    if (computedStyle.overflow === 'hidden') {
+      conflicts.push(`overflow: ${computedStyle.overflow}`);
+    }
+    
+    if (conflicts.length > 0) {
+      console.warn(`⚠️ [${debugName}] CSS conflicts:`, conflicts);
+    } else {
+      console.log(`✅ [${debugName}] No CSS conflicts`);
+    }
+  };
+
+  // Debug motion component state
+  useEffect(() => {
+    console.log(`🎬 [ComponentNodeSection] Motion state update:`, {
+      isInView,
+      timestamp: new Date().toISOString()
+    });
+    
+    if (ref.current) {
+      detectCSSConflicts(ref.current, "ComponentNodeSection");
+    }
+  }, [isInView]);
   return (
-    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
+    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto]" style={{ backgroundColor: '#fd815a' }}>
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
         <div className="items-start gap-16 flex relative self-stretch w-full flex-[0_0_auto]">
           <motion.div 
@@ -18,6 +58,7 @@ export const ComponentNodeSection = (): JSX.Element => {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={slideInLeftVariants}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <header className="flex flex-col items-start gap-4 self-stretch flex-[0_0_auto] relative w-full">
               <div className="inline-flex items-center relative flex-[0_0_auto]">
@@ -52,6 +93,7 @@ export const ComponentNodeSection = (): JSX.Element => {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={slideInRightVariants}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           >
             <div className="items-start justify-end gap-2 self-stretch w-full flex-[0_0_auto] flex relative">
               <div className="justify-end gap-0.5 pt-[148px] pb-0 px-0 flex-1 grow flex items-start relative">

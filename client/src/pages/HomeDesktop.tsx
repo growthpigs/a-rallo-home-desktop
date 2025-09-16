@@ -3,7 +3,7 @@ import React, { lazy, Suspense } from "react";
 // Import ALL sections directly for optimal performance (no lazy loading)
 import { HeaderSection } from "./sections/HeaderSection";
 import { GeneralLayoutSection } from "./sections/GeneralLayoutSection";
-import { LayoutContainerSection } from "./sections/LayoutContainerSection";
+import { ScrollExpandSection } from "./sections/ScrollExpandSection";
 import { MainContentSection } from "./sections/MainContentSection";
 import { ContentWrapperSection } from "./sections/ContentWrapperSection";
 import { ImageGallerySection } from "./sections/ImageGallerySection";
@@ -27,7 +27,7 @@ export const HomeDesktop = (): JSX.Element => {
       {/* All sections loaded immediately for smooth scrolling */}
       <HeaderSection />
       <GeneralLayoutSection />
-      <LayoutContainerSection />
+      <ScrollExpandSection />
       <MainContentSection />
       <ContentWrapperSection />
       <ImageGallerySection />
