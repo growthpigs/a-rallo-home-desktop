@@ -30,13 +30,11 @@ const ScrollExpandMedia = ({
   children,
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
-  const [phase, setPhase] = useState<'scrolling' | 'pinned' | 'expanded-scrolling'>('scrolling');
-  const [showContent, setShowContent] = useState<boolean>(false);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
+  const [showContent, setShowContent] = useState<boolean>(false);
 
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const pinnedScrollStart = useRef<number>(0);
-  const scrollAmountForAnimation = 600; // Pixels needed to fully expand
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const stickyRef = useRef<HTMLDivElement | null>(null);
 
   // Split text for animation
   const firstLine = 'AI AGENTS';
@@ -55,64 +53,43 @@ const ScrollExpandMedia = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (!containerRef.current || !stickyRef.current) return;
 
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionCenter = rect.top + rect.height / 2;
-      const viewportCenter = window.innerHeight / 2;
-      const currentScroll = window.scrollY;
-
-      if (phase === 'scrolling') {
-        // Check if square has reached center
-        if (Math.abs(sectionCenter - viewportCenter) < 100) {
-          setPhase('pinned');
-          pinnedScrollStart.current = currentScroll;
-        }
-      } else if (phase === 'pinned') {
-        // Calculate expansion progress while pinned
-        const scrolledSincePinned = currentScroll - pinnedScrollStart.current;
-        const progress = Math.min(1, Math.max(0, scrolledSincePinned / scrollAmountForAnimation));
-        
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const stickyRect = stickyRef.current.getBoundingClientRect();
+      
+      // Calculate progress based on how much we've scrolled through the container
+      const scrolledIntoContainer = -containerRect.top;
+      const maxScroll = containerRef.current.offsetHeight - window.innerHeight;
+      
+      // Only animate when sticky is actually stuck
+      if (stickyRect.top <= 0 && scrolledIntoContainer < maxScroll) {
+        const progress = Math.min(1, Math.max(0, scrolledIntoContainer / 600));
         setScrollProgress(progress);
         
         if (progress > 0.3) {
           setShowContent(true);
-        }
-
-        // Don't unpin - just let it scroll away naturally when ready
-        // The section will move out of view on its own
-
-        // If scrolling back up too much, return to scrolling phase
-        if (scrolledSincePinned < -50) {
-          setPhase('scrolling');
-          setScrollProgress(0);
+        } else {
           setShowContent(false);
         }
-      } else if (phase === 'expanded-scrolling') {
-        // Check if we've scrolled back to where animation should reverse
-        const rect = sectionRef.current.getBoundingClientRect();
-        
-        // Removed debug logging
-        
-        if (rect.top > -100) {
-          // Section is coming back into view from top, return to pinned
-          setPhase('pinned');
-          pinnedScrollStart.current = currentScroll - scrollAmountForAnimation;
-        } else {
-          // Stay fully expanded while scrolling
-          setScrollProgress(1);
-          setShowContent(true);
-        }
+      } else if (scrolledIntoContainer >= maxScroll) {
+        // Maintain full expansion when scrolling past
+        setScrollProgress(1);
+        setShowContent(true);
+      } else {
+        // Reset when above
+        setScrollProgress(0);
+        setShowContent(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check initial state
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [phase]);
+  }, []);
 
   // Calculate sizes based on progress - starts at 400x400, smaller expansion
   const mediaWidth = 400 + scrollProgress * (isMobileState ? 400 : 800);
@@ -121,44 +98,26 @@ const ScrollExpandMedia = ({
   // Text animation - scroll completely off screen
   const textTranslateX = scrollProgress * (isMobileState ? 60 : 80);
 
-  // Determine container styling based on phase
-  const getContainerStyle = () => {
-    if (phase === 'pinned') {
-      return {
-        position: 'fixed' as const,
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '100vh',
-        zIndex: 20,
-      };
-    } else if (phase === 'expanded-scrolling') {
-      // Keep it relative but maintain expanded state
-      return {
-        position: 'relative' as const,
-        height: '100vh',
-      };
-    }
-    return {
-      position: 'relative' as const,
-      height: '100vh',
-    };
-  };
-
-  // Add spacer height when pinned to maintain document flow
-  const spacerHeight = phase === 'pinned' ? `calc(100vh + ${scrollAmountForAnimation}px)` : 
-                       phase === 'expanded-scrolling' ? '100vh' : '100vh';
-
   return (
     <div
-      ref={sectionRef}
+      ref={containerRef}
       className='relative'
       style={{
-        height: phase === 'pinned' ? `calc(100vh + ${scrollAmountForAnimation}px)` : '100vh',
+        height: 'calc(100vh + 600px)', // Extra height for scroll space
       }}
     >
-      <div style={getContainerStyle()}>
-        <section className='relative flex flex-col items-center justify-center h-full overflow-hidden'>
+      <div
+        ref={stickyRef}
+        style={{
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <section className='relative flex flex-col items-center justify-center w-full h-full overflow-hidden'>
           {/* Background Image */}
           <motion.div
             className='absolute inset-0 z-0'
@@ -312,8 +271,6 @@ const ScrollExpandMedia = ({
               )}
             </motion.div>
           )}
-
-          {/* Content removed - no children displayed */}
         </section>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ScrollExpandMedia from '@/components/blocks/scroll-expansion-hero-final';
+import ScrollExpandMedia from '@/components/blocks/scroll-expansion-hero-sticky-final';
 
 // Import the existing background image
 import abstract_representation_of_data_flowing_through_geometric_channels_translucent_tubes_and_pathways_s_lcz904f18v0j06fnuwh7_0 from "@assets/abstract_representation_of_data_flowing_through_geometric_channels_translucent_tubes_and_pathways_s_lcz904f18v0j06fnuwh7_0.png";
