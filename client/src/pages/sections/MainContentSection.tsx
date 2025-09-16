@@ -74,12 +74,12 @@ export const MainContentSection = (): JSX.Element => {
             >
               {/* Collapsed State */}
               {activeTab !== tab.id && (
-                <div className="flex flex-col h-full items-center justify-between p-6">
+                <div className="flex flex-col h-full relative p-6">
                   <div className="text-2xl font-normal font-['JetBrains_Mono',_monospace] text-black">
                     {tab.number}
                   </div>
-                  <div className="flex items-center justify-center flex-1">
-                    <div className="-rotate-90 whitespace-nowrap text-[25px] font-light text-black font-['JetBrains_Mono',_monospace] transform -translate-x-[260px] translate-y-[135px]">
+                  <div className="absolute bottom-6 left-6">
+                    <div className="-rotate-90 whitespace-nowrap text-lg font-normal text-black font-['JetBrains_Mono',_monospace] origin-bottom-left">
                       {tab.title}
                     </div>
                   </div>
