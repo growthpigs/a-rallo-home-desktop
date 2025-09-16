@@ -79,8 +79,9 @@ const ScrollExpandMedia = ({
           setShowContent(true);
         }
 
-        // When fully expanded, smoothly transition to expanded-scrolling phase
-        if (progress >= 1 && scrolledSincePinned > scrollAmountForAnimation) {
+        // Stay pinned even after fully expanded to prevent jumps
+        // Only unpin after significant additional scrolling
+        if (scrolledSincePinned > scrollAmountForAnimation + 200) {
           setPhase('expanded-scrolling');
         }
 
