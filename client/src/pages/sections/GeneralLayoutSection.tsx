@@ -62,22 +62,6 @@ export const GeneralLayoutSection = (): JSX.Element => {
                 priority={true}
               />
             </motion.div>
-
-            <motion.div
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={fadeUpVariants}
-              transition={{ delay: 0.5 }}
-            >
-              <FastImage
-                className="w-[302px] h-[302px] object-cover"
-                alt="Jawline edge with geometric light patterns"
-                src="/images/ultra_close-up_of_jawline_edge_with_geometric_light_patterns_following_facial_contour_interface_ele_31ob0uahcvqdm59bcvmp_0.png"
-                width={302}
-                height={302}
-                priority={true}
-              />
-            </motion.div>
           </div>
         </div>
       </div>

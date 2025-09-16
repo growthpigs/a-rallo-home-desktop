@@ -1,23 +1,39 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useScrollAnimation, fadeUpVariants, scaleInVariants } from "@/hooks/useScrollAnimation";
 
 import abstract_representation_of_data_flowing_through_geometric_channels_translucent_tubes_and_pathways_s_lcz904f18v0j06fnuwh7_0 from "@assets/abstract_representation_of_data_flowing_through_geometric_channels_translucent_tubes_and_pathways_s_lcz904f18v0j06fnuwh7_0.png";
 
 export const LayoutContainerSection = (): JSX.Element => {
+  const { ref, isInView } = useScrollAnimation();
   return (
-    <section className="flex flex-col items-center relative w-full bg-white">
-      <img
+    <section ref={ref} className="flex flex-col items-center relative w-full bg-white">
+      <motion.img
         className="w-full h-[810px] object-cover"
         alt="Placeholder image"
         src={abstract_representation_of_data_flowing_through_geometric_channels_translucent_tubes_and_pathways_s_lcz904f18v0j06fnuwh7_0}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={scaleInVariants}
       />
       <div className="flex flex-col items-center gap-20 px-16 py-28 w-full">
         <div className="flex flex-col max-w-screen-xl items-center gap-20 w-full">
-          <div className="flex flex-col max-w-screen-md items-center gap-8 w-full">
-            <img
+          <motion.div 
+            className="flex flex-col max-w-screen-md items-center gap-8 w-full"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={fadeUpVariants}
+            transition={{ delay: 0.3 }}
+          >
+            <motion.img
               className="w-20 h-20"
               alt="Globe icon"
               src="/figmaAssets/agents-globe.svg"
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={scaleInVariants}
+              transition={{ delay: 0.5 }}
             />
 
             <div className="flex flex-col items-center gap-4 w-full">
@@ -37,15 +53,21 @@ export const LayoutContainerSection = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-1">
+            <motion.div 
+              className="inline-flex items-center gap-1"
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={fadeUpVariants}
+              transition={{ delay: 0.7 }}
+            >
               <Button
                 variant="ghost"
                 className="h-auto px-6 py-3 bg-transparent border border-black text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-black hover:text-white"
               >
                 BOOK DEMO
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

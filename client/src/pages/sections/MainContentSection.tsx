@@ -17,28 +17,28 @@ export const MainContentSection = (): JSX.Element => {
       number: "02", 
       title: "Visual Workflow Builder",
       content: "Drag and drop modules on a clean grid. No more spider webs of arrows and confusion. Build complex flows in minutes.",
-      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
+      image: "/images/ultra_macro_of_nostril_with_geometric_particles_analyzing_breath_composition_translucent_interface__jmgoglja7mo2apr10yub_0.png"
     },
     {
       id: 3,
       number: "03",
       title: "Authentic AI Avatars", 
       content: "RealForm technology creates lifelike digital twins that speak, gesture, and engage naturally with your customers.",
-      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
+      image: "/images/macro_shot_of_eye_looking_up_at_floating_geometric_interface_elements_tiny_holographic_particles_vi_xpz1vt4h0wncwoga2686_0.png"
     },
     {
       id: 4,
       number: "04",
       title: "Smart Handoff System",
       content: "AI knows when to escalate to humans. Seamless transitions preserve context and customer satisfaction.",
-      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
+      image: "/images/macro_shot_of_eye_looking_up_at_floating_geometric_interface_elements_tiny_holographic_particles_vi_rujr17esa09e69utwxto_1.png"
     },
     {
       id: 5,
       number: "05",
       title: "Enterprise Analytics",
       content: "Track performance across all agents and channels. Real-time insights to optimize every customer interaction.",
-      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
+      image: "/images/finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_p7avlpzvvtkss00vl66s_0.png"
     }
   ];
 

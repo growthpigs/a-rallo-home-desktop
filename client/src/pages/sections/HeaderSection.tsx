@@ -79,7 +79,7 @@ export const HeaderSection = (): JSX.Element => {
           <div className="col-span-1 flex flex-col items-end justify-center px-8 lg:px-12">
             <div className="flex flex-col items-end mb-4">
               <div className="text-right mb-2">
-                <span className="italic text-white font-['Libre_Baskerville'] lg:text-6xl md:text-5xl" style={{ transform: 'translateY(60px)' }}>You,</span>
+                <span className="italic text-black font-['Libre_Baskerville'] lg:text-7xl md:text-6xl" style={{ transform: 'translateY(60px)' }}>You,</span>
               </div>
               <div 
                 className="text-white font-['JetBrains_Mono'] lg:text-6xl md:text-5xl font-light lg:tracking-[0.25em] md:tracking-[0.15em] leading-tight"
@@ -120,7 +120,7 @@ export const HeaderSection = (): JSX.Element => {
           
           <div className="flex flex-col items-center mb-2 relative z-10">
             <div className="text-center mb-2">
-              <span className="italic text-white font-['Libre_Baskerville'] text-6xl">You,</span>
+              <span className="italic text-black font-['Libre_Baskerville'] text-7xl">You,</span>
             </div>
             <div className="text-white font-['JetBrains_Mono'] text-5xl font-light tracking-[0.1em] leading-tight" style={{ transform: 'translateX(12px)' }}>
               MULTIPLIED
