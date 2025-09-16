@@ -75,7 +75,7 @@ export const MainContentSection = (): JSX.Element => {
               {/* Collapsed State */}
               {activeTab !== tab.id && (
                 <div className="flex flex-col h-full items-center justify-between p-6">
-                  <div className="text-2xl font-bold font-['JetBrains_Mono',_monospace] text-black">
+                  <div className="text-2xl font-normal font-['JetBrains_Mono',_monospace] text-black">
                     {tab.number}
                   </div>
                   <div className="flex items-center justify-center flex-1">
@@ -91,7 +91,7 @@ export const MainContentSection = (): JSX.Element => {
                 <div className="flex flex-col h-full">
                   {/* Header section with number */}
                   <div className="flex items-start p-6 pb-2">
-                    <div className="text-2xl font-bold font-['JetBrains_Mono',_monospace] text-black mr-4">
+                    <div className="text-2xl font-normal font-['JetBrains_Mono',_monospace] text-black mr-4">
                       {tab.number}
                     </div>
                   </div>
@@ -99,7 +99,7 @@ export const MainContentSection = (): JSX.Element => {
                   {/* Content section */}
                   <div className="flex-1 flex flex-col p-6 pt-2">
                     <div className="mb-6">
-                      <h3 className="text-3xl font-bold font-['JetBrains_Mono',_monospace] text-black mb-4 uppercase">
+                      <h3 className="text-3xl font-normal font-['JetBrains_Mono',_monospace] text-black mb-4 uppercase">
                         Short heading goes here
                       </h3>
                       <p className="text-base text-black font-['Inter',_sans-serif] leading-relaxed">
