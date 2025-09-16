@@ -48,17 +48,15 @@ export const MainContentSection = (): JSX.Element => {
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
         <div className="flex flex-col max-w-screen-md items-start gap-4 flex-[0_0_auto] relative w-full">
           <div className="inline-flex items-center relative flex-[0_0_auto]">
-            <div className="relative w-fit mt-[-1.00px] font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
+            <div className="relative w-fit font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
               Tagline
             </div>
           </div>
-
-          <div className="flex flex-col items-start gap-6 relative self-stretch w-full flex-[0_0_auto]">
-            <h2 className="self-stretch mt-[-1.00px] text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
+          <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
+            <h2 className="self-stretch text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
               MAXIMIZE YOUR DIGITAL POTENTIAL
             </h2>
-
-            <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+            <p className="relative max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
@@ -79,7 +77,7 @@ export const MainContentSection = (): JSX.Element => {
                     {tab.number}
                   </div>
                   <div className="absolute bottom-6 left-[58px]">
-                    <div className="-rotate-90 whitespace-nowrap text-[23px] font-normal text-black font-['JetBrains_Mono',_monospace] origin-bottom-left">
+                    <div className="-rotate-90 whitespace-nowrap text-[23px] font-light text-black font-['JetBrains_Mono',_monospace] origin-bottom-left">
                       {tab.title}
                     </div>
                   </div>

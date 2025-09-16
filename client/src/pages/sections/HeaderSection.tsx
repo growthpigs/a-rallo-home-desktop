@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export const HeaderSection = (): JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [bgLoaded, setBgLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -11,23 +12,30 @@ export const HeaderSection = (): JSX.Element => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    
+    // Preload background image
+    const img = new Image();
+    img.src = 'https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3';
+    img.onload = () => setBgLoaded(true);
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <section 
-      className="flex flex-col h-screen relative w-full bg-no-repeat"
+      className={`flex flex-col h-screen relative w-full bg-no-repeat ${!bgLoaded ? 'bg-gray-100' : ''}`}
       style={{
-        backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
+        backgroundImage: bgLoaded ? `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')` : 'none',
         backgroundPosition: '85% center',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        transition: 'background-image 0.3s ease-in-out'
       }}
       data-testid="section-hero"
     >
       {/* Navigation Header */}
-      <nav className={`flex items-center justify-between px-8 py-2 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <nav className={`flex items-center justify-between px-8 py-2 fixed top-0 left-0 right-0 z-50 ${
         isScrolled 
-          ? 'backdrop-blur-md bg-white/80' 
+          ? 'backdrop-blur-md bg-white/30' 
           : 'bg-transparent'
       }`}>
         <div className="flex items-center">
@@ -41,22 +49,22 @@ export const HeaderSection = (): JSX.Element => {
           />
         </div>
         
-        <div className="flex items-center gap-8">
-          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
+        <div className="flex items-center gap-6">
+          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
             isScrolled ? 'text-black' : 'text-white'
           }`} data-testid="nav-product">PRODUCT</a>
-          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
+          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
             isScrolled ? 'text-black' : 'text-white'
           }`} data-testid="nav-pricing">PRICING</a>
-          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
+          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
             isScrolled ? 'text-black' : 'text-white'
           }`} data-testid="nav-services">SERVICES</a>
-          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
+          <a href="#" className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:opacity-80 transition-colors duration-300 ${
             isScrolled ? 'text-black' : 'text-white'
           }`} data-testid="nav-about">ABOUT</a>
           <Button 
             variant="outline" 
-            className={`bg-transparent font-['JetBrains_Mono'] text-sm font-medium tracking-[0.2em] px-6 py-2 transition-colors duration-300 ${
+            className={`bg-transparent font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] px-6 py-2 transition-colors duration-300 ${
               isScrolled 
                 ? 'border-black text-black hover:bg-black hover:text-white' 
                 : 'border-white text-white hover:bg-white hover:text-black'
@@ -83,7 +91,7 @@ export const HeaderSection = (): JSX.Element => {
             </div>
             
             <div className="text-right max-w-lg mt-4">
-              <p className="text-white font-['Inter'] lg:text-lg md:text-sm tracking-[0.05em] leading-snug font-light ml-[9px] mr-[9px]" style={{ transform: 'translateY(-20px)' }}>
+              <p className="text-white font-['JetBrains_Mono'] lg:text-sm md:text-xs tracking-[0.05em] leading-none font-thin  uppercase" style={{ transform: 'translateY(-20px)' }}>
                 Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
               </p>
             </div>
@@ -118,7 +126,7 @@ export const HeaderSection = (): JSX.Element => {
           </div>
           
           <div className="text-center max-w-sm mt-4 relative z-10">
-            <p className="text-white font-['Inter'] text-sm font-normal tracking-[0.05em] leading-tight">
+            <p className="text-white font-['JetBrains_Mono'] text-xs font-thin tracking-[0.05em] leading-none uppercase" style={{ fontSize: '11px' }}>
               Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
             </p>
           </div>

@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 
 import { HomeDesktop } from "@/pages/HomeDesktop";
+// import { debugFonts } from "@/utils/font-debugger"; // Temporarily disabled
 
 function Router() {
   return (

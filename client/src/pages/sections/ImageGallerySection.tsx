@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { PersistentLazyImage } from "@/components/PersistentLazyImage";
 
 import close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__xio25a8gqhbcn1vd88kw_0 from "@assets/close-up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__xio25a8gqhbcn1vd88kw_0.png";
 
@@ -52,19 +53,21 @@ export const ImageGallerySection = (): JSX.Element => {
 
         <div className="grid grid-cols-2 gap-16 w-full">
           {/* Top Row */}
-          <div className="flex flex-col items-start gap-28 relative">
-            <Card className={`flex-col ${galleryItems[0].maxWidth} items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
+          <div className="flex flex-col items-start gap-8 relative">
+            <Card className={`flex-col ${galleryItems[0].maxWidth} items-start gap-2 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
               <CardContent className="p-0 w-full">
-                <img
+                <PersistentLazyImage
                   className={`w-[400px] ${galleryItems[0].imageHeight} relative object-cover`}
-                  alt="Placeholder image"
+                  alt={galleryItems[0].title}
                   src={galleryItems[0].image}
+                  width={400}
+                  height={400}
                 />
-                <div className="flex-col items-start gap-4 w-full flex-[0_0_auto] flex relative mt-8">
-                  <h3 className="mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
+                <div className="flex-col items-start gap-3 w-full flex-[0_0_auto] flex relative mt-6">
+                  <h3 className=" text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
                     {galleryItems[0].title}
                   </h3>
-                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
                     {galleryItems[0].description}
                   </p>
                 </div>
@@ -72,19 +75,21 @@ export const ImageGallerySection = (): JSX.Element => {
             </Card>
           </div>
 
-          <div className="flex flex-col items-end gap-2.5 pt-[200px] pb-0 px-0 relative">
-            <Card className={`flex-col ${galleryItems[1].maxWidth} items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
+          <div className="flex flex-col items-end gap-8 pt-[200px] pb-0 px-0 relative">
+            <Card className={`flex-col ${galleryItems[1].maxWidth} items-start gap-2 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
               <CardContent className="p-0 w-full">
-                <img
+                <PersistentLazyImage
                   className={`relative w-full ${galleryItems[1].imageHeight} object-cover`}
-                  alt="Placeholder image"
+                  alt={galleryItems[1].title}
                   src={galleryItems[1].image}
+                  width={400}
+                  height={400}
                 />
-                <div className="flex-col items-start gap-4 w-full flex-[0_0_auto] flex relative mt-8">
-                  <h3 className="mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
+                <div className="flex-col items-start gap-3 w-full flex-[0_0_auto] flex relative mt-6">
+                  <h3 className=" text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
                     {galleryItems[1].title}
                   </h3>
-                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
                     {galleryItems[1].description}
                   </p>
                 </div>
@@ -93,19 +98,21 @@ export const ImageGallerySection = (): JSX.Element => {
           </div>
 
           {/* Bottom Row */}
-          <div className="flex flex-col items-start gap-28 relative">
-            <Card className={`flex-col ${galleryItems[2].maxWidth} items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
+          <div className="flex flex-col items-start gap-8 relative">
+            <Card className={`flex-col ${galleryItems[2].maxWidth} items-start gap-2 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
               <CardContent className="p-0 w-full">
-                <img
+                <PersistentLazyImage
                   className={`w-[400px] ${galleryItems[2].imageHeight} relative object-cover`}
-                  alt="Placeholder image"
+                  alt={galleryItems[2].title}
                   src={galleryItems[2].image}
+                  width={400}
+                  height={400}
                 />
-                <div className="flex-col items-start gap-4 w-full flex-[0_0_auto] flex relative mt-8">
-                  <h3 className="mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
+                <div className="flex-col items-start gap-3 w-full flex-[0_0_auto] flex relative mt-6">
+                  <h3 className=" text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
                     {galleryItems[2].title}
                   </h3>
-                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
                     {galleryItems[2].description}
                   </p>
                 </div>
@@ -113,19 +120,21 @@ export const ImageGallerySection = (): JSX.Element => {
             </Card>
           </div>
 
-          <div className="flex flex-col items-end gap-2.5 pt-[200px] pb-0 px-0 relative">
-            <Card className={`flex-col ${galleryItems[3].maxWidth} items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
+          <div className="flex flex-col items-end gap-8 pt-[200px] pb-0 px-0 relative">
+            <Card className={`flex-col ${galleryItems[3].maxWidth} items-start gap-2 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
               <CardContent className="p-0 w-full">
-                <img
+                <PersistentLazyImage
                   className={`relative w-full ${galleryItems[3].imageHeight} object-cover`}
-                  alt="Placeholder image"
+                  alt={galleryItems[3].title}
                   src={galleryItems[3].image}
+                  width={400}
+                  height={400}
                 />
-                <div className="flex-col items-start gap-4 w-full flex-[0_0_auto] flex relative mt-8">
-                  <h3 className="mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
+                <div className="flex-col items-start gap-3 w-full flex-[0_0_auto] flex relative mt-6">
+                  <h3 className=" text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
                     {galleryItems[3].title}
                   </h3>
-                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
                     {galleryItems[3].description}
                   </p>
                 </div>
