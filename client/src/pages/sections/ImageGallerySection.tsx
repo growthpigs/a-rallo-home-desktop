@@ -58,10 +58,18 @@ export const ImageGallerySection = (): JSX.Element => {
               className={`flex-col ${galleryItems[1].maxWidth} items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}
             >
               <CardContent className="p-0 w-full">
-                
+                <img
+                  className={`relative w-full ${galleryItems[1].imageHeight} object-cover`}
+                  alt="Placeholder image"
+                  src={ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_hdrkrns7demlr81y8tz4_3}
+                />
                 <div className="flex-col items-start gap-4 w-full flex-[0_0_auto] flex relative mt-8">
-                  
-                  
+                  <h3 className="mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
+                    {galleryItems[1].title}
+                  </h3>
+                  <p className="relative font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                    {galleryItems[1].description}
+                  </p>
                 </div>
               </CardContent>
             </Card>
