@@ -99,9 +99,7 @@ export const MainContentSection = (): JSX.Element => {
                   {/* Content section */}
                   <div className="flex-1 flex flex-col p-6 pt-2">
                     <div className="mb-6">
-                      <h3 className="text-3xl font-normal font-['JetBrains_Mono',_monospace] text-black mb-4 uppercase">
-                        Short heading goes here
-                      </h3>
+                      <h3 className="text-3xl font-normal font-['JetBrains_Mono',_monospace] text-black mb-4 uppercase">FEATURES ACORDIAN</h3>
                       <p className="text-base text-black font-['Inter',_sans-serif] leading-relaxed">
                         {tab.content}
                       </p>
