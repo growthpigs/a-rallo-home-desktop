@@ -78,15 +78,6 @@ export const ContentWrapperSection = (): JSX.Element => {
           >
             <Card className="flex-col max-w-[400px] items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent">
               <CardContent className="p-0 w-full">
-                <div className="flex-col items-start gap-4 self-stretch w-full flex-[0_0_auto] flex relative mt-8">
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="flex flex-col items-end gap-28 relative flex-1 grow">
-            <Card className="flex-col max-w-[400px] items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent">
-              <CardContent className="p-0 w-full">
                 <img
                   className="w-[400px] h-[400px] relative object-cover"
                   alt="Placeholder image"
@@ -104,7 +95,9 @@ export const ContentWrapperSection = (): JSX.Element => {
                 </div>
               </CardContent>
             </Card>
+          </div>
 
+          <div className="flex flex-col items-end gap-28 relative flex-1 grow">
             <Card className="flex-col items-start gap-8 self-stretch w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent">
               <CardContent className="p-0 w-full">
                 <img
