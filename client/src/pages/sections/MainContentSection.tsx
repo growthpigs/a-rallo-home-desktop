@@ -78,8 +78,8 @@ export const MainContentSection = (): JSX.Element => {
                   <div className="text-2xl font-normal font-['JetBrains_Mono',_monospace] text-black">
                     {tab.number}
                   </div>
-                  <div className="flex items-center justify-center flex-1">
-                    <div className="-rotate-90 whitespace-nowrap text-lg font-bold text-black">
+                  <div className="flex items-end justify-center flex-1">
+                    <div className="-rotate-90 whitespace-nowrap text-2xl font-bold text-black">
                       {tab.title}
                     </div>
                   </div>
