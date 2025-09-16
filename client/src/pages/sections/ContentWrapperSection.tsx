@@ -71,50 +71,6 @@ export const ContentWrapperSection = (): JSX.Element => {
             </div>
           </Button>
         </header>
-
-        <div className="gap-16 flex items-start relative self-stretch w-full flex-[0_0_auto]">
-          <div
-            className={`flex flex-col items-start gap-2.5 pb-0 px-0 relative flex-1 grow ${solutionsData[0].className}`}
-          >
-            <Card className="flex-col max-w-[400px] items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent">
-              <CardContent className="p-0 w-full">
-                
-
-                <div className="flex-col items-start gap-4 self-stretch w-full flex-[0_0_auto] flex relative mt-8">
-                  <h3 className="self-stretch mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
-                    {solutionsData[1].title}
-                  </h3>
-
-                  <p className="relative self-stretch font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
-                    {solutionsData[1].description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="flex flex-col items-end gap-28 relative flex-1 grow">
-            <Card className="flex-col items-start gap-8 self-stretch w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent">
-              <CardContent className="p-0 w-full">
-                <img
-                  className="w-[400px] h-[400px] relative object-cover"
-                  alt="Placeholder image"
-                  src={finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2}
-                />
-
-                <div className="flex-col items-start gap-4 self-stretch w-full flex-[0_0_auto] flex relative mt-8">
-                  <h3 className="self-stretch mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
-                    {solutionsData[2].title}
-                  </h3>
-
-                  <p className="relative self-stretch font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
-                    {solutionsData[2].description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
       </div>
     </section>
   );
