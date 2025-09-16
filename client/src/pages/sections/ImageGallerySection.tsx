@@ -16,7 +16,7 @@ const galleryItems = [
   },
   {
     id: 2,
-    title: "Rallo Persona",
+    title: "Rallo Voice",
     description: "Voice on demand for human-like interactions",
     image: "/figmaAssets/placeholder-image-8.png",
     imageHeight: "h-[400px]",
