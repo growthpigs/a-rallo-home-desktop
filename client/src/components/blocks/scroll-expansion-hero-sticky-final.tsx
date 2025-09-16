@@ -62,15 +62,26 @@ const ScrollExpandMedia = ({
       const scrolledIntoContainer = -containerRect.top;
       const maxScroll = containerRef.current.offsetHeight - window.innerHeight;
       
+      // Animation happens over first 600px, then dead zone for 500px
+      const animationDistance = 600;
+      const deadZoneDistance = 500;
+      
       // Only animate when sticky is actually stuck
       if (stickyRect.top <= 0 && scrolledIntoContainer < maxScroll) {
-        const progress = Math.min(1, Math.max(0, scrolledIntoContainer / 600));
+        // Calculate progress only for the animation portion
+        const progress = Math.min(1, Math.max(0, scrolledIntoContainer / animationDistance));
         setScrollProgress(progress);
         
         if (progress > 0.3) {
           setShowContent(true);
         } else {
           setShowContent(false);
+        }
+        
+        // During dead zone (after animation completes), maintain full expansion
+        if (scrolledIntoContainer >= animationDistance && scrolledIntoContainer < animationDistance + deadZoneDistance) {
+          setScrollProgress(1);
+          setShowContent(true);
         }
       } else if (scrolledIntoContainer >= maxScroll) {
         // Maintain full expansion when scrolling past
@@ -103,7 +114,7 @@ const ScrollExpandMedia = ({
       ref={containerRef}
       className='relative'
       style={{
-        height: 'calc(100vh + 600px)', // Extra height for scroll space
+        height: 'calc(100vh + 1100px)', // 600px animation + 500px dead zone
       }}
     >
       <div
