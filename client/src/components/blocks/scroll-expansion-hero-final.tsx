@@ -80,10 +80,8 @@ const ScrollExpandMedia = ({
         }
 
         // When fully expanded, smoothly transition to expanded-scrolling phase
-        if (progress >= 1 && scrolledSincePinned > scrollAmountForAnimation + 10) {
+        if (progress >= 1 && scrolledSincePinned > scrollAmountForAnimation) {
           setPhase('expanded-scrolling');
-          // Ensure we maintain scroll position to prevent jump
-          window.scrollTo(0, pinnedScrollStart.current + scrollAmountForAnimation);
         }
 
         // If scrolling back up too much, return to scrolling phase
@@ -156,7 +154,7 @@ const ScrollExpandMedia = ({
       ref={sectionRef}
       className='relative'
       style={{
-        height: spacerHeight,
+        height: phase === 'pinned' ? `calc(100vh + ${scrollAmountForAnimation}px)` : '100vh',
       }}
     >
       <div style={getContainerStyle()}>
