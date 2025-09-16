@@ -17,7 +17,7 @@ const galleryItems = [
   {
     id: 2,
     title: "Rallo Persona",
-    description: "Experience dynamic two-way video interactions powered by AI.",
+    description: "Voice on demand for human-like interactions",
     image: "/figmaAssets/placeholder-image-8.png",
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
