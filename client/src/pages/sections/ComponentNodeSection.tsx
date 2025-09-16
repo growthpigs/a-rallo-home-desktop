@@ -17,16 +17,16 @@ export const ComponentNodeSection = (): JSX.Element => {
             <header className="flex flex-col items-start gap-4 self-stretch flex-[0_0_auto] relative w-full">
               <div className="inline-flex items-center relative flex-[0_0_auto]">
                 <div className="relative w-fit  font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
-                  Tagline
+                  AGENCY SOLUTION
                 </div>
               </div>
 
               <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
                 <h2 className="relative self-stretch font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black text-[length:var(--heading-h2-font-size)] tracking-[var(--heading-h2-letter-spacing)] leading-[var(--heading-h2-line-height)] [font-style:var(--heading-h2-font-style)]">
-                  BUILD YOUR OWN AI SAAS BUSINESS
+                  BUILD YOUR OWN<br />AI SAAS BUSINESS
                 </h2>
                 <p className="relative max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
-                  Transform your expertise into scalable AI solutions that work around the clock.
+                  White-label Rallo for your clients. Create custom AI agent suites that generate recurring revenue streams.
                 </p>
               </div>
             </header>
@@ -59,10 +59,7 @@ export const ComponentNodeSection = (): JSX.Element => {
 
             <div className="flex-col items-start self-stretch w-full flex-[0_0_auto] flex relative">
               <p className="relative max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in eros elementum tristique. Duis
-                cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-                commodo diam libero vitae erat.
+                Deploy branded AI solutions in days, not months. Full customization, your branding, premium pricing. Agencies using Rallo report 3x revenue growth within 6 months.
               </p>
 
               <div className="inline-flex items-center gap-1 relative flex-[0_0_auto] mt-6">
@@ -70,14 +67,14 @@ export const ComponentNodeSection = (): JSX.Element => {
                   variant="outline"
                   className="h-auto px-6 py-3 border-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
                 >
-                  Button
+                  Start Building
                 </Button>
 
                 <Button
                   variant="ghost"
                   className="h-auto p-0 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
                 >
-                  Button
+                  See Examples
                   <ChevronRightIcon className="w-6 h-6 ml-2" />
                 </Button>
               </div>

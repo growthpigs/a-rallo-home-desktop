@@ -48,7 +48,7 @@ export const ContentWrapperSection = (): JSX.Element => {
 
             <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
               <h2 className="self-stretch text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
-                POWERFUL AI AGENTS FOR EVERY NEED
+                POWERFUL AI<br />AGENTS FOR EVERY NEED
               </h2>
 
               <p className="relative max-w-[540px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">

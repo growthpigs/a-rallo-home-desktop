@@ -23,7 +23,7 @@ export const LayoutContainerSection = (): JSX.Element => {
             <div className="flex flex-col items-center gap-4 w-full">
               <div className="inline-flex items-center">
                 <h3 className="font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] text-center tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] [font-style:var(--heading-tagline-font-style)]">
-                  Channels
+                  OMNICHANNEL REACH
                 </h3>
               </div>
 
@@ -32,7 +32,7 @@ export const LayoutContainerSection = (): JSX.Element => {
                   YOUR PRESENCE, EVERYWHERE
                 </h1>
 
-                <p className="max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">One Rallo account unlocks multiple ways to connect with your audience across digital platforms.
+                <p className="max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">Deploy your AI agents across websites, mobile apps, social media, and voice channels. One platform, infinite touchpoints.
                 </p>
               </div>
             </div>

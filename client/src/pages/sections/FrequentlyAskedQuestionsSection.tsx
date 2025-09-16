@@ -41,9 +41,9 @@ export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
     },
     {
       id: "item-6",
-      question: "Question text goes here",
+      question: "How does Rallo compare to traditional chatbots?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.",
+        "Traditional chatbots are single-channel, scripted, and break easily. Rallo agents have memory across all channels, learn from interactions, and can handle complex conversations that would stump basic bots. They're closer to digital employees than simple chat scripts.",
     },
   ];
 

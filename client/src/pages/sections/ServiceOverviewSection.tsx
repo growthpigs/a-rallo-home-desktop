@@ -6,7 +6,7 @@ const serviceItems = [
   {
     number: "01",
     tagline: "Use Cases",
-    heading: "Coaches multiplying their audience",
+    heading: "Coaches multiplying<br />their audience",
     description:
       "See how different sectors leverage Rallo's powerful AI solutions.",
     primaryButton: "Get Started",
@@ -14,21 +14,21 @@ const serviceItems = [
   },
   {
     number: "02",
-    tagline: "Tagline",
-    heading: "Businesses capturing every lead",
+    tagline: "RETAIL & E-COMMERCE",
+    heading: "Businesses capturing<br />every lead",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
-    primaryButton: "Button",
-    secondaryButton: "Button",
+      "Handle peak traffic without hiring. Rallo agents manage thousands of simultaneous conversations, qualify leads instantly, and never miss a sales opportunity.",
+    primaryButton: "See Demo",
+    secondaryButton: "Case Study",
   },
   {
     number: "03",
-    tagline: "Tagline",
-    heading: "Agencies selling high-value branded AI suites",
+    tagline: "DIGITAL AGENCIES",
+    heading: "Agencies selling high-value<br />branded AI suites",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
-    primaryButton: "Button",
-    secondaryButton: "Button",
+      "Package Rallo as your premium AI offering. Custom-branded solutions, monthly recurring revenue, happy clients who stay longer and pay more.",
+    primaryButton: "Partner Program",
+    secondaryButton: "Success Stories",
   },
 ];
 
@@ -59,9 +59,10 @@ export const ServiceOverviewSection = (): JSX.Element => {
                   </div>
 
                   <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
-                    <h2 className="self-stretch  text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
-                      {item.heading}
-                    </h2>
+                    <h2 
+                      className="self-stretch  text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]"
+                      dangerouslySetInnerHTML={{ __html: item.heading }}
+                    />
 
                     <p className="relative max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
                       {item.description}

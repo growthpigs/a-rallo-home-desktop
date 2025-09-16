@@ -1,45 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
+import { SmoothAccordion } from "@/components/SmoothAccordion";
 
 import extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3 from "@assets/extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3.png";
 
 export const MainContentSection = (): JSX.Element => {
-  const [activeTab, setActiveTab] = useState(1);
-
   const tabData = [
     {
       id: 1,
       number: "01",
-      title: "Feature one",
-      content: "Comprehensive AI presence across video, chat, and voice channels.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      title: "Omnichannel Memory",
+      content: "Your AI agents remember every interaction across video, chat, and voice. True continuity that delights customers.",
+      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
     },
     {
       id: 2,
       number: "02", 
-      title: "Feature two",
-      content: "Always-on website and app chat support for instant customer engagement.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      title: "Visual Workflow Builder",
+      content: "Drag and drop modules on a clean grid. No more spider webs of arrows and confusion. Build complex flows in minutes.",
+      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
     },
     {
       id: 3,
       number: "03",
-      title: "Feature three", 
-      content: "Real-time two-way video conversations powered by advanced AI technology.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      title: "Authentic AI Avatars", 
+      content: "RealForm technology creates lifelike digital twins that speak, gesture, and engage naturally with your customers.",
+      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
     },
     {
       id: 4,
       number: "04",
-      title: "Feature four",
-      content: "Instant video content generation from simple text prompts.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      title: "Smart Handoff System",
+      content: "AI knows when to escalate to humans. Seamless transitions preserve context and customer satisfaction.",
+      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
     },
     {
       id: 5,
       number: "05",
-      title: "Feature five",
-      content: "Advanced analytics and insights to optimize customer interactions.",
-      image: "/figmaAssets/placeholder-image-2.png"
+      title: "Enterprise Analytics",
+      content: "Track performance across all agents and channels. Real-time insights to optimize every customer interaction.",
+      image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
     }
   ];
 
@@ -49,7 +48,7 @@ export const MainContentSection = (): JSX.Element => {
         <div className="flex flex-col max-w-screen-md items-start gap-4 flex-[0_0_auto] relative w-full">
           <div className="inline-flex items-center relative flex-[0_0_auto]">
             <div className="relative w-fit font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
-              Tagline
+              PLATFORM FEATURES
             </div>
           </div>
           <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
@@ -57,65 +56,16 @@ export const MainContentSection = (): JSX.Element => {
               MAXIMIZE YOUR DIGITAL POTENTIAL
             </h2>
             <p className="relative max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Modular AI components that work together seamlessly. No more tangled workflows - just clean, scalable automation.
             </p>
           </div>
         </div>
 
-        <div className="flex h-[720px] w-full border border-solid border-black" data-name="Accordion">
-          {tabData.map((tab) => (
-            <div 
-              key={tab.id}
-              className={`${activeTab === tab.id ? 'flex-1' : 'w-[120px]'} bg-white flex cursor-pointer transition-all duration-300 border-r border-r-solid border-black last:border-r-0`}
-              onClick={() => setActiveTab(tab.id)}
-              data-testid={`tab-pane-${tab.id}`}
-            >
-              {/* Collapsed State */}
-              {activeTab !== tab.id && (
-                <div className="flex flex-col h-full relative p-6">
-                  <div className="text-2xl font-normal font-['JetBrains_Mono',_monospace] text-black">
-                    {tab.number}
-                  </div>
-                  <div className="absolute bottom-6 left-[58px]">
-                    <div className="-rotate-90 whitespace-nowrap text-[23px] font-light text-black font-['JetBrains_Mono',_monospace] origin-bottom-left">
-                      {tab.title}
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {/* Expanded State */}
-              {activeTab === tab.id && (
-                <div className="flex flex-col h-full">
-                  {/* Header section with number */}
-                  <div className="flex items-start p-6 pb-2">
-                    <div className="text-2xl font-normal font-['JetBrains_Mono',_monospace] text-black mr-4">
-                      {tab.number}
-                    </div>
-                  </div>
-                  
-                  {/* Content section */}
-                  <div className="flex-1 flex flex-col p-6 pt-2">
-                    <div className="mb-6">
-                      <h3 className="text-3xl font-normal font-['JetBrains_Mono',_monospace] text-black mb-4 uppercase">FEATURES ACORDIAN</h3>
-                      <p className="text-base text-black font-['Inter',_sans-serif] leading-relaxed">
-                        {tab.content}
-                      </p>
-                    </div>
-                    
-                    <div className="mt-auto">
-                      <img
-                        className="w-[400px] h-[400px] object-cover bg-gray-200"
-                        alt="Placeholder image"
-                        src={extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        <SmoothAccordion 
+          tabs={tabData} 
+          defaultActiveTab={1}
+          height="720px"
+        />
       </div>
     </section>
   );

@@ -18,7 +18,7 @@ export const FeatureHighlightSection = (): JSX.Element => {
               <div className="flex flex-col items-start gap-4 self-stretch flex-[0_0_auto] relative w-full">
                 <div className="inline-flex items-center relative flex-[0_0_auto]">
                   <div className="relative w-fit  font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
-                    Global
+                    GLOBAL REACH
                   </div>
                 </div>
 

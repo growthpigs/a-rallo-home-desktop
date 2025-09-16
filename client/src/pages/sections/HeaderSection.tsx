@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 
 export const HeaderSection = (): JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [bgLoaded, setBgLoaded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,22 +12,16 @@ export const HeaderSection = (): JSX.Element => {
 
     window.addEventListener('scroll', handleScroll);
     
-    // Preload background image
-    const img = new Image();
-    img.src = 'https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3';
-    img.onload = () => setBgLoaded(true);
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <section 
-      className={`flex flex-col h-screen relative w-full bg-no-repeat ${!bgLoaded ? 'bg-gray-100' : ''}`}
+      className="flex flex-col h-screen relative w-full bg-no-repeat"
       style={{
-        backgroundImage: bgLoaded ? `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')` : 'none',
+        backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
         backgroundPosition: '85% center',
-        backgroundSize: 'cover',
-        transition: 'background-image 0.3s ease-in-out'
+        backgroundSize: 'cover'
       }}
       data-testid="section-hero"
     >

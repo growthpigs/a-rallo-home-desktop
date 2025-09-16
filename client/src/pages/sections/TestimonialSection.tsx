@@ -19,7 +19,7 @@ export const TestimonialSection = (): JSX.Element => {
             <div className="flex flex-col items-start gap-4 w-full relative">
               <div className="inline-flex items-center relative">
                 <div className="relative w-fit  font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
-                  Tagline
+                  INTELLIGENT AUTOMATION
                 </div>
               </div>
 

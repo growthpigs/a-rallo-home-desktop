@@ -14,7 +14,7 @@ const galleryItems = [
   {
     id: 1,
     title: "Rallo Chat",
-    description: "Always-on website and app chat support.",
+    description: "24/7 intelligent chat across all your digital properties.",
     image: extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0,
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
@@ -22,7 +22,7 @@ const galleryItems = [
   {
     id: 2,
     title: "Rallo Interactive",
-    description: "Real-time two-way video conversations powered by AI.",
+    description: "Lifelike AI avatars for personal video interactions.",
     image: finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2,
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
@@ -30,7 +30,7 @@ const galleryItems = [
   {
     id: 3,
     title: "Rallo Publisher",
-    description: "Instant video content from prompts",
+    description: "Generate marketing videos instantly from text prompts.",
     image: close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__xio25a8gqhbcn1vd88kw_0,
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
@@ -38,7 +38,7 @@ const galleryItems = [
   {
     id: 4,
     title: "Rallo Voice",
-    description: "Voice on demand for human-like interactions",
+    description: "Natural voice conversations that sound completely human.",
     image: ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_hdrkrns7demlr81y8tz4_3,
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
