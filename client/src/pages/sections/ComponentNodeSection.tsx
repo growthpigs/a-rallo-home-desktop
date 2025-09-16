@@ -1,4 +1,3 @@
-import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 
@@ -64,18 +63,10 @@ export const ComponentNodeSection = (): JSX.Element => {
 
               <div className="inline-flex items-center gap-1 relative flex-[0_0_auto] mt-6">
                 <Button
-                  variant="outline"
-                  className="h-auto px-6 py-3 border-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                  variant="ghost"
+                  className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
                 >
                   Start Building
-                </Button>
-
-                <Button
-                  variant="ghost"
-                  className="h-auto p-0 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
-                >
-                  See Examples
-                  <ChevronRightIcon className="w-6 h-6 ml-2" />
                 </Button>
               </div>
             </div>

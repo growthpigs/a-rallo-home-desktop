@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { motion } from "framer-motion";
+import { useScrollAnimation, fadeUpVariants, staggerContainerVariants } from "@/hooks/useScrollAnimation";
 
 const footerSections = [
   {
@@ -54,10 +56,17 @@ const socialIcons = [
 ];
 
 export const FooterSection = (): JSX.Element => {
+  const { ref, isInView } = useScrollAnimation({ amount: 0.05 });
+  
   return (
-    <footer className="flex flex-col items-center gap-20 px-16 py-20 w-full bg-black">
+    <footer ref={ref} className="flex flex-col items-center gap-20 px-16 py-20 w-full bg-black">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 w-full">
-        <div className="flex items-start justify-between w-full">
+        <motion.div 
+          className="flex items-start justify-between w-full"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={fadeUpVariants}
+        >
           <div className="flex-col max-w-[560px] items-start flex-1 grow flex gap-3">
             <h2 className="font-[number:var(--text-medium-semi-bold-font-weight)] text-[length:var(--text-medium-semi-bold-font-size)] leading-[var(--text-medium-semi-bold-line-height)] font-text-medium-semi-bold text-white tracking-[var(--text-medium-semi-bold-letter-spacing)] [font-style:var(--text-medium-semi-bold-font-style)]">
               Stay Updated
@@ -76,8 +85,8 @@ export const FooterSection = (): JSX.Element => {
               />
 
               <Button
-                variant="outline"
-                className="h-[48px] border-white bg-transparent text-white hover:bg-white hover:text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] px-6 py-3"
+                variant="ghost"
+                className="h-[48px] bg-transparent border border-white text-white hover:bg-white hover:text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] px-6 py-3"
               >
                 Subscribe
               </Button>
@@ -96,23 +105,30 @@ export const FooterSection = (): JSX.Element => {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex items-start gap-10 w-full">
+        <motion.div 
+          className="flex items-start gap-10 w-full"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={staggerContainerVariants}
+        >
           <div className="flex flex-col items-start flex-1 grow">
-            <div className="w-[84px] h-9">
+            <div className="w-[60px] h-[60px]">
               <img
-                className="w-[70px] h-9"
-                alt="Logo wide"
-                src="/figmaAssets/logo-wide-1.svg"
+                className="w-[60px] h-[60px]"
+                style={{ filter: "brightness(0) saturate(100%) invert(56%) sepia(61%) saturate(1179%) hue-rotate(329deg) brightness(102%) contrast(98%)" }}
+                alt="Rallo Logo"
+                src="/figmaAssets/rallo-logomark.svg"
               />
             </div>
           </div>
 
           {footerSections.map((section, index) => (
-            <div
+            <motion.div
               key={section.title}
               className="flex flex-col items-start gap-4 flex-1 grow"
+              variants={fadeUpVariants}
             >
               <h3 className="font-text-regular-semi-bold font-[number:var(--text-regular-semi-bold-font-weight)] text-white text-[length:var(--text-regular-semi-bold-font-size)] tracking-[var(--text-regular-semi-bold-letter-spacing)] leading-[var(--text-regular-semi-bold-line-height)] [font-style:var(--text-regular-semi-bold-font-style)]">
                 {section.title}
@@ -133,11 +149,17 @@ export const FooterSection = (): JSX.Element => {
                   </a>
                 ))}
               </nav>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col items-start gap-8 w-full">
+        <motion.div 
+          className="flex flex-col items-start gap-8 w-full"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={fadeUpVariants}
+          transition={{ delay: 0.3 }}
+        >
           <Separator className="w-full bg-white" />
 
           <div className="flex justify-between items-start w-full">
@@ -169,7 +191,7 @@ export const FooterSection = (): JSX.Element => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

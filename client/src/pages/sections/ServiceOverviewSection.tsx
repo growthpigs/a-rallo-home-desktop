@@ -1,6 +1,7 @@
-import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useScrollAnimation, fadeUpVariants, slideInLeftVariants } from "@/hooks/useScrollAnimation";
 
 const serviceItems = [
   {
@@ -33,19 +34,37 @@ const serviceItems = [
 ];
 
 export const ServiceOverviewSection = (): JSX.Element => {
+  const { ref, isInView } = useScrollAnimation();
+  
   return (
-    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
+    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
       <div className="flex-col max-w-screen-xl items-start justify-center gap-20 w-full flex-[0_0_auto] flex relative">
         {serviceItems.map((item, index) => (
-          <div
+          <motion.div
             key={index}
             className="items-center justify-center gap-16 self-stretch w-full flex-[0_0_auto] flex relative"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={fadeUpVariants}
+            transition={{ delay: index * 0.2 }}
           >
-            <div className="w-fit text-[224px] leading-[268.8px] whitespace-nowrap relative [font-family:'JetBrains_Mono',monospace] font-bold text-black tracking-[0]">
+            <motion.div 
+              className="w-fit text-[224px] leading-[268.8px] whitespace-nowrap relative [font-family:'JetBrains_Mono',monospace] font-bold text-black tracking-[0]"
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={slideInLeftVariants}
+              transition={{ delay: index * 0.2 + 0.1 }}
+            >
               {item.number}
-            </div>
+            </motion.div>
 
-            <div className="flex-col h-[349px] items-start gap-2 flex-1 grow flex relative">
+            <motion.div 
+              className="flex-col h-[349px] items-start gap-2 flex-1 grow flex relative"
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={fadeUpVariants}
+              transition={{ delay: index * 0.2 + 0.2 }}
+            >
               <div className="relative self-stretch w-full h-0.5 bg-[#0000001a]">
                 <div className="w-8 h-0.5 bg-black" />
               </div>
@@ -72,23 +91,15 @@ export const ServiceOverviewSection = (): JSX.Element => {
 
                 <div className="inline-flex items-center gap-1 relative flex-[0_0_auto]">
                   <Button
-                    variant="outline"
-                    className="h-auto px-6 py-3 border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                    variant="ghost"
+                    className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
                   >
                     {item.primaryButton}
                   </Button>
-
-                  <Button
-                    variant="ghost"
-                    className="h-auto p-0 text-black hover:bg-transparent hover:text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
-                  >
-                    {item.secondaryButton}
-                    <ChevronRightIcon className="ml-2 w-6 h-6" />
-                  </Button>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         ))}
       </div>
     </section>

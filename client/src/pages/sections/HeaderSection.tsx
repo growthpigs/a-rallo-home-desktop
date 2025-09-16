@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { DemoIcons } from "@/components/DemoIcons";
+import { DemoModal } from "@/components/DemoModal";
 
 export const HeaderSection = (): JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDemo, setActiveDemo] = useState<'video' | 'chat' | 'voice' | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,7 +81,10 @@ export const HeaderSection = (): JSX.Element => {
               <div className="text-right mb-2">
                 <span className="italic text-white font-['Libre_Baskerville'] lg:text-6xl md:text-5xl" style={{ transform: 'translateY(60px)' }}>You,</span>
               </div>
-              <div className="text-white font-['JetBrains_Mono'] lg:text-6xl md:text-5xl font-light lg:tracking-[0.25em] md:tracking-[0.15em] leading-tight">
+              <div 
+                className="text-white font-['JetBrains_Mono'] lg:text-6xl md:text-5xl font-light lg:tracking-[0.25em] md:tracking-[0.15em] leading-tight"
+                style={{ transform: 'translateX(12px)' }}
+              >
                 MULTIPLIED
               </div>
             </div>
@@ -87,6 +93,9 @@ export const HeaderSection = (): JSX.Element => {
               <p className="text-white font-['JetBrains_Mono'] lg:text-sm md:text-xs tracking-[0.05em] leading-none font-thin  uppercase" style={{ transform: 'translateY(-20px)' }}>
                 Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
               </p>
+              <div className="flex justify-end mt-4">
+                <DemoIcons onIconClick={setActiveDemo} />
+              </div>
             </div>
           </div>
           
@@ -113,7 +122,7 @@ export const HeaderSection = (): JSX.Element => {
             <div className="text-center mb-2">
               <span className="italic text-white font-['Libre_Baskerville'] text-6xl">You,</span>
             </div>
-            <div className="text-white font-['JetBrains_Mono'] text-5xl font-light tracking-[0.1em] leading-tight">
+            <div className="text-white font-['JetBrains_Mono'] text-5xl font-light tracking-[0.1em] leading-tight" style={{ transform: 'translateX(12px)' }}>
               MULTIPLIED
             </div>
           </div>
@@ -122,9 +131,19 @@ export const HeaderSection = (): JSX.Element => {
             <p className="text-white font-['JetBrains_Mono'] text-xs font-thin tracking-[0.05em] leading-none uppercase" style={{ fontSize: '11px' }}>
               Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
             </p>
+            <div className="flex justify-center mt-4">
+              <DemoIcons onIconClick={setActiveDemo} />
+            </div>
           </div>
         </div>
       </div>
+      
+      {/* Demo Modal */}
+      <DemoModal 
+        isOpen={activeDemo !== null} 
+        onClose={() => setActiveDemo(null)} 
+        type={activeDemo}
+      />
     </section>
   );
 };

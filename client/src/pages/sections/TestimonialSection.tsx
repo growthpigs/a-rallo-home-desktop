@@ -1,6 +1,7 @@
-import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useScrollAnimation, slideInLeftVariants, slideInRightVariants, fadeUpVariants } from "@/hooks/useScrollAnimation";
 
 import macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3 from "@assets/macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3.png";
 
@@ -11,11 +12,18 @@ import finger_pressing_and_holding_floating_holographic_button_interface_element
 import ultra_macro_of_half_face_with_geometric_interface_overlay_on_one_side_translucent_technology_integr_h4l9v89ghecyj7gkytzs_3 from "@assets/ultra_macro_of_half_face_with_geometric_interface_overlay_on_one_side_translucent_technology_integr_h4l9v89ghecyj7gkytzs_3.png";
 
 export const TestimonialSection = (): JSX.Element => {
+  const { ref, isInView } = useScrollAnimation({ amount: 0.2 });
+  
   return (
-    <section className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-[#e6e6e6]">
+    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-[#e6e6e6]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full">
         <div className="flex flex-col items-start gap-20 relative w-full">
-          <div className="flex-col max-w-screen-md items-start gap-8 w-full flex relative">
+          <motion.div 
+            className="flex-col max-w-screen-md items-start gap-8 w-full flex relative"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={slideInLeftVariants}
+          >
             <div className="flex flex-col items-start gap-4 w-full relative">
               <div className="inline-flex items-center relative">
                 <div className="relative w-fit  font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
@@ -37,31 +45,33 @@ export const TestimonialSection = (): JSX.Element => {
 
             <div className="inline-flex items-center gap-1 relative">
               <Button
-                variant="outline"
-                className="h-auto px-6 py-3 border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                variant="ghost"
+                className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
               >
                 Get Started
               </Button>
-
-              <Button
-                variant="ghost"
-                className="h-auto inline-flex items-center justify-center gap-0.5 p-0 hover:bg-transparent font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
-              >
-                Watch Demo
-                <ChevronRightIcon className="w-6 h-6" />
-              </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="gap-16 w-full flex items-start relative">
-          <img
+          <motion.img
             className="flex-1 grow h-[624px] relative object-cover"
             alt="Placeholder image"
             src={macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={fadeUpVariants}
+            transition={{ delay: 0.2 }}
           />
 
-          <div className="flex-col items-start gap-16 flex-1 grow flex relative">
+          <motion.div 
+            className="flex-col items-start gap-16 flex-1 grow flex relative"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={slideInRightVariants}
+            transition={{ delay: 0.3 }}
+          >
             <img
               className="w-60 h-60 relative object-cover"
               alt="Placeholder image"
@@ -73,7 +83,7 @@ export const TestimonialSection = (): JSX.Element => {
               alt="Placeholder image"
               src={close_up_of_wrist_with_floating_interface_projecting_above_skin_geometric_elements_hovering_just_ab_hwr3891441e6jxr1qg05_1}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

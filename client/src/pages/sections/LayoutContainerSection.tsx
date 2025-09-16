@@ -16,8 +16,8 @@ export const LayoutContainerSection = (): JSX.Element => {
           <div className="flex flex-col max-w-screen-md items-center gap-8 w-full">
             <img
               className="w-20 h-20"
-              alt="Relume"
-              src="/figmaAssets/relume.svg"
+              alt="Globe icon"
+              src="/figmaAssets/agents-globe.svg"
             />
 
             <div className="flex flex-col items-center gap-4 w-full">
@@ -39,8 +39,8 @@ export const LayoutContainerSection = (): JSX.Element => {
 
             <div className="inline-flex items-center gap-1">
               <Button
-                variant="outline"
-                className="h-auto px-6 py-3 border-black text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-black hover:text-white"
+                variant="ghost"
+                className="h-auto px-6 py-3 bg-transparent border border-black text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-black hover:text-white"
               >
                 BOOK DEMO
               </Button>
