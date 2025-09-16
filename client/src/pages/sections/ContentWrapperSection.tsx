@@ -79,13 +79,6 @@ export const ContentWrapperSection = (): JSX.Element => {
             <Card className="flex-col max-w-[400px] items-start gap-8 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent">
               <CardContent className="p-0 w-full">
                 <div className="flex-col items-start gap-4 self-stretch w-full flex-[0_0_auto] flex relative mt-8">
-                  <h3 className="self-stretch mt-[-1.00px] text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
-                    {solutionsData[0].title}
-                  </h3>
-
-                  <p className="relative self-stretch font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
-                    {solutionsData[0].description}
-                  </p>
                 </div>
               </CardContent>
             </Card>
