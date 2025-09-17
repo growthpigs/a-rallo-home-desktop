@@ -1,6 +1,6 @@
-import { ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { useUnifiedScrollAnimation } from "@/hooks/useUnifiedScrollAnimation";
 
 import ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1 from "@assets/ultra_close-up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1.png";
 
@@ -9,45 +9,52 @@ import close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur
 import professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1 from "@assets/professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1.png";
 
 export const FeatureHighlightSection = (): JSX.Element => {
+  const { ref: scrollRef, progress } = useUnifiedScrollAnimation({
+    animationDistance: 450,
+    startOffset: 120,
+    debugName: "FeatureHighlightSection"
+  });
+
+  // Animation calculations
+  const leftMovement = progress * 90;
+  const rightMovement = progress * 110;
+  
   return (
-    <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
+    <section ref={scrollRef} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
         <div className="items-start gap-16 flex relative self-stretch w-full flex-[0_0_auto]">
-          <div className="flex-col items-start gap-20 flex-1 grow flex relative">
+          <div 
+            className="flex-col items-start gap-8 flex-1 grow flex relative"
+            style={{
+              transform: `translateX(${leftMovement}px)`
+            }}
+          >
             <div className="flex-col items-start gap-8 self-stretch w-full flex-[0_0_auto] flex relative">
               <div className="flex flex-col items-start gap-4 self-stretch flex-[0_0_auto] relative w-full">
                 <div className="inline-flex items-center relative flex-[0_0_auto]">
-                  <div className="relative w-fit mt-[-1.00px] font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
-                    Global
+                  <div className="relative w-fit  font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
+                    GLOBAL REACH
                   </div>
                 </div>
 
-                <div className="flex flex-col items-start gap-6 relative self-stretch w-full flex-[0_0_auto]">
-                  <h2 className="self-stretch mt-[-1.00px] text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
+                <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
+                  <h2 className="self-stretch  text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
                     AI THAT SPEAKS EVERY LANGUAGE
                   </h2>
 
-                  <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+                  <p className="relative max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
                     Rallo empowers diverse organizations to expand their reach
                     and impact.
                   </p>
                 </div>
               </div>
 
-              <div className="inline-flex items-center gap-6 relative flex-[0_0_auto]">
-                <Button
-                  variant="outline"
-                  className="h-auto px-6 py-3 border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
-                >
-                  Explore Solutions
-                </Button>
-
+              <div className="inline-flex items-center gap-1 relative flex-[0_0_auto]">
                 <Button
                   variant="ghost"
-                  className="h-auto p-0 text-black hover:bg-transparent hover:text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                  className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
                 >
-                  Watch Demo
-                  <ChevronRightIcon className="ml-2 w-6 h-6" />
+                  Explore Solutions
                 </Button>
               </div>
             </div>
@@ -56,6 +63,9 @@ export const FeatureHighlightSection = (): JSX.Element => {
               className="w-80 h-80 relative object-cover"
               alt="Placeholder image"
               src={professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1}
+              style={{
+                transform: `translateY(${progress * 50}px)`
+              }}
             />
           </div>
 
@@ -63,6 +73,9 @@ export const FeatureHighlightSection = (): JSX.Element => {
             className="w-[608px] h-[608px] relative object-cover"
             alt="Placeholder image"
             src={ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1}
+            style={{
+              transform: `translateX(${-rightMovement}px)`
+            }}
           />
         </div>
       </div>

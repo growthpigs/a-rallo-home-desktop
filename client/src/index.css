@@ -7,31 +7,80 @@
   }
 }
 
+/* Global word-spacing reduction for JetBrains Mono font */
+/* Reduces the space between words by 20% for better readability */
+[style*="JetBrains_Mono"],
+[style*="JetBrains Mono"],
+[class*="font-['JetBrains_Mono']"],
+.font-\[\'JetBrains_Mono\'\],
+[class*="JetBrains_Mono"],
+.font-mono,
+[class*="font-mono"],
+[class*="monospace"],
+h1, h2, h3, h4, h5, h6 {
+  word-spacing: -0.2em !important;
+}
+
+/* Apply word-spacing to any element that uses JetBrains Mono font-family */
+[style*="font-family"][style*="JetBrains"],
+[style*="fontFamily"][style*="JetBrains"] {
+  word-spacing: -0.2em !important;
+}
+
+/* Ensure it applies to all typography that uses JetBrains Mono */
+.font-jetbrains,
+[data-font="jetbrains"],
+[font-family*="JetBrains"] {
+  word-spacing: -0.2em !important;
+}
+
+/* More specific selectors for elements that use JetBrains Mono */
+div[class*="JetBrains_Mono"],
+p[class*="JetBrains_Mono"],
+span[class*="JetBrains_Mono"],
+a[class*="JetBrains_Mono"],
+h1[class*="JetBrains_Mono"],
+h2[class*="JetBrains_Mono"],
+h3[class*="JetBrains_Mono"] {
+  word-spacing: -0.2em !important;
+}
+
+/* Apply to elements using the CSS variable fonts */
+* {
+  --jetbrains-word-spacing: -0.2em;
+}
+
+h1, h2, h3, h4, h5, h6,
+.text-medium-normal,
+.text-regular-normal {
+  word-spacing: var(--jetbrains-word-spacing) !important;
+}
+
 :root {
   --heading-h1-font-family: "JetBrains Mono", monospace;
   --heading-h1-font-size: 56px;
   --heading-h1-font-style: normal;
   --heading-h1-font-weight: 400;
   --heading-h1-letter-spacing: 0px;
-  --heading-h1-line-height: 120.00000762939453%;
+  --heading-h1-line-height: 110%; /* Balanced spacing */
   --heading-h2-font-family: "JetBrains Mono", monospace;
   --heading-h2-font-size: 48px;
   --heading-h2-font-style: normal;
   --heading-h2-font-weight: 400;
   --heading-h2-letter-spacing: 0px;
-  --heading-h2-line-height: 120.00000762939453%;
+  --heading-h2-line-height: 110%; /* Balanced spacing */
   --heading-h3-font-family: "JetBrains Mono", monospace;
   --heading-h3-font-size: 40px;
   --heading-h3-font-style: normal;
   --heading-h3-font-weight: 400;
   --heading-h3-letter-spacing: 0px;
-  --heading-h3-line-height: 120.00000762939453%;
+  --heading-h3-line-height: 110%; /* Balanced spacing */
   --heading-h4-font-family: "JetBrains Mono", monospace;
   --heading-h4-font-size: 32px;
   --heading-h4-font-style: normal;
   --heading-h4-font-weight: 400;
   --heading-h4-letter-spacing: 0px;
-  --heading-h4-line-height: 130%;
+  --heading-h4-line-height: 110%; /* Reduced from 130% */
   --heading-h5-font-family: "JetBrains Mono", monospace;
   --heading-h5-font-size: 24px;
   --heading-h5-font-style: normal;
@@ -43,31 +92,31 @@
   --heading-tagline-font-style: normal;
   --heading-tagline-font-weight: 600;
   --heading-tagline-letter-spacing: 0px;
-  --heading-tagline-line-height: 150%;
+  --heading-tagline-line-height: 120%; /* Balanced spacing */
   --text-medium-bold-font-family: "Inter", sans-serif;
   --text-medium-bold-font-size: 18px;
   --text-medium-bold-font-style: normal;
   --text-medium-bold-font-weight: 700;
   --text-medium-bold-letter-spacing: 0px;
-  --text-medium-bold-line-height: 150%;
-  --text-medium-normal-font-family: "Inter", sans-serif;
-  --text-medium-normal-font-size: 18px;
+  --text-medium-bold-line-height: 130%; /* Reduced from 150% */
+  --text-medium-normal-font-family: "JetBrains Mono", monospace; /* Changed to JetBrains Mono */
+  --text-medium-normal-font-size: 17px; /* Reduced by 1pt */
   --text-medium-normal-font-style: normal;
-  --text-medium-normal-font-weight: 400;
+  --text-medium-normal-font-weight: 300; /* Light weight */
   --text-medium-normal-letter-spacing: 0px;
-  --text-medium-normal-line-height: 150%;
+  --text-medium-normal-line-height: 135%; /* Balanced spacing */
   --text-medium-semi-bold-font-family: "Inter", sans-serif;
   --text-medium-semi-bold-font-size: 18px;
   --text-medium-semi-bold-font-style: normal;
   --text-medium-semi-bold-font-weight: 600;
   --text-medium-semi-bold-letter-spacing: 0px;
   --text-medium-semi-bold-line-height: 150%;
-  --text-regular-normal-font-family: "Inter", sans-serif;
-  --text-regular-normal-font-size: 16px;
+  --text-regular-normal-font-family: "JetBrains Mono", monospace; /* Changed to JetBrains Mono */
+  --text-regular-normal-font-size: 15px; /* Reduced by 1pt */
   --text-regular-normal-font-style: normal;
-  --text-regular-normal-font-weight: 400;
+  --text-regular-normal-font-weight: 300; /* Light weight */
   --text-regular-normal-letter-spacing: 0px;
-  --text-regular-normal-line-height: 150%;
+  --text-regular-normal-line-height: 135%; /* Balanced spacing */
   --text-regular-semi-bold-font-family: "Inter", sans-serif;
   --text-regular-semi-bold-font-size: 16px;
   --text-regular-semi-bold-font-style: normal;
@@ -81,7 +130,7 @@
   --text-small-link-letter-spacing: 0px;
   --text-small-link-line-height: 150%;
   --text-small-normal-font-family: "Inter", sans-serif;
-  --text-small-normal-font-size: 14px;
+  --text-small-normal-font-size: 13px; /* Reduced by 1pt */
   --text-small-normal-font-style: normal;
   --text-small-normal-font-weight: 400;
   --text-small-normal-letter-spacing: 0px;
@@ -98,6 +147,9 @@
   --text-tiny-normal-font-weight: 400;
   --text-tiny-normal-letter-spacing: 0px;
   --text-tiny-normal-line-height: 150%;
+  
+  /* Tile hover color for grid animation */
+  --tile: rgba(0, 0, 0, 0.05);
 }
 
 :root {

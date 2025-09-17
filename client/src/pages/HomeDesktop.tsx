@@ -1,17 +1,20 @@
-import React from "react";
-import { CallToActionSection } from "./sections/CallToActionSection";
-import { ComponentNodeSection } from "./sections/ComponentNodeSection";
-import { ContentWrapperSection } from "./sections/ContentWrapperSection";
-import { FeatureHighlightSection } from "./sections/FeatureHighlightSection";
-import { FooterSection } from "./sections/FooterSection";
-import { FrequentlyAskedQuestionsSection } from "./sections/FrequentlyAskedQuestionsSection";
-import { GeneralLayoutSection } from "./sections/GeneralLayoutSection";
+import React, { lazy, Suspense } from "react";
+
+// Import ALL sections directly for optimal performance (no lazy loading)
 import { HeaderSection } from "./sections/HeaderSection";
-import { ImageGallerySection } from "./sections/ImageGallerySection";
+import { GeneralLayoutSection } from "./sections/GeneralLayoutSection";
+import { ScrollExpandSection } from "./sections/ScrollExpandSection";
 import { LayoutContainerSection } from "./sections/LayoutContainerSection";
 import { MainContentSection } from "./sections/MainContentSection";
+import { ContentWrapperSection } from "./sections/ContentWrapperSection";
+import { ImageGallerySection } from "./sections/ImageGallerySection";
+import { ComponentNodeSection } from "./sections/ComponentNodeSection";
+import { FeatureHighlightSection } from "./sections/FeatureHighlightSection";
 import { ServiceOverviewSection } from "./sections/ServiceOverviewSection";
 import { TestimonialSection } from "./sections/TestimonialSection";
+import { CallToActionSection } from "./sections/CallToActionSection";
+import { FrequentlyAskedQuestionsSection } from "./sections/FrequentlyAskedQuestionsSection";
+import { FooterSection } from "./sections/FooterSection";
 
 const navigationItems = [
   { label: "Products" },
@@ -22,12 +25,14 @@ const navigationItems = [
 export const HomeDesktop = (): JSX.Element => {
   return (
     <div className="flex flex-col items-start w-full">
+      {/* All sections loaded immediately for smooth scrolling */}
       <HeaderSection />
       <GeneralLayoutSection />
+      <ScrollExpandSection />
       <LayoutContainerSection />
-      <MainContentSection />
-      <ContentWrapperSection />
       <ImageGallerySection />
+      {/* ContentWrapperSection content moved to ImageGallerySection */}
+      <MainContentSection />
       <ComponentNodeSection />
       <FeatureHighlightSection />
       <ServiceOverviewSection />
