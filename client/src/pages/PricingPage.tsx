@@ -1,4 +1,4 @@
-import { HeaderSection } from "@/pages/sections/HeaderSection";
+import { NavigationHeader } from "@/pages/sections/NavigationHeader";
 import { FooterSection } from "@/pages/sections/FooterSection";
 
 // Import pricing sections from the extracted design
@@ -10,8 +10,8 @@ import { PricingTestimonialSection } from "@/pages/sections/PricingTestimonialSe
 export const PricingPage = (): JSX.Element => {
   return (
     <div className="flex flex-col min-h-screen w-full">
-      <HeaderSection />
-      <main className="flex-1">
+      <NavigationHeader />
+      <main className="flex-1 pt-24">
         <PricingHeroSection />
         <PricingOptionsSection />
         <PricingComparisonSection />
