@@ -77,7 +77,7 @@ export const PricingOptionsSection = (): JSX.Element => {
               <button
                 key={option.id}
                 onClick={() => setSelectedBilling(option.id)}
-                className={`inline-flex items-center justify-center gap-2 px-6 py-2 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] whitespace-nowrap transition-all duration-200 ${
+                className={`inline-flex items-center justify-center gap-2 px-6 py-2 font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase whitespace-nowrap transition-all duration-200 ${
                   selectedBilling === option.id
                     ? "bg-black text-white"
                     : "bg-transparent text-black hover:bg-gray-50"
@@ -116,7 +116,7 @@ export const PricingOptionsSection = (): JSX.Element => {
                     <div className="w-full h-px bg-gray-200 mb-6" />
 
                     <div className="flex-col items-start gap-4 w-full flex">
-                      <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                      <p className="font-['Inter'] font-normal text-black text-sm tracking-normal leading-relaxed">
                         Includes:
                       </p>
 
@@ -127,7 +127,7 @@ export const PricingOptionsSection = (): JSX.Element => {
                             className="flex items-start gap-4 w-full"
                           >
                             <CheckIcon className="w-5 h-5 text-black mt-0.5 flex-shrink-0" />
-                            <span className="flex-1 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                            <span className="flex-1 font-['Inter'] font-normal text-black text-sm tracking-normal leading-relaxed">
                               {feature}
                             </span>
                           </div>
@@ -137,8 +137,8 @@ export const PricingOptionsSection = (): JSX.Element => {
                   </CardContent>
 
                   <div className="flex flex-col gap-4 w-full items-start mt-8">
-                    <Button className="flex items-center justify-center gap-2 px-6 py-3 w-full bg-black border border-solid text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] rounded-none hover:bg-gray-800 transition-colors duration-200">
-                      Get started
+                    <Button className="flex items-center justify-center gap-2 px-6 py-3 w-full bg-black border border-solid text-white font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase rounded-none hover:bg-gray-800 transition-colors duration-200">
+                      GET STARTED
                     </Button>
                   </div>
                 </Card>

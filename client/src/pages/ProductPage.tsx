@@ -45,7 +45,7 @@ export const ProductPage = (): JSX.Element => {
                   PRODUCTS
                 </h1>
 
-                <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+                <p className="relative self-stretch font-['Inter'] font-normal text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
               </div>
@@ -71,7 +71,7 @@ export const ProductPage = (): JSX.Element => {
                         {card.title}
                       </h3>
 
-                      <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-white text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+                      <p className="relative self-stretch font-['Inter'] font-normal text-white text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)]">
                         {card.description}
                       </p>
                     </div>
@@ -83,8 +83,8 @@ export const ProductPage = (): JSX.Element => {
                       className="inline-flex items-center justify-center gap-2 relative flex-[0_0_auto] h-auto p-0 hover:bg-transparent"
                       data-testid={`button-${card.buttonText.toLowerCase().replace(' ', '-')}`}
                     >
-                      <span className="relative w-fit font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-white text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] whitespace-nowrap">
-                        {card.buttonText}
+                      <span className="relative w-fit font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase text-white whitespace-nowrap">
+                        {card.buttonText.toUpperCase()}
                       </span>
                       <ChevronRightIcon className="relative w-6 h-6 text-white" />
                     </Button>
@@ -98,7 +98,7 @@ export const ProductPage = (): JSX.Element => {
         {/* Rallo Agent Section */}
         <section className="flex flex-col items-center relative self-stretch w-full flex-[0_0_auto] bg-white">
           <div className="items-start self-stretch flex relative w-full flex-[0_0_auto]">
-            <div className="relative flex-1 self-stretch grow min-h-[400px] bg-gray-500 flex items-center justify-center">
+            <div className="relative flex-1 self-stretch grow bg-gray-500 flex items-center justify-center">
               <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center">
                 <PlayIcon className="w-8 h-8 text-white" />
               </div>
@@ -109,8 +109,9 @@ export const ProductPage = (): JSX.Element => {
                 <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
                   <img
                     className="relative w-20 h-20"
-                    alt="Relume"
-                    src="/figmaAssets/relume.svg"
+                    alt="Rallo Agent"
+                    src="/icons/Video-pyramid.svg"
+                    style={{ filter: 'brightness(0)' }}
                   />
 
                   <div className="flex-col items-start gap-6 self-stretch w-full flex-[0_0_auto] flex relative">
@@ -118,7 +119,7 @@ export const ProductPage = (): JSX.Element => {
                       Rallo Agent
                     </h2>
 
-                    <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+                    <p className="relative self-stretch font-['Inter'] font-normal text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)]">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
                     </p>
                   </div>
@@ -127,18 +128,18 @@ export const ProductPage = (): JSX.Element => {
                 <div className="inline-flex items-center gap-6 relative flex-[0_0_auto] mt-6">
                   <Button
                     variant="outline"
-                    className="h-auto px-6 py-3 border-black text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                    className="h-auto px-6 py-3 border-black text-black font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                     data-testid="button-rallo-agent-primary"
                   >
-                    Button
+                    GET STARTED
                   </Button>
 
                   <Button
                     variant="ghost"
-                    className="h-auto p-0 text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                    className="h-auto p-0 text-black font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                     data-testid="button-rallo-agent-secondary"
                   >
-                    Button
+                    LEARN MORE
                     <ChevronRightIcon className="w-6 h-6 ml-2" />
                   </Button>
                 </div>
@@ -148,15 +149,16 @@ export const ProductPage = (): JSX.Element => {
         </section>
 
         {/* Rallo Chat Section */}
-        <section className="flex flex-col items-center relative self-stretch w-full flex-[0_0_auto] bg-white">
+        <section className="flex flex-col items-center relative self-stretch w-full flex-[0_0_auto] bg-white -mt-1">
           <div className="items-start self-stretch flex relative w-full flex-[0_0_auto]">
             <div className="flex-col items-start justify-center gap-8 px-16 py-28 flex-1 self-stretch grow flex relative">
               <div className="flex-col max-w-[560px] items-start gap-8 w-full flex-[0_0_auto] flex relative">
                 <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
                   <img
                     className="relative w-20 h-20"
-                    alt="Relume"
-                    src="/figmaAssets/relume.svg"
+                    alt="Rallo Chat"
+                    src="/icons/Chat-cube.svg"
+                    style={{ filter: 'brightness(0)' }}
                   />
 
                   <div className="flex-col items-start gap-6 self-stretch w-full flex-[0_0_auto] flex relative">
@@ -164,7 +166,7 @@ export const ProductPage = (): JSX.Element => {
                       Rallo Chat
                     </h2>
 
-                    <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+                    <p className="relative self-stretch font-['Inter'] font-normal text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)]">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
                     </p>
                   </div>
@@ -173,25 +175,25 @@ export const ProductPage = (): JSX.Element => {
                 <div className="inline-flex items-center gap-6 relative flex-[0_0_auto] mt-6">
                   <Button
                     variant="outline"
-                    className="h-auto px-6 py-3 border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                    className="h-auto px-6 py-3 border-black text-black hover:bg-black hover:text-white font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                     data-testid="button-rallo-chat-primary"
                   >
-                    Button
+                    GET STARTED
                   </Button>
 
                   <Button
                     variant="ghost"
-                    className="h-auto p-0 text-black hover:bg-transparent hover:text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                    className="h-auto p-0 text-black hover:bg-transparent hover:text-black font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                     data-testid="button-rallo-chat-secondary"
                   >
-                    Button
+                    LEARN MORE
                     <ChevronRightIcon className="ml-2 w-6 h-6" />
                   </Button>
                 </div>
               </div>
             </div>
 
-            <div className="relative flex-1 self-stretch grow min-h-[400px] bg-gray-500 flex items-center justify-center">
+            <div className="relative flex-1 self-stretch grow bg-gray-500 flex items-center justify-center">
               <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center">
                 <PlayIcon className="w-8 h-8 text-white" />
               </div>
@@ -200,9 +202,9 @@ export const ProductPage = (): JSX.Element => {
         </section>
 
         {/* Rallo Voice Section */}
-        <section className="flex flex-col items-center relative self-stretch w-full flex-[0_0_auto] bg-white">
+        <section className="flex flex-col items-center relative self-stretch w-full flex-[0_0_auto] bg-white -mt-1">
           <div className="items-start self-stretch flex relative w-full flex-[0_0_auto]">
-            <div className="relative flex-1 self-stretch grow min-h-[400px] bg-gray-500 flex items-center justify-center">
+            <div className="relative flex-1 self-stretch grow bg-gray-500 flex items-center justify-center">
               <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center">
                 <PlayIcon className="w-8 h-8 text-white" />
               </div>
@@ -213,8 +215,9 @@ export const ProductPage = (): JSX.Element => {
                 <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
                   <img
                     className="relative w-20 h-20"
-                    alt="Relume"
-                    src="/figmaAssets/relume.svg"
+                    alt="Rallo Voice"
+                    src="/icons/Voice-hexagon.svg"
+                    style={{ filter: 'brightness(0)' }}
                   />
 
                   <div className="flex-col items-start gap-6 self-stretch w-full flex-[0_0_auto] flex relative">
@@ -222,7 +225,7 @@ export const ProductPage = (): JSX.Element => {
                       Rallo Voice
                     </h2>
 
-                    <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+                    <p className="relative self-stretch font-['Inter'] font-normal text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)]">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
                     </p>
                   </div>
@@ -231,18 +234,18 @@ export const ProductPage = (): JSX.Element => {
                 <div className="inline-flex items-center gap-6 relative flex-[0_0_auto] mt-6">
                   <Button
                     variant="outline"
-                    className="h-auto px-6 py-3 border-black text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                    className="h-auto px-6 py-3 border-black text-black font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                     data-testid="button-rallo-voice-primary"
                   >
-                    Button
+                    GET STARTED
                   </Button>
 
                   <Button
                     variant="ghost"
-                    className="h-auto p-0 text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                    className="h-auto p-0 text-black font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                     data-testid="button-rallo-voice-secondary"
                   >
-                    Button
+                    LEARN MORE
                     <ChevronRightIcon className="ml-2 w-6 h-6" />
                   </Button>
                 </div>

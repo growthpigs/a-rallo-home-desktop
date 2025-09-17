@@ -27,7 +27,7 @@ export const BookDemoPage = (): JSX.Element => {
                     EXPERIENCE THE FUTURE OF AI-POWERED ENGAGEMENT
                   </h1>
 
-                  <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-white text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+                  <p className="relative self-stretch font-['Inter'] font-normal text-white text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] uppercase">
                     Transform your business communication with intelligent agents that deliver personalized experiences everywhere your customers are.
                   </p>
                 </div>
@@ -35,17 +35,17 @@ export const BookDemoPage = (): JSX.Element => {
 
               <div className="inline-flex gap-4 flex-[0_0_auto] items-center relative mt-6">
                 <Button 
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] bg-white border border-solid text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-gray-100"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] bg-white border border-solid text-black font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase hover:bg-gray-100"
                   data-testid="button-explore"
                 >
-                  Explore
+                  EXPLORE
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] border border-solid border-white bg-transparent text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-white hover:text-black"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] border border-solid border-white bg-transparent text-white font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase hover:bg-white hover:text-black"
                   data-testid="button-watch"
                 >
-                  Watch Demo
+                  WATCH DEMO
                 </Button>
               </div>
             </div>
@@ -68,7 +68,7 @@ export const BookDemoPage = (): JSX.Element => {
                     YOUR CUSTOM RALLO EXPERIENCE AWAITS
                   </h2>
 
-                  <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+                  <p className="relative self-stretch font-['Inter'] font-normal text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] uppercase">
                     Tailored to your unique business needs and communication goals.
                   </p>
                 </div>
@@ -79,14 +79,14 @@ export const BookDemoPage = (): JSX.Element => {
             <div className="grid md:grid-cols-2 gap-8 w-full">
               <div className="bg-white border border-gray-200 p-8">
                 <div className="flex items-start gap-6">
-                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)]">
+                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-['Inter'] font-normal text-[length:var(--text-regular-normal-font-size)]">
                     01
                   </div>
                   <div className="flex-1">
                     <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)] mb-3">
                       DISCOVERY
                     </h3>
-                    <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] uppercase">
+                    <p className="font-['Inter'] font-normal text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] uppercase">
                       We analyze your current communication channels and identify optimization opportunities for AI integration.
                     </p>
                   </div>
@@ -95,14 +95,14 @@ export const BookDemoPage = (): JSX.Element => {
 
               <div className="bg-white border border-gray-200 p-8">
                 <div className="flex items-start gap-6">
-                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)]">
+                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-['Inter'] font-normal text-[length:var(--text-regular-normal-font-size)]">
                     02
                   </div>
                   <div className="flex-1">
                     <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)] mb-3">
                       CONFIGURATION
                     </h3>
-                    <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] uppercase">
+                    <p className="font-['Inter'] font-normal text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] uppercase">
                       Custom AI agents are built to match your brand voice and handle your specific use cases.
                     </p>
                   </div>
@@ -111,14 +111,14 @@ export const BookDemoPage = (): JSX.Element => {
 
               <div className="bg-white border border-gray-200 p-8">
                 <div className="flex items-start gap-6">
-                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)]">
+                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-['Inter'] font-normal text-[length:var(--text-regular-normal-font-size)]">
                     03
                   </div>
                   <div className="flex-1">
                     <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)] mb-3">
                       DEPLOYMENT
                     </h3>
-                    <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] uppercase">
+                    <p className="font-['Inter'] font-normal text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] uppercase">
                       Seamless integration across all your platforms with comprehensive testing and training.
                     </p>
                   </div>
@@ -127,14 +127,14 @@ export const BookDemoPage = (): JSX.Element => {
 
               <div className="bg-white border border-gray-200 p-8">
                 <div className="flex items-start gap-6">
-                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)]">
+                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-['Inter'] font-normal text-[length:var(--text-regular-normal-font-size)]">
                     04
                   </div>
                   <div className="flex-1">
                     <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)] mb-3">
                       OPTIMIZATION
                     </h3>
-                    <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] uppercase">
+                    <p className="font-['Inter'] font-normal text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] uppercase">
                       Continuous monitoring and refinement to maximize performance and customer satisfaction.
                     </p>
                   </div>
@@ -159,7 +159,7 @@ export const BookDemoPage = (): JSX.Element => {
                   STAY CURRENT
                 </h2>
 
-                <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+                <p className="relative self-stretch font-['Inter'] font-normal text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] uppercase">
                   Get the latest insights and AI advancement updates.
                 </p>
               </div>
@@ -171,14 +171,14 @@ export const BookDemoPage = (): JSX.Element => {
                 placeholder="EMAIL ADDRESS"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                className="flex-1 font-['Inter'] font-normal text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)]"
                 data-testid="input-email-signup"
               />
               <Button 
-                className="bg-black text-white hover:bg-gray-800 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                className="bg-black text-white hover:bg-gray-800 font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                 data-testid="button-subscribe"
               >
-                Subscribe
+                SUBSCRIBE
               </Button>
             </div>
           </div>

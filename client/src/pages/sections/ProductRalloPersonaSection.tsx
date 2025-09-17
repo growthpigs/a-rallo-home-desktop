@@ -19,7 +19,7 @@ export const ProductRalloPersonaSection = (): JSX.Element => {
                   Rallo Persona
                 </h2>
 
-                <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+                <p className="relative self-stretch font-['Inter'] font-normal text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] uppercase">
                   Customizable AI personalities that embody your brand values and communication style.
                 </p>
               </div>
@@ -28,18 +28,18 @@ export const ProductRalloPersonaSection = (): JSX.Element => {
             <div className="inline-flex items-center gap-6 relative flex-[0_0_auto]">
               <Button
                 variant="outline"
-                className="h-auto px-6 py-3 border-black text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                className="h-auto px-6 py-3 border-black text-black font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                 data-testid="button-rallo-persona-primary"
               >
-                Button
+                GET STARTED
               </Button>
 
               <Button
                 variant="ghost"
-                className="h-auto p-0 text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                className="h-auto p-0 text-black font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase"
                 data-testid="button-rallo-persona-secondary"
               >
-                Button
+                LEARN MORE
                 <ChevronRightIcon className="w-6 h-6 ml-2" />
               </Button>
             </div>

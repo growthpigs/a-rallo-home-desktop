@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rallo Letter Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Animation Container -->
+    <div class="animation-container">
+        <!-- Letter containers for simultaneous animation -->
+        <div class="letters-wrapper">
+            <div class="letter-container" id="letter-R">
+                <img class="letter-image" id="img-R" alt="R variation">
+            </div>
+            <div class="letter-container" id="letter-A">
+                <img class="letter-image" id="img-A" alt="A variation">
+            </div>
+            <div class="letter-container" id="letter-L1">
+                <img class="letter-image" id="img-L1" alt="L1 variation">
+            </div>
+            <div class="letter-container" id="letter-L2">
+                <img class="letter-image" id="img-L2" alt="L2 variation">
+            </div>
+            <div class="letter-container" id="letter-O">
+                <img class="letter-image" id="img-O" alt="O variation">
+            </div>
+        </div>
+        
+        <!-- Final logo container (initially hidden) -->
+        <div class="final-logo-container" id="finalLogo" style="display: none;">
+            <img class="logo-letter" id="logo-R" src="assets/images/r-logo.png" alt="R logo">
+            <img class="logo-letter" id="logo-A" src="assets/images/a-logo.png" alt="A logo">
+            <img class="logo-letter" id="logo-L1" src="assets/images/l1-logo.png" alt="L1 logo">
+            <img class="logo-letter" id="logo-L2" src="assets/images/l2-logo.png" alt="L2 logo">
+            <img class="logo-letter" id="logo-O" src="assets/images/o-logo.png" alt="O logo">
+        </div>
+    </div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <!-- Playback Controls -->
+        <div class="playback-controls">
+            <button id="playBtn" class="control-btn play-btn" aria-label="Play">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path id="playIcon" d="M8 5v14l11-7z" fill="currentColor"/>
+                </svg>
+            </button>
+            <button id="pauseBtn" class="control-btn pause-btn hidden" aria-label="Pause">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
+                </svg>
+            </button>
+            <button id="resetBtn" class="control-btn reset-btn" aria-label="Reset">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Frame Progress -->
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>Change: </span>
+                <span id="currentFrame">1</span>
+                <span> / </span>
+                <span id="totalFrames">21</span>
+            </div>
+            <input type="range" id="frameSlider" class="frame-slider" min="1" max="21" value="1">
+        </div>
+
+        <!-- Timing Controls -->
+        <div class="timing-controls">
+            <label for="fpsControl" class="control-label">FPS:</label>
+            <input type="number" id="fpsControl" class="fps-input" value="4" min="1" max="60">
+            
+            <label for="durationControl" class="control-label">Duration (ms):</label>
+            <input type="number" id="durationControl" class="duration-input" value="7000" min="100" max="10000">
+        </div>
+
+        <!-- Loop Control -->
+        <div class="loop-control">
+            <input type="checkbox" id="loopCheckbox" checked>
+            <label for="loopCheckbox">Loop Animation</label>
+        </div>
+
+        <!-- Export Controls -->
+        <div class="export-controls">
+            <button id="exportVideoBtn" class="export-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" fill="currentColor"/>
+                </svg>
+                Export as Video
+            </button>
+            <button id="exportGifBtn" class="export-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M11.5 9H13v6h-1.5zM9 9H6c-.6 0-1 .5-1 1v4c0 .5.4 1 1 1h3c.6 0 1-.5 1-1v-2H8.5v1.5h-2v-3H10V10c0-.5-.4-1-1-1zm10 1.5V9h-4.5v6H16v-2h2v-1.5h-2v-1z" fill="currentColor"/>
+                </svg>
+                Export as GIF
+            </button>
+        </div>
+
+        <!-- Status Display -->
+        <div class="status-display">
+            <div id="loadingStatus" class="status-message">Loading frames...</div>
+            <div class="progress-bar">
+                <div id="loadingProgress" class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preload Container (hidden) -->
+    <div id="preloadContainer" class="preload-container"></div>
+
+    <!-- Video Export Modal -->
+    <div id="exportModal" class="export-modal hidden">
+        <div class="modal-content">
+            <h3>Export Options</h3>
+            <div class="export-options">
+                <label>
+                    Format:
+                    <select id="exportFormat">
+                        <option value="webm">WebM (Recommended)</option>
+                        <option value="mp4">MP4</option>
+                    </select>
+                </label>
+                <label>
+                    Quality:
+                    <select id="exportQuality">
+                        <option value="high">High</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </label>
+                <label>
+                    Resolution:
+                    <select id="exportResolution">
+                        <option value="original">Original</option>
+                        <option value="1920x1080">1920x1080 (Full HD)</option>
+                        <option value="1280x720">1280x720 (HD)</option>
+                        <option value="640x360">640x360 (SD)</option>
+                    </select>
+                </label>
+            </div>
+            <div class="modal-actions">
+                <button id="confirmExport" class="btn-primary">Export</button>
+                <button id="cancelExport" class="btn-secondary">Cancel</button>
+            </div>
+            <div id="exportProgress" class="export-progress hidden">
+                <span>Exporting...</span>
+                <div class="progress-bar">
+                    <div id="exportProgressBar" class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

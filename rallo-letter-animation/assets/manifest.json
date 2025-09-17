@@ -1,0 +1,93 @@
+{
+  "animation": {
+    "name": "RALLO Letter Animation",
+    "totalFrames": 25,
+    "fps": 4,
+    "duration": 7000,
+    "description": "Animated transformation of RALLO letters with final logo composition"
+  },
+  "sequence": [
+    {
+      "section": "R_variations",
+      "frames": [
+        { "index": 1, "file": "1-R.jpg", "duration": 250, "letter": "R", "variation": 1 },
+        { "index": 2, "file": "2-R.jpg", "duration": 250, "letter": "R", "variation": 2 },
+        { "index": 3, "file": "3-R.jpg", "duration": 250, "letter": "R", "variation": 3 },
+        { "index": 4, "file": "4-R.jpg", "duration": 250, "letter": "R", "variation": 4 }
+      ]
+    },
+    {
+      "section": "A_variations",
+      "frames": [
+        { "index": 5, "file": "1-A.jpg", "duration": 250, "letter": "A", "variation": 1 },
+        { "index": 6, "file": "2-A.jpg", "duration": 250, "letter": "A", "variation": 2 },
+        { "index": 7, "file": "3-A.jpg", "duration": 250, "letter": "A", "variation": 3 },
+        { "index": 8, "file": "4-A.jpg", "duration": 250, "letter": "A", "variation": 4 }
+      ]
+    },
+    {
+      "section": "L1_variations",
+      "frames": [
+        { "index": 9, "file": "1-L1.jpg", "duration": 250, "letter": "L1", "variation": 1 },
+        { "index": 10, "file": "2-L1.jpg", "duration": 250, "letter": "L1", "variation": 2 },
+        { "index": 11, "file": "3-L1.jpg", "duration": 250, "letter": "L1", "variation": 3 },
+        { "index": 12, "file": "4-L1.jpg", "duration": 250, "letter": "L1", "variation": 4 }
+      ]
+    },
+    {
+      "section": "L2_variations",
+      "frames": [
+        { "index": 13, "file": "1-L2.jpg", "duration": 250, "letter": "L2", "variation": 1 },
+        { "index": 14, "file": "2-L2.jpg", "duration": 250, "letter": "L2", "variation": 2 },
+        { "index": 15, "file": "3-L2.jpg", "duration": 250, "letter": "L2", "variation": 3 },
+        { "index": 16, "file": "4-L2.jpg", "duration": 250, "letter": "L2", "variation": 4 }
+      ]
+    },
+    {
+      "section": "O_variations",
+      "frames": [
+        { "index": 17, "file": "1-O.jpg", "duration": 250, "letter": "O", "variation": 1 },
+        { "index": 18, "file": "2-O.jpg", "duration": 250, "letter": "O", "variation": 2 },
+        { "index": 19, "file": "3-O.jpg", "duration": 250, "letter": "O", "variation": 3 },
+        { "index": 20, "file": "4-O.jpg", "duration": 250, "letter": "O", "variation": 4 }
+      ]
+    },
+    {
+      "section": "final_logo",
+      "frames": [
+        { "index": 21, "file": "r-logo.png", "duration": 400, "letter": "R", "type": "logo" },
+        { "index": 22, "file": "a-logo.png", "duration": 400, "letter": "A", "type": "logo" },
+        { "index": 23, "file": "l1-logo.png", "duration": 400, "letter": "L1", "type": "logo" },
+        { "index": 24, "file": "l2-logo.png", "duration": 400, "letter": "L2", "type": "logo" },
+        { "index": 25, "file": "o-logo.png", "duration": 400, "letter": "O", "type": "logo" }
+      ]
+    }
+  ],
+  "files": {
+    "letter_variations": [
+      "1-R.jpg", "2-R.jpg", "3-R.jpg", "4-R.jpg",
+      "1-A.jpg", "2-A.jpg", "3-A.jpg", "4-A.jpg",
+      "1-L1.jpg", "2-L1.jpg", "3-L1.jpg", "4-L1.jpg",
+      "1-L2.jpg", "2-L2.jpg", "3-L2.jpg", "4-L2.jpg",
+      "1-O.jpg", "2-O.jpg", "3-O.jpg", "4-O.jpg"
+    ],
+    "logo_files": [
+      "r-logo.png",
+      "a-logo.png",
+      "l1-logo.png",
+      "l2-logo.png",
+      "o-logo.png"
+    ],
+    "total_files": 25,
+    "formats": {
+      "variations": "jpg",
+      "logos": "png"
+    }
+  },
+  "loading": {
+    "preload": true,
+    "parallel": true,
+    "cache": true,
+    "retryOnError": 3
+  }
+}

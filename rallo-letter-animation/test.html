@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rallo Animation Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+        .frame-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .frame-item {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
+            text-align: center;
+        }
+        .frame-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 8px;
+        }
+        .frame-label {
+            font-size: 12px;
+            color: #666;
+            word-break: break-all;
+        }
+        .sequence-info {
+            background: #e8f4ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Rallo Letter Animation - Image Test</h1>
+        
+        <div class="sequence-info">
+            <h3>Animation Sequence (25 frames total):</h3>
+            <ol>
+                <li><strong>R variations</strong> (frames 1-4): 1-R.jpg, 2-R.jpg, 3-R.jpg, 4-R.jpg</li>
+                <li><strong>A variations</strong> (frames 5-8): 1-A.jpg, 2-A.jpg, 3-A.jpg, 4-A.jpg</li>
+                <li><strong>L1 variations</strong> (frames 9-12): 1-L1.jpg, 2-L1.jpg, 3-L1.jpg, 4-L1.jpg</li>
+                <li><strong>L2 variations</strong> (frames 13-16): 1-L2.jpg, 2-L2.jpg, 3-L2.jpg, 4-L2.jpg</li>
+                <li><strong>O variations</strong> (frames 17-20): 1-O.jpg, 2-O.jpg, 3-O.jpg, 4-O.jpg</li>
+                <li><strong>Final logo</strong> (frames 21-25): r-logo.png, a-logo.png, l1-logo.png, l2-logo.png, o-logo.png</li>
+            </ol>
+            <p><strong>Timing:</strong> 0.25 seconds per frame (4 FPS) for letters, 2 seconds hold on final logo</p>
+        </div>
+        
+        <div id="status"></div>
+        
+        <h2>All Frames Preview:</h2>
+        <div class="frame-grid" id="frameGrid"></div>
+    </div>
+
+    <script>
+        const frameSequence = [
+            '1-R.jpg', '2-R.jpg', '3-R.jpg', '4-R.jpg',
+            '1-A.jpg', '2-A.jpg', '3-A.jpg', '4-A.jpg',
+            '1-L1.jpg', '2-L1.jpg', '3-L1.jpg', '4-L1.jpg',
+            '1-L2.jpg', '2-L2.jpg', '3-L2.jpg', '4-L2.jpg',
+            '1-O.jpg', '2-O.jpg', '3-O.jpg', '4-O.jpg',
+            'r-logo.png', 'a-logo.png', 'l1-logo.png', 'l2-logo.png', 'o-logo.png'
+        ];
+        
+        const frameGrid = document.getElementById('frameGrid');
+        const status = document.getElementById('status');
+        let loadedCount = 0;
+        let errorCount = 0;
+        
+        frameSequence.forEach((filename, index) => {
+            const frameDiv = document.createElement('div');
+            frameDiv.className = 'frame-item';
+            
+            const img = document.createElement('img');
+            img.src = `assets/images/${filename}`;
+            img.alt = filename;
+            
+            const label = document.createElement('div');
+            label.className = 'frame-label';
+            label.textContent = `Frame ${index + 1}: ${filename}`;
+            
+            img.onload = () => {
+                loadedCount++;
+                updateStatus();
+            };
+            
+            img.onerror = () => {
+                errorCount++;
+                frameDiv.style.background = '#ffeeee';
+                label.style.color = '#cc0000';
+                updateStatus();
+            };
+            
+            frameDiv.appendChild(img);
+            frameDiv.appendChild(label);
+            frameGrid.appendChild(frameDiv);
+        });
+        
+        function updateStatus() {
+            const total = frameSequence.length;
+            const statusText = `Loaded: ${loadedCount}/${total} | Errors: ${errorCount}`;
+            
+            if (loadedCount + errorCount === total) {
+                if (errorCount === 0) {
+                    status.innerHTML = `<div class="status success">✓ All ${total} frames loaded successfully! Animation ready.</div>`;
+                } else {
+                    status.innerHTML = `<div class="status error">⚠ ${errorCount} frame(s) failed to load. Check file paths.</div>`;
+                }
+            } else {
+                status.innerHTML = `<div class="status">${statusText}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>
