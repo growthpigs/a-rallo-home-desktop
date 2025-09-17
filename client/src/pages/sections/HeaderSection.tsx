@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { DemoIcons } from "@/components/DemoIcons";
 import { DemoModal } from "@/components/DemoModal";
@@ -142,58 +143,38 @@ export const HeaderSection = (): JSX.Element => {
           className="flex items-center gap-6"
           variants={navBarDrop}
         >
-          <motion.a 
-            href="#" 
-            className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
-              isScrolled ? 'text-black' : 'text-white'
-            }`} 
-            data-testid="nav-product"
-            variants={dropDownFromAbove}
-          >
-            PRODUCT
-          </motion.a>
-          <motion.a 
-            href="#" 
-            className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
-              isScrolled ? 'text-black' : 'text-white'
-            }`} 
-            data-testid="nav-pricing"
-            variants={dropDownFromAbove}
-          >
-            PRICING
-          </motion.a>
-          <motion.a 
-            href="#" 
-            className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
-              isScrolled ? 'text-black' : 'text-white'
-            }`} 
-            data-testid="nav-services"
-            variants={dropDownFromAbove}
-          >
-            SERVICES
-          </motion.a>
-          <motion.a 
-            href="#" 
-            className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
-              isScrolled ? 'text-black' : 'text-white'
-            }`} 
-            data-testid="nav-about"
-            variants={dropDownFromAbove}
-          >
-            ABOUT
-          </motion.a>
           <motion.div variants={dropDownFromAbove}>
-            <Button 
-              variant="outline" 
-              className={`bg-transparent font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] px-6 py-2 transition-colors duration-300 ${
-                isScrolled 
-                  ? 'border-black text-black hover:bg-black hover:text-white' 
-                  : 'border-white text-white hover:bg-white hover:text-black'
-              }`}
-              data-testid="button-book-demo"
+            <Link 
+              href="/product" 
+              className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
+                isScrolled ? 'text-black' : 'text-white'
+              }`} 
+              data-testid="nav-product"
+            >
+              PRODUCT
+            </Link>
+          </motion.div>
+          <motion.div variants={dropDownFromAbove}>
+            <Link 
+              href="/pricing" 
+              className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
+                isScrolled ? 'text-black' : 'text-white'
+              }`} 
+              data-testid="nav-pricing"
+            >
+              PRICING
+            </Link>
+          </motion.div>
+          <motion.div variants={dropDownFromAbove}>
+            <Link 
+              href="/book-demo" 
+              className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
+                isScrolled ? 'text-black' : 'text-white'
+              }`} 
+              data-testid="nav-book-demo"
             >
               BOOK DEMO
-            </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </motion.nav>
