@@ -14,16 +14,13 @@ export const ProductRalloPersonaSection = (): JSX.Element => {
                 src="/figmaAssets/relume-1.svg"
               />
 
-              <div className="flex-col items-start gap-6 self-stretch w-full flex-[0_0_auto] flex relative">
-                <h1 className="self-stretch text-black text-[length:var(--heading-desktop-h2-font-size)] leading-[var(--heading-desktop-h2-line-height)] relative mt-[-1.00px] font-heading-desktop-h2 font-[number:var(--heading-desktop-h2-font-weight)] tracking-[var(--heading-desktop-h2-letter-spacing)] [font-style:var(--heading-desktop-h2-font-style)]">
+              <div className="flex-col items-start gap-3 self-stretch w-full flex-[0_0_auto] flex relative">
+                <h2 className="self-stretch text-black text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
                   Rallo Persona
-                </h1>
+                </h2>
 
-                <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse varius enim in eros elementum tristique. Duis
-                  cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
-                  commodo diam libero vitae erat.
+                <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+                  Customizable AI personalities that embody your brand values and communication style.
                 </p>
               </div>
             </div>
