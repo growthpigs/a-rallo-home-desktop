@@ -11,20 +11,18 @@ export const GeneralLayoutSection = (): JSX.Element => {
     debugName: "GeneralLayout"
   });
   
-  // Calculate smooth movements (100-150px range)
-  const textMovement = progress * 120; // Text slides in from left
-  const imageMovement = progress * -100; // Image moves slightly left
-  const fadeOpacity = 0.3 + (progress * 0.7); // Fade from 30% to 100%
+  // Calculate smooth movements - 75px towards center, no opacity
+  const textMovement = -75 + (progress * 75); // Text starts left, moves 75px right
+  const imageMovement = 75 - (progress * 75); // Image starts right, moves 75px left
   
   return (
-    <section ref={scrollRef} className="flex flex-col items-center px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#000000]">
+    <section ref={scrollRef} className="flex flex-col items-center px-16 py-36 relative self-stretch w-full flex-[0_0_auto] bg-[#000000]">
       <div className="flex flex-col max-w-screen-xl items-start gap-0.5 relative w-full flex-[0_0_auto]">
         <div className="flex items-start gap-16 relative self-stretch w-full flex-[0_0_auto]">
           <div 
             className="flex flex-col w-[438px] items-start self-stretch relative transition-transform duration-300 ease-out"
             style={{ 
-              transform: `translateX(${textMovement}px)`,
-              opacity: fadeOpacity
+              transform: `translateX(${textMovement}px)`
             }}
           >
             <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
@@ -60,8 +58,7 @@ export const GeneralLayoutSection = (): JSX.Element => {
             <div
               className="transition-transform duration-300 ease-out"
               style={{ 
-                transform: `translateX(${imageMovement}px) scale(${0.95 + progress * 0.05})`,
-                opacity: fadeOpacity
+                transform: `translateX(${imageMovement}px)`
               }}
             >
               <FastImage

@@ -62,9 +62,9 @@ const ScrollExpandMedia = ({
       const scrolledIntoContainer = -containerRect.top;
       const maxScroll = containerRef.current.offsetHeight - window.innerHeight;
       
-      // Animation happens over first 480px, then dead zone for 400px (20% reduction)
+      // Animation happens over first 480px, then minimal dead zone for smooth transition
       const animationDistance = 480;
-      const deadZoneDistance = 400;
+      const deadZoneDistance = 50; // Drastically reduced from 400px to 50px
       
       // Only animate when sticky is actually stuck
       if (stickyRect.top <= 0 && scrolledIntoContainer < maxScroll) {
@@ -114,8 +114,8 @@ const ScrollExpandMedia = ({
       ref={containerRef}
       className='relative'
       style={{
-        height: 'calc(100vh + 880px)', // 480px animation + 400px dead zone (20% reduction)
-        backgroundColor: '#000000', // Black background for dead zone area
+        height: 'calc(100vh + 530px)', // 480px animation + 50px minimal dead zone
+        // Removed backgroundColor - no more black banners!
       }}
     >
       <div
@@ -134,19 +134,16 @@ const ScrollExpandMedia = ({
           <div
             className='absolute inset-0 z-0'
             style={{
-              height: '80%', // Crop to 80% height
-              top: '10%', // Center the crop (10% from top, 10% from bottom)
+              height: '100%', // Full height to eliminate gaps
               overflow: 'hidden'
             }}
           >
             <img
               src={bgImageSrc}
               alt='Background'
-              className='w-full object-cover'
+              className='w-full h-full object-cover'
               style={{
-                height: '125%', // Scale up to fill the cropped area
                 objectPosition: 'center',
-                transform: 'translateY(-12.5%)' // Center the image vertically
               }}
             />
             {/* Dark overlay */}

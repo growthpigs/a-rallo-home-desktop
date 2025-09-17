@@ -31,24 +31,24 @@ export const LayoutContainerSection = (): JSX.Element => {
   // Removed slide animations for centered layout
   
   return (
-    <section ref={scrollRef} className="flex flex-col items-center relative w-full" style={{ backgroundColor: '#ded8ca', paddingTop: '0', paddingBottom: '120px' }}>
+    <section ref={scrollRef} className="flex flex-col items-center relative w-full" style={{ backgroundColor: '#ded8ca', paddingTop: '120px', paddingBottom: '120px', minHeight: '575px' }}>
       <div className="flex flex-col items-center px-16 w-full">
         <div className="flex flex-col max-w-screen-xl items-center w-full">
-          <div className="flex flex-col max-w-screen-md items-center gap-4 w-full">
-            {/* Globe icon with scale animation - increased by 30% */}
+          <div className="flex flex-col max-w-screen-md items-center gap-2 w-full">
+            {/* Globe icon with scale animation - increased by 15% */}
             <img
               className="transition-transform duration-300 ease-out"
               alt="Globe icon"
               src="/figmaAssets/agents-globe.svg"
               style={{
-                width: '104px',
-                height: '104px',
+                width: '120px',
+                height: '120px',
                 transform: `scale(${globeScale})`,
-                marginTop: '30px'
+                marginBottom: '16px'
               }}
             />
 
-            <div className="flex flex-col items-center gap-4 w-full">
+            <div className="flex flex-col items-center gap-4 w-full" style={{ marginTop: '-22px' }}>
               {/* Heading centered */}
               <div 
                 className="inline-flex items-center"

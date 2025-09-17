@@ -111,7 +111,7 @@ const ProductCard = ({ item, direction }: { item: typeof galleryItems[0], direct
               <Button
                 variant="ghost"
                 onClick={() => setActiveDemo(item.demoType)}
-                className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] w-fit"
+                className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] w-fit pointer-events-auto"
               >
                 Click for Demo
               </Button>
@@ -168,7 +168,7 @@ const SectionHeader = () => {
 
       <Button
         variant="ghost"
-        className="inline-flex items-center gap-2 relative flex-[0_0_auto] h-auto p-0 hover:bg-transparent"
+        className="inline-flex items-center gap-2 relative flex-[0_0_auto] h-auto p-0 hover:bg-transparent pointer-events-auto"
       >
         <div className="inline-flex items-center justify-center gap-2 relative flex-[0_0_auto]">
           <span className="relative w-fit font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] whitespace-nowrap [font-style:var(--text-regular-normal-font-style)]">
@@ -200,7 +200,7 @@ export const ImageGallerySection = (): JSX.Element => {
         <SectionHeader />
 
         {/* Grid with individual card animations - creating the "concertina" effect */}
-        <div className="grid grid-cols-2 gap-16 w-full">
+        <div className="grid grid-cols-2 gap-16 w-full pointer-events-none">
           {/* Top Row */}
           <ProductCard item={galleryItems[0]} direction="left" />
           <div className="pt-[200px] pb-0 px-0">
