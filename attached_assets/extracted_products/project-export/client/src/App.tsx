@@ -5,22 +5,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 
-import { HomeDesktop } from "@/pages/HomeDesktop";
-import { ProductPage } from "@/pages/ProductPage";
-import { PricingPage } from "@/pages/PricingPage";
-import { BookDemoPage } from "@/pages/BookDemoPage";
-import { TestPage } from "@/pages/TestPage";
-// import { debugFonts } from "@/utils/font-debugger"; // Temporarily disabled
+import { ProductsDesktop } from "@/pages/ProductsDesktop";
 
 function Router() {
   return (
     <Switch>
       {/* Add pages below */}
-      <Route path="/" component={HomeDesktop} />
-      <Route path="/product" component={ProductPage} />
-      <Route path="/pricing" component={PricingPage} />
-      <Route path="/book-demo" component={BookDemoPage} />
-      <Route path="/test" component={TestPage} />
+      <Route path="/" component={ProductsDesktop} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

@@ -1,0 +1,23 @@
+import { NavigationHeader } from "@/pages/sections/NavigationHeader";
+import { FooterSection } from "@/pages/sections/FooterSection";
+
+// Import pricing sections from the extracted design
+import { PricingHeroSection } from "@/pages/sections/PricingHeroSection";
+import { PricingOptionsSection } from "@/pages/sections/PricingOptionsSection";
+import { PricingComparisonSection } from "@/pages/sections/PricingComparisonSection";
+import { PricingTestimonialSection } from "@/pages/sections/PricingTestimonialSection";
+
+export const PricingPage = (): JSX.Element => {
+  return (
+    <div className="flex flex-col min-h-screen w-full">
+      <NavigationHeader />
+      <main className="flex-1 pt-24">
+        <PricingHeroSection />
+        <PricingOptionsSection />
+        <PricingComparisonSection />
+        <PricingTestimonialSection />
+      </main>
+      <FooterSection />
+    </div>
+  );
+};
