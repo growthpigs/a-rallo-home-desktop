@@ -1,11 +1,11 @@
-import { HeaderSection } from "./sections/HeaderSection";
-import { FooterSection } from "./sections/FooterSection";
+import { HeaderSection } from "@/pages/sections/HeaderSection";
+import { FooterSection } from "@/pages/sections/FooterSection";
 
 // Import pricing sections from the extracted design
-import { PricingHeroSection } from "./sections/PricingHeroSection";
-import { PricingOptionsSection } from "./sections/PricingOptionsSection";
-import { PricingComparisonSection } from "./sections/PricingComparisonSection";
-import { PricingTestimonialSection } from "./sections/PricingTestimonialSection";
+import { PricingHeroSection } from "@/pages/sections/PricingHeroSection";
+import { PricingOptionsSection } from "@/pages/sections/PricingOptionsSection";
+import { PricingComparisonSection } from "@/pages/sections/PricingComparisonSection";
+import { PricingTestimonialSection } from "@/pages/sections/PricingTestimonialSection";
 
 export const PricingPage = (): JSX.Element => {
   return (
