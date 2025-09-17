@@ -47,7 +47,7 @@ export const ScrollExpandSection = (): JSX.Element => {
   }, []);
 
   return (
-    <div className='w-full min-h-screen relative'>
+    <div className='w-full relative' style={{ backgroundColor: '#ded8ca' }}>
       <ScrollExpandMedia
         mediaType='video'
         mediaSrc={ralloMediaContent.src}
@@ -56,9 +56,7 @@ export const ScrollExpandSection = (): JSX.Element => {
         title={ralloMediaContent.title}
         date={ralloMediaContent.date}
         scrollToExpand={ralloMediaContent.scrollToExpand}
-      >
-        <MediaContent />
-      </ScrollExpandMedia>
+      />
     </div>
   );
 };

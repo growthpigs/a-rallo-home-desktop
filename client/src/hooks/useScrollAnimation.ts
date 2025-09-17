@@ -13,7 +13,7 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
   const debugName = options.debugName || "Unknown Section";
   
   const isInView = useInView(ref, {
-    once: options.once ?? true,
+    once: options.once ?? true, // Keep animations one-way to prevent issues
     amount: options.amount ?? 0.1, // Reduced to 0.1 for much earlier triggering
     margin: options.margin ?? "-100px 0px", // Increased negative margin for earlier trigger
   });

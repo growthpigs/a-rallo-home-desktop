@@ -147,6 +147,9 @@ h1, h2, h3, h4, h5, h6,
   --text-tiny-normal-font-weight: 400;
   --text-tiny-normal-letter-spacing: 0px;
   --text-tiny-normal-line-height: 150%;
+  
+  /* Tile hover color for grid animation */
+  --tile: rgba(0, 0, 0, 0.05);
 }
 
 :root {

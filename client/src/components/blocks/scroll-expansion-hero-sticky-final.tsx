@@ -62,9 +62,9 @@ const ScrollExpandMedia = ({
       const scrolledIntoContainer = -containerRect.top;
       const maxScroll = containerRef.current.offsetHeight - window.innerHeight;
       
-      // Animation happens over first 600px, then dead zone for 500px
-      const animationDistance = 600;
-      const deadZoneDistance = 500;
+      // Animation happens over first 480px, then dead zone for 400px (20% reduction)
+      const animationDistance = 480;
+      const deadZoneDistance = 400;
       
       // Only animate when sticky is actually stuck
       if (stickyRect.top <= 0 && scrolledIntoContainer < maxScroll) {
@@ -114,7 +114,8 @@ const ScrollExpandMedia = ({
       ref={containerRef}
       className='relative'
       style={{
-        height: 'calc(100vh + 1100px)', // 600px animation + 500px dead zone
+        height: 'calc(100vh + 880px)', // 480px animation + 400px dead zone (20% reduction)
+        backgroundColor: '#000000', // Black background for dead zone area
       }}
     >
       <div
@@ -129,23 +130,28 @@ const ScrollExpandMedia = ({
         }}
       >
         <section className='relative flex flex-col items-center justify-center w-full h-full overflow-hidden'>
-          {/* Background Image */}
-          <motion.div
+          {/* Background Image - behind everything */}
+          <div
             className='absolute inset-0 z-0'
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 - scrollProgress * 0.6 }}
-            transition={{ duration: 0.2, ease: 'linear' }}
+            style={{
+              height: '80%', // Crop to 80% height
+              top: '10%', // Center the crop (10% from top, 10% from bottom)
+              overflow: 'hidden'
+            }}
           >
             <img
               src={bgImageSrc}
               alt='Background'
-              className='w-full h-full object-cover'
+              className='w-full object-cover'
               style={{
+                height: '125%', // Scale up to fill the cropped area
                 objectPosition: 'center',
+                transform: 'translateY(-12.5%)' // Center the image vertically
               }}
             />
-            <div className='absolute inset-0 bg-black/10' />
-          </motion.div>
+            {/* Dark overlay */}
+            <div className='absolute inset-0 bg-black/40' />
+          </div>
 
           {/* Video/Media Container - centered */}
           <div className='absolute inset-0 flex items-center justify-center z-10'>
@@ -162,10 +168,9 @@ const ScrollExpandMedia = ({
               style={{
                 maxWidth: '95vw',
                 maxHeight: '85vh',
-                backgroundColor: scrollProgress === 0 ? '#fd815aff' : 'transparent',
               }}
             >
-              {scrollProgress > 0 && mediaType === 'video' ? (
+              {mediaType === 'video' ? (
                 mediaSrc.includes('youtube.com') ? (
                   <div className='relative w-full h-full'>
                     <iframe
@@ -208,13 +213,17 @@ const ScrollExpandMedia = ({
               ) : (
                 <div className='w-full h-full' style={{ backgroundColor: '#fd815aff' }} />
               )}
-
-              <motion.div
-                className='absolute inset-0 bg-black/50'
-                initial={{ opacity: 0.7 }}
-                animate={{ opacity: 0.7 - scrollProgress * 0.5 }}
-                transition={{ duration: 0.15, ease: 'linear' }}
-              />
+              
+              {/* Orange overlay that fades out as video expands */}
+              {scrollProgress < 1 && (
+                <motion.div
+                  className='absolute inset-0'
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: 1 - scrollProgress }}
+                  transition={{ duration: 0.15, ease: 'linear' }}
+                  style={{ backgroundColor: '#fd815aff', pointerEvents: 'none' }}
+                />
+              )}
             </motion.div>
           </div>
 

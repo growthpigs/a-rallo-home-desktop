@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { useScrollAnimation, fadeUpVariants, slideInLeftVariants, slideInRightVariants } from "@/hooks/useScrollAnimation";
+import { useUnifiedScrollAnimation } from "@/hooks/useUnifiedScrollAnimation";
 
 import ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1 from "@assets/ultra_close-up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1.png";
 
@@ -10,17 +9,25 @@ import close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur
 import professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1 from "@assets/professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1.png";
 
 export const FeatureHighlightSection = (): JSX.Element => {
-  const { ref, isInView } = useScrollAnimation();
+  const { ref: scrollRef, progress } = useUnifiedScrollAnimation({
+    animationDistance: 450,
+    startOffset: 120,
+    debugName: "FeatureHighlightSection"
+  });
+
+  // Animation calculations
+  const leftMovement = progress * 90;
+  const rightMovement = progress * 110;
   
   return (
-    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
+    <section ref={scrollRef} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
         <div className="items-start gap-16 flex relative self-stretch w-full flex-[0_0_auto]">
-          <motion.div 
+          <div 
             className="flex-col items-start gap-8 flex-1 grow flex relative"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={slideInLeftVariants}
+            style={{
+              transform: `translateX(${leftMovement}px)`
+            }}
           >
             <div className="flex-col items-start gap-8 self-stretch w-full flex-[0_0_auto] flex relative">
               <div className="flex flex-col items-start gap-4 self-stretch flex-[0_0_auto] relative w-full">
@@ -56,17 +63,19 @@ export const FeatureHighlightSection = (): JSX.Element => {
               className="w-80 h-80 relative object-cover"
               alt="Placeholder image"
               src={professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1}
+              style={{
+                transform: `translateY(${progress * 50}px)`
+              }}
             />
-          </motion.div>
+          </div>
 
-          <motion.img
+          <img
             className="w-[608px] h-[608px] relative object-cover"
             alt="Placeholder image"
             src={ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={slideInRightVariants}
-            transition={{ delay: 0.2 }}
+            style={{
+              transform: `translateX(${-rightMovement}px)`
+            }}
           />
         </div>
       </div>

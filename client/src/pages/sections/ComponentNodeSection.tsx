@@ -1,64 +1,31 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { useScrollAnimation, slideInLeftVariants, slideInRightVariants, fadeUpVariants } from "@/hooks/useScrollAnimation";
+import { useUnifiedScrollAnimation } from "@/hooks/useUnifiedScrollAnimation";
 
 import clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3 from "@assets/clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3.png";
 
 import extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0 from "@assets/extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0.png";
 
 export const ComponentNodeSection = (): JSX.Element => {
-  const { ref, isInView } = useScrollAnimation({ 
-    debugName: "ComponentNodeSection (Build Your Own AI SaaS Business)",
-    amount: 0.05, // Extra aggressive for this section
-    margin: "-150px 0px" // Even earlier trigger
+  const { ref: scrollRef, progress } = useUnifiedScrollAnimation({
+    animationDistance: 500,
+    startOffset: 150,
+    debugName: "ComponentNodeSection"
   });
 
-  // CSS Conflict Detection Helper
-  const detectCSSConflicts = (element: HTMLElement, debugName: string) => {
-    if (!element) return;
-    
-    const computedStyle = window.getComputedStyle(element);
-    const conflicts = [];
-    
-    if (computedStyle.transform !== 'none' && computedStyle.transform !== 'matrix(1, 0, 0, 1, 0, 0)') {
-      conflicts.push(`transform: ${computedStyle.transform}`);
-    }
-    if (computedStyle.opacity !== '1') {
-      conflicts.push(`opacity: ${computedStyle.opacity}`);
-    }
-    if (computedStyle.overflow === 'hidden') {
-      conflicts.push(`overflow: ${computedStyle.overflow}`);
-    }
-    
-    if (conflicts.length > 0) {
-      console.warn(`⚠️ [${debugName}] CSS conflicts:`, conflicts);
-    } else {
-      console.log(`✅ [${debugName}] No CSS conflicts`);
-    }
-  };
-
-  // Debug motion component state
-  useEffect(() => {
-    console.log(`🎬 [ComponentNodeSection] Motion state update:`, {
-      isInView,
-      timestamp: new Date().toISOString()
-    });
-    
-    if (ref.current) {
-      detectCSSConflicts(ref.current, "ComponentNodeSection");
-    }
-  }, [isInView]);
+  // Animation calculations
+  const leftMovement = progress * 80;
+  const rightMovement = progress * 100;
+  const imageMovement = progress * 60;
   return (
-    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto]" style={{ backgroundColor: '#fd815a' }}>
+    <section ref={scrollRef} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto]" style={{ backgroundColor: '#fd815a' }}>
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
         <div className="items-start gap-16 flex relative self-stretch w-full flex-[0_0_auto]">
-          <motion.div 
+          <div 
             className="flex flex-col items-start gap-8 relative flex-1 grow"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={slideInLeftVariants}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            style={{
+              transform: `translateX(${leftMovement}px)`
+            }}
           >
             <header className="flex flex-col items-start gap-4 self-stretch flex-[0_0_auto] relative w-full">
               <div className="inline-flex items-center relative flex-[0_0_auto]">
@@ -77,44 +44,40 @@ export const ComponentNodeSection = (): JSX.Element => {
               </div>
             </header>
 
-            <motion.img
+            <img
               className="w-[400px] h-[400px] relative object-cover"
               alt="Placeholder image"
               src={clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={fadeUpVariants}
-              transition={{ delay: 0.3 }}
+              style={{
+                transform: `translateY(${imageMovement}px)`
+              }}
             />
-          </motion.div>
+          </div>
 
-          <motion.div 
+          <div 
             className="flex flex-col items-start gap-8 relative flex-1 grow"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={slideInRightVariants}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+            style={{
+              transform: `translateX(${-rightMovement}px)`
+            }}
           >
             <div className="items-start justify-end gap-2 self-stretch w-full flex-[0_0_auto] flex relative">
               <div className="justify-end gap-0.5 pt-[148px] pb-0 px-0 flex-1 grow flex items-start relative">
-                <motion.img
+                <img
                   className="w-[296px] h-[296px] relative object-cover"
                   alt="Placeholder image"
                   src={extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                  variants={fadeUpVariants}
-                  transition={{ delay: 0.4 }}
+                  style={{
+                    transform: `translateY(${imageMovement * 0.8}px)`
+                  }}
                 />
               </div>
             </div>
 
-            <motion.div 
+            <div 
               className="flex-col items-start self-stretch w-full flex-[0_0_auto] flex relative"
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={fadeUpVariants}
-              transition={{ delay: 0.2 }}
+              style={{
+                transform: `translateY(${imageMovement * 0.5}px)`
+              }}
             >
               <p className="relative max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
                 Deploy branded AI solutions in days, not months. Full customization, your branding, premium pricing. Agencies using Rallo report 3x revenue growth within 6 months.
@@ -128,8 +91,8 @@ export const ComponentNodeSection = (): JSX.Element => {
                   Start Building
                 </Button>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

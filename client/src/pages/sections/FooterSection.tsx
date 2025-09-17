@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
-import { useScrollAnimation, fadeUpVariants, staggerContainerVariants } from "@/hooks/useScrollAnimation";
+import { useUnifiedScrollAnimation } from "@/hooks/useUnifiedScrollAnimation";
 
 const footerSections = [
   {
@@ -56,16 +56,25 @@ const socialIcons = [
 ];
 
 export const FooterSection = (): JSX.Element => {
-  const { ref, isInView } = useScrollAnimation({ amount: 0.05 });
+  const { ref: scrollRef, progress } = useUnifiedScrollAnimation({
+    animationDistance: 400,
+    startOffset: 100,
+    debugName: "FooterSection"
+  });
+
+  // Animation calculations
+  const topMovement = progress * 50;
+  const sectionsMovement = progress * 70;
+  const bottomMovement = progress * 30;
   
   return (
-    <footer ref={ref} className="flex flex-col items-center gap-20 px-16 py-20 w-full bg-black">
+    <footer ref={scrollRef} className="flex flex-col items-center gap-20 px-16 py-20 w-full bg-black">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 w-full">
-        <motion.div 
+        <div 
           className="flex items-start justify-between w-full"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariants}
+          style={{
+            transform: `translateY(${topMovement}px)`
+          }}
         >
           <div className="flex-col max-w-[560px] items-start flex-1 grow flex gap-3">
             <h2 className="font-[number:var(--text-medium-semi-bold-font-weight)] text-[length:var(--text-medium-semi-bold-font-size)] leading-[var(--text-medium-semi-bold-line-height)] font-text-medium-semi-bold text-white tracking-[var(--text-medium-semi-bold-letter-spacing)] [font-style:var(--text-medium-semi-bold-font-style)]">
@@ -105,13 +114,13 @@ export const FooterSection = (): JSX.Element => {
               </a>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
+        <div 
           className="flex items-start gap-10 w-full"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={staggerContainerVariants}
+          style={{
+            transform: `translateY(${sectionsMovement}px)`
+          }}
         >
           <div className="flex flex-col items-start flex-1 grow">
             <div className="w-[60px] h-[60px]">
@@ -125,10 +134,9 @@ export const FooterSection = (): JSX.Element => {
           </div>
 
           {footerSections.map((section, index) => (
-            <motion.div
+            <div
               key={section.title}
               className="flex flex-col items-start gap-4 flex-1 grow"
-              variants={fadeUpVariants}
             >
               <h3 className="font-text-regular-semi-bold font-[number:var(--text-regular-semi-bold-font-weight)] text-white text-[length:var(--text-regular-semi-bold-font-size)] tracking-[var(--text-regular-semi-bold-letter-spacing)] leading-[var(--text-regular-semi-bold-line-height)] [font-style:var(--text-regular-semi-bold-font-style)]">
                 {section.title}
@@ -149,16 +157,15 @@ export const FooterSection = (): JSX.Element => {
                   </a>
                 ))}
               </nav>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div 
+        <div 
           className="flex flex-col items-start gap-8 w-full"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariants}
-          transition={{ delay: 0.3 }}
+          style={{
+            transform: `translateY(${bottomMovement}px)`
+          }}
         >
           <Separator className="w-full bg-white" />
 
@@ -191,7 +198,7 @@ export const FooterSection = (): JSX.Element => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

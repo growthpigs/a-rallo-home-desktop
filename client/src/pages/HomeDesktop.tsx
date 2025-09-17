@@ -4,6 +4,7 @@ import React, { lazy, Suspense } from "react";
 import { HeaderSection } from "./sections/HeaderSection";
 import { GeneralLayoutSection } from "./sections/GeneralLayoutSection";
 import { ScrollExpandSection } from "./sections/ScrollExpandSection";
+import { LayoutContainerSection } from "./sections/LayoutContainerSection";
 import { MainContentSection } from "./sections/MainContentSection";
 import { ContentWrapperSection } from "./sections/ContentWrapperSection";
 import { ImageGallerySection } from "./sections/ImageGallerySection";
@@ -28,9 +29,10 @@ export const HomeDesktop = (): JSX.Element => {
       <HeaderSection />
       <GeneralLayoutSection />
       <ScrollExpandSection />
-      <MainContentSection />
-      <ContentWrapperSection />
+      <LayoutContainerSection />
       <ImageGallerySection />
+      {/* ContentWrapperSection content moved to ImageGallerySection */}
+      <MainContentSection />
       <ComponentNodeSection />
       <FeatureHighlightSection />
       <ServiceOverviewSection />

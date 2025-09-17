@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { useScrollAnimation, slideInLeftVariants, slideInRightVariants, fadeUpVariants } from "@/hooks/useScrollAnimation";
+import { useUnifiedScrollAnimation } from "@/hooks/useUnifiedScrollAnimation";
 
 import macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3 from "@assets/macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3.png";
 
@@ -12,17 +11,26 @@ import finger_pressing_and_holding_floating_holographic_button_interface_element
 import ultra_macro_of_half_face_with_geometric_interface_overlay_on_one_side_translucent_technology_integr_h4l9v89ghecyj7gkytzs_3 from "@assets/ultra_macro_of_half_face_with_geometric_interface_overlay_on_one_side_translucent_technology_integr_h4l9v89ghecyj7gkytzs_3.png";
 
 export const TestimonialSection = (): JSX.Element => {
-  const { ref, isInView } = useScrollAnimation({ amount: 0.2 });
+  const { ref: scrollRef, progress } = useUnifiedScrollAnimation({
+    animationDistance: 400,
+    startOffset: 100,
+    debugName: "TestimonialSection"
+  });
+
+  // Animation calculations
+  const leftMovement = progress * 70;
+  const rightMovement = progress * 90;
+  const imageMovement = progress * 50;
   
   return (
-    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-[#e6e6e6]">
+    <section ref={scrollRef} className="flex flex-col items-center gap-20 px-16 py-28 relative w-full bg-[#e6e6e6]">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full">
         <div className="flex flex-col items-start gap-20 relative w-full">
-          <motion.div 
+          <div 
             className="flex-col max-w-screen-md items-start gap-8 w-full flex relative"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={slideInLeftVariants}
+            style={{
+              transform: `translateX(${leftMovement}px)`
+            }}
           >
             <div className="flex flex-col items-start gap-4 w-full relative">
               <div className="inline-flex items-center relative">
@@ -51,39 +59,43 @@ export const TestimonialSection = (): JSX.Element => {
                 Get Started
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         <div className="gap-16 w-full flex items-start relative">
-          <motion.img
+          <img
             className="flex-1 grow h-[624px] relative object-cover"
             alt="Placeholder image"
             src={macro_shot_looking_into_ear_with_holographic_interface_elements_visible_inside_geometric_audio_proc_ytgl1vivgheo30z6oz2k_3}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={fadeUpVariants}
-            transition={{ delay: 0.2 }}
+            style={{
+              transform: `translateY(${imageMovement}px)`
+            }}
           />
 
-          <motion.div 
+          <div 
             className="flex-col items-start gap-16 flex-1 grow flex relative"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={slideInRightVariants}
-            transition={{ delay: 0.3 }}
+            style={{
+              transform: `translateX(${-rightMovement}px)`
+            }}
           >
             <img
               className="w-60 h-60 relative object-cover"
               alt="Placeholder image"
               src={ultra_macro_of_half_face_with_geometric_interface_overlay_on_one_side_translucent_technology_integr_h4l9v89ghecyj7gkytzs_3}
+              style={{
+                transform: `translateY(${imageMovement * 0.8}px)`
+              }}
             />
 
             <img
               className="w-full h-[416px] relative object-cover"
               alt="Placeholder image"
               src={close_up_of_wrist_with_floating_interface_projecting_above_skin_geometric_elements_hovering_just_ab_hwr3891441e6jxr1qg05_1}
+              style={{
+                transform: `translateY(${imageMovement * 1.2}px)`
+              }}
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

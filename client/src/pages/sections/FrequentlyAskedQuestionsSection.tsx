@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { useScrollAnimation, fadeUpVariants, staggerContainerVariants } from "@/hooks/useScrollAnimation";
+import { useUnifiedScrollAnimation } from "@/hooks/useUnifiedScrollAnimation";
 
 interface FAQItem {
   id: string;
@@ -22,7 +22,7 @@ const FAQItemComponent: React.FC<FAQItemComponentProps> = ({ item, isOpen, onTog
         onClick={onToggle}
         className="w-full text-left p-6 hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
       >
-        <h3 className="font-text-medium-bold font-[number:var(--text-medium-bold-font-weight)] text-black text-[length:var(--text-medium-bold-font-size)] tracking-[var(--text-medium-bold-letter-spacing)] leading-[var(--text-medium-bold-line-height)] [font-style:var(--text-medium-bold-font-style)] pr-4">
+        <h3 className="font-['JetBrains_Mono'] font-semibold text-black text-lg tracking-wider leading-relaxed pr-4">
           {item.question}
         </h3>
         <span className={`text-2xl font-light transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}>
@@ -39,7 +39,7 @@ const FAQItemComponent: React.FC<FAQItemComponentProps> = ({ item, isOpen, onTog
             className="overflow-hidden"
           >
             <div className="px-6 pb-6">
-              <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+              <p className="font-['Inter'] font-normal text-black text-base tracking-normal leading-relaxed">
                 {item.answer}
               </p>
             </div>
@@ -51,8 +51,17 @@ const FAQItemComponent: React.FC<FAQItemComponentProps> = ({ item, isOpen, onTog
 };
 
 export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
-  const { ref, isInView } = useScrollAnimation({ amount: 0.2 });
+  const { ref: scrollRef, progress } = useUnifiedScrollAnimation({
+    animationDistance: 500,
+    startOffset: 120,
+    debugName: "FrequentlyAskedQuestionsSection"
+  });
   const [openItems, setOpenItems] = useState<Set<string>>(new Set());
+
+  // Animation calculations
+  const headerMovement = progress * 60;
+  const faqMovement = progress * 80;
+  const ctaMovement = progress * 40;
   
   const faqData: FAQItem[] = [
     {
@@ -111,13 +120,13 @@ export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
   const rightColumnFAQs = faqData.slice(midpoint);
 
   return (
-    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
+    <section ref={scrollRef} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
-        <motion.header 
+        <header 
           className="flex flex-col max-w-screen-md items-start gap-3 flex-[0_0_auto] relative w-full"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariants}
+          style={{
+            transform: `translateY(${headerMovement}px)`
+          }}
         >
           <h2 className="self-stretch text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]">
             FAQs
@@ -126,13 +135,13 @@ export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
             Find answers to common questions about Rallo and how our AI agents
             can help you.
           </p>
-        </motion.header>
+        </header>
 
-        <motion.div 
+        <div 
           className="w-full border border-black rounded-lg overflow-hidden bg-white"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariants}
+          style={{
+            transform: `translateY(${faqMovement}px)`
+          }}
         >
           <div className="flex">
             {/* Left Column */}
@@ -159,16 +168,15 @@ export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
+        <div 
           className="flex-col max-w-[560px] items-start gap-8 w-full flex-[0_0_auto] flex relative"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariants}
-          transition={{ delay: 0.4 }}
+          style={{
+            transform: `translateY(${ctaMovement}px)`
+          }}
         >
-          <div className="flex-col items-center gap-3 self-stretch w-full flex-[0_0_auto] flex relative">
+          <div className="flex-col items-start gap-3 self-stretch w-full flex-[0_0_auto] flex relative">
             <h3 className="self-stretch text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] relative font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
               Still have questions?
             </h3>
@@ -185,7 +193,7 @@ export const FrequentlyAskedQuestionsSection = (): JSX.Element => {
               Contact
             </Button>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

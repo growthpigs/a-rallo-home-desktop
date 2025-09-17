@@ -1,21 +1,31 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { useScrollAnimation, slideInLeftVariants, fadeUpVariants, scaleInVariants } from "@/hooks/useScrollAnimation";
 import { FastImage } from "@/components/FastImage";
+import { useUnifiedScrollAnimation } from "@/hooks/useUnifiedScrollAnimation";
 
 export const GeneralLayoutSection = (): JSX.Element => {
-  const { ref, isInView } = useScrollAnimation({ amount: 0.2 });
+  // Use unified scroll animation system (same as video mechanics)
+  const { ref: scrollRef, progress } = useUnifiedScrollAnimation({
+    animationDistance: 500, // Complete over 500px of scrolling
+    startOffset: 200, // Start 200px before element enters viewport
+    debugName: "GeneralLayout"
+  });
+  
+  // Calculate smooth movements (100-150px range)
+  const textMovement = progress * 120; // Text slides in from left
+  const imageMovement = progress * -100; // Image moves slightly left
+  const fadeOpacity = 0.3 + (progress * 0.7); // Fade from 30% to 100%
   
   return (
-    <section ref={ref} className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#000000] pt-[222px] pb-[222px]">
+    <section ref={scrollRef} className="flex flex-col items-center px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-[#000000]">
       <div className="flex flex-col max-w-screen-xl items-start gap-0.5 relative w-full flex-[0_0_auto]">
         <div className="flex items-start gap-16 relative self-stretch w-full flex-[0_0_auto]">
-          <motion.div 
-            className="flex flex-col w-[438px] items-start self-stretch relative"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={slideInLeftVariants}
+          <div 
+            className="flex flex-col w-[438px] items-start self-stretch relative transition-transform duration-300 ease-out"
+            style={{ 
+              transform: `translateX(${textMovement}px)`,
+              opacity: fadeOpacity
+            }}
           >
             <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
               <div className="inline-flex items-center relative flex-[0_0_auto]">
@@ -44,14 +54,15 @@ export const GeneralLayoutSection = (): JSX.Element => {
                 </Button>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           <div className="flex items-start gap-2 relative flex-1 grow">
-            <motion.div
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={scaleInVariants}
-              transition={{ delay: 0.3 }}
+            <div
+              className="transition-transform duration-300 ease-out"
+              style={{ 
+                transform: `translateX(${imageMovement}px) scale(${0.95 + progress * 0.05})`,
+                opacity: fadeOpacity
+              }}
             >
               <FastImage
                 className="w-[444px] h-[444px] object-cover"
@@ -61,7 +72,7 @@ export const GeneralLayoutSection = (): JSX.Element => {
                 height={444}
                 priority={true}
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
