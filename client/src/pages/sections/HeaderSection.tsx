@@ -105,15 +105,28 @@ export const HeaderSection = (): JSX.Element => {
       className="flex flex-col h-screen relative w-full bg-no-repeat overflow-hidden"
       data-testid="section-hero"
     >
-      {/* BACKGROUND: Static - no animations */}
-      <div
-        className="absolute inset-0 w-full h-full bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-          backgroundPosition: '85% center',
-          backgroundSize: 'cover'
-        }}
-      />
+      {/* BACKGROUND: Blue-transformed with disco lighting effect */}
+      <div className="absolute inset-0 w-full h-full">
+        {/* Background image with blue color transformation */}
+        <div
+          className="absolute inset-0 w-full h-full bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
+            backgroundPosition: '85% center',
+            backgroundSize: 'cover',
+            filter: 'hue-rotate(200deg) saturate(1.3) brightness(0.75) contrast(1.15)'
+          }}
+        />
+        {/* Blue overlay for disco lighting effect */}
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{
+            background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.7) 0%, rgba(59, 130, 246, 0.5) 50%, rgba(147, 197, 253, 0.4) 100%)',
+            mixBlendMode: 'multiply',
+            pointerEvents: 'none'
+          }}
+        />
+      </div>
       {/* Navigation Header */}
       <motion.nav 
         className={`flex items-center justify-between px-8 py-2 fixed top-0 left-0 right-0 z-50 ${
@@ -265,16 +278,30 @@ export const HeaderSection = (): JSX.Element => {
 
         {/* Mobile & Tablet: Focus on right side where eye is */}
         <motion.div 
-          className="md:hidden flex flex-col items-center justify-center h-full px-8 relative bg-cover"
-          style={{
-            backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
-            backgroundPosition: '95% 50%',
-            backgroundSize: 'cover'
-          }}
+          className="md:hidden flex flex-col items-center justify-center h-full px-8 relative"
           initial="hidden"
           animate="visible"
           variants={navBarDrop}
         >
+          {/* Mobile background with blue transformation */}
+          <div 
+            className="absolute inset-0 bg-cover"
+            style={{
+              backgroundImage: `url('https://p129.p0.n0.cdn.zight.com/items/NQuXl2mJ/e8b7ba2f-03c3-4abb-83b5-1a8961737b32.webp?source=client&v=bcb5de4901429c3e82ca5c71698fa6e3')`,
+              backgroundPosition: '95% 50%',
+              backgroundSize: 'cover',
+              filter: 'hue-rotate(200deg) saturate(1.3) brightness(0.75) contrast(1.15)'
+            }}
+          />
+          {/* Blue overlay for mobile disco lighting effect */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.7) 0%, rgba(59, 130, 246, 0.5) 50%, rgba(147, 197, 253, 0.4) 100%)',
+              mixBlendMode: 'multiply',
+              pointerEvents: 'none'
+            }}
+          />
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black/50"></div>
           
