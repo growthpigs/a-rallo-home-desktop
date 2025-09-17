@@ -96,7 +96,7 @@ export const ProductPage = (): JSX.Element => {
         </section>
 
         {/* Rallo Agent Section */}
-        <section className="flex flex-col items-center gap-20 relative self-stretch w-full flex-[0_0_auto] bg-white">
+        <section className="flex flex-col items-center relative self-stretch w-full flex-[0_0_auto] bg-white">
           <div className="items-start self-stretch flex relative w-full flex-[0_0_auto]">
             <div className="relative flex-1 self-stretch grow min-h-[400px] bg-gray-500 flex items-center justify-center">
               <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center">
@@ -104,7 +104,7 @@ export const ProductPage = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="flex-col items-start justify-center gap-8 pl-20 pr-16 py-28 flex-1 self-stretch grow flex relative">
+            <div className="flex-col items-start justify-center gap-8 px-16 py-28 flex-1 self-stretch grow flex relative">
               <div className="flex-col max-w-[560px] items-start gap-8 w-full flex-[0_0_auto] flex relative">
                 <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
                   <img
@@ -148,9 +148,9 @@ export const ProductPage = (): JSX.Element => {
         </section>
 
         {/* Rallo Chat Section */}
-        <section className="flex flex-col items-center gap-20 relative self-stretch w-full flex-[0_0_auto] bg-white">
+        <section className="flex flex-col items-center relative self-stretch w-full flex-[0_0_auto] bg-white">
           <div className="items-start self-stretch flex relative w-full flex-[0_0_auto]">
-            <div className="flex-col items-end justify-center gap-8 pl-16 pr-20 py-28 flex-1 self-stretch grow flex relative">
+            <div className="flex-col items-start justify-center gap-8 px-16 py-28 flex-1 self-stretch grow flex relative">
               <div className="flex-col max-w-[560px] items-start gap-8 w-full flex-[0_0_auto] flex relative">
                 <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
                   <img
@@ -200,7 +200,7 @@ export const ProductPage = (): JSX.Element => {
         </section>
 
         {/* Rallo Voice Section */}
-        <section className="flex flex-col items-center gap-20 relative self-stretch w-full flex-[0_0_auto] bg-white">
+        <section className="flex flex-col items-center relative self-stretch w-full flex-[0_0_auto] bg-white">
           <div className="items-start self-stretch flex relative w-full flex-[0_0_auto]">
             <div className="relative flex-1 self-stretch grow min-h-[400px] bg-gray-500 flex items-center justify-center">
               <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center">
@@ -208,7 +208,7 @@ export const ProductPage = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="flex-col items-start justify-center gap-8 pl-20 pr-16 py-28 flex-1 self-stretch grow flex relative">
+            <div className="flex-col items-start justify-center gap-8 px-16 py-28 flex-1 self-stretch grow flex relative">
               <div className="flex-col max-w-[560px] items-start gap-8 w-full flex-[0_0_auto] flex relative">
                 <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
                   <img
