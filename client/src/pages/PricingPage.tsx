@@ -1,16 +1,21 @@
 import { HeaderSection } from "./sections/HeaderSection";
 import { FooterSection } from "./sections/FooterSection";
 
+// Import pricing sections from the extracted design
+import { PricingHeroSection } from "./sections/PricingHeroSection";
+import { PricingOptionsSection } from "./sections/PricingOptionsSection";
+import { PricingComparisonSection } from "./sections/PricingComparisonSection";
+import { PricingTestimonialSection } from "./sections/PricingTestimonialSection";
+
 export const PricingPage = (): JSX.Element => {
   return (
     <div className="flex flex-col min-h-screen w-full">
       <HeaderSection />
       <main className="flex-1">
-        {/* Pricing page content will go here */}
-        <div className="container mx-auto px-8 py-16">
-          <h1 className="text-4xl font-bold mb-8">Pricing</h1>
-          <p>Pricing page content will be integrated from your Replit design.</p>
-        </div>
+        <PricingHeroSection />
+        <PricingOptionsSection />
+        <PricingComparisonSection />
+        <PricingTestimonialSection />
       </main>
       <FooterSection />
     </div>
