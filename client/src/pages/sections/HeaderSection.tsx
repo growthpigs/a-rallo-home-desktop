@@ -145,6 +145,17 @@ export const HeaderSection = (): JSX.Element => {
         >
           <motion.div variants={dropDownFromAbove}>
             <Link 
+              href="/" 
+              className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
+                isScrolled ? 'text-black' : 'text-white'
+              }`} 
+              data-testid="nav-home"
+            >
+              HOME
+            </Link>
+          </motion.div>
+          <motion.div variants={dropDownFromAbove}>
+            <Link 
               href="/product" 
               className={`font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 ${
                 isScrolled ? 'text-black' : 'text-white'

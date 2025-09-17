@@ -77,6 +77,15 @@ export const NavigationHeader = (): JSX.Element => {
       >
         <motion.div variants={dropDownFromAbove}>
           <Link 
+            href="/" 
+            className="font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
+            data-testid="nav-home"
+          >
+            HOME
+          </Link>
+        </motion.div>
+        <motion.div variants={dropDownFromAbove}>
+          <Link 
             href="/product" 
             className="font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
             data-testid="nav-product"
