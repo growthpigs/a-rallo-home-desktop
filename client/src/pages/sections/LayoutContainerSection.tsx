@@ -31,7 +31,7 @@ export const LayoutContainerSection = (): JSX.Element => {
   // Removed slide animations for centered layout
   
   return (
-    <section ref={scrollRef} className="flex flex-col items-center relative w-full" style={{ backgroundColor: '#ded8ca', paddingTop: '120px', paddingBottom: '120px', minHeight: '575px' }}>
+    <section ref={scrollRef} className="flex flex-col items-center relative w-full" style={{ backgroundColor: '#ded8ca', paddingTop: '120px', paddingBottom: '60px', minHeight: '575px' }}>
       <div className="flex flex-col items-center px-16 w-full">
         <div className="flex flex-col max-w-screen-xl items-center w-full">
           <div className="flex flex-col max-w-screen-md items-center gap-2 w-full">

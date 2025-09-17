@@ -79,10 +79,7 @@ export const PersistentLazyImage: React.FC<PersistentLazyImageProps> = ({
       className={`${className} relative`}
       style={{ width, height }}
     >
-      {/* Placeholder shown while loading */}
-      {!hasLoaded && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />
-      )}
+      {/* Placeholder - REMOVED per no-fade requirement */}
       
       {/* Render image once triggered, never unmount */}
       {shouldRender && (
@@ -95,7 +92,7 @@ export const PersistentLazyImage: React.FC<PersistentLazyImageProps> = ({
           <img
             src={src}
             alt={alt}
-            className={`${className} ${hasLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+            className={`${className} opacity-100`}  // NO FADE - Always 100% opacity
             width={width}
             height={height}
             onLoad={handleImageLoad}

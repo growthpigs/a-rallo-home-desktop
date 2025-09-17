@@ -341,3 +341,43 @@ h1, h2, h3, h4, h5, h6,
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+/* Apple-style elastic scroll animations */
+@layer utilities {
+  /* Smooth elastic transitions */
+  .elastic-transform {
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .smooth-transform {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .spring-transform {
+    transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  /* Apple's signature easing */
+  .apple-ease {
+    transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+  }
+  
+  /* Ultra-smooth opacity transitions */
+  .smooth-opacity {
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  /* Hover effects with elastic bounce */
+  .elastic-hover {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .elastic-hover:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+  
+  /* Disable transitions during scroll for performance */
+  .scrolling * {
+    transition: none !important;
+  }
+}

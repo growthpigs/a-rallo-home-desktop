@@ -79,17 +79,14 @@ export const FastImage: React.FC<FastImageProps> = ({
       className={`${className} relative overflow-hidden`}
       style={{ width, height }}
     >
-      {/* Blur placeholder */}
-      {!hasLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
-      )}
+      {/* Blur placeholder - REMOVED per no-fade requirement */}
       
       {/* Actual image */}
       {isVisible && (
         <img
           src={publicSrc}
           alt={alt}
-          className={`${className} ${hasLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500 ease-out`}
+          className={`${className} opacity-100`}  // NO FADE - Always 100% opacity
           width={width}
           height={height}
           onLoad={handleImageLoad}

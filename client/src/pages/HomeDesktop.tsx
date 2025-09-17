@@ -9,9 +9,9 @@ import { MainContentSection } from "./sections/MainContentSection";
 import { ContentWrapperSection } from "./sections/ContentWrapperSection";
 import { ImageGallerySection } from "./sections/ImageGallerySection";
 import { ComponentNodeSection } from "./sections/ComponentNodeSection";
-import { FeatureHighlightSection } from "./sections/FeatureHighlightSection";
+// Removed FeatureHighlightSection - AI THAT SPEAKS EVERY LANGUAGE section
 import { ServiceOverviewSection } from "./sections/ServiceOverviewSection";
-import { TestimonialSection } from "./sections/TestimonialSection";
+// import { TestimonialSection } from "./sections/TestimonialSection";  // HIDDEN: AI THAT HEARS WHAT YOU DON'T SAY
 import { CallToActionSection } from "./sections/CallToActionSection";
 import { FrequentlyAskedQuestionsSection } from "./sections/FrequentlyAskedQuestionsSection";
 import { FooterSection } from "./sections/FooterSection";
@@ -32,11 +32,10 @@ export const HomeDesktop = (): JSX.Element => {
       <LayoutContainerSection />
       <ImageGallerySection />
       {/* ContentWrapperSection content moved to ImageGallerySection */}
-      <MainContentSection />
       <ComponentNodeSection />
-      <FeatureHighlightSection />
+      <MainContentSection />
       <ServiceOverviewSection />
-      <TestimonialSection />
+      {/* <TestimonialSection /> HIDDEN: AI THAT HEARS WHAT YOU DON'T SAY */}
       <CallToActionSection />
       <FrequentlyAskedQuestionsSection />
       <FooterSection />

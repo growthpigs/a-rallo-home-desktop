@@ -195,11 +195,17 @@ export const useSmoothScrollAnimation = (options: SmoothScrollOptions = {}) => {
   return { 
     ref: containerRef, 
     progress: scrollProgress,
-    // Helper functions for common animations
-    translateX: (distance: number) => scrollProgress * distance,
-    translateY: (distance: number) => scrollProgress * distance,
+    velocity: scrollVelocity,
+    // Helper functions for common animations with velocity awareness
+    translateX: (distance: number) => scrollProgress * distance * (1 + scrollVelocity * 0.0001),
+    translateY: (distance: number) => scrollProgress * distance * (1 + scrollVelocity * 0.0001),
     opacity: (from: number = 0, to: number = 1) => from + scrollProgress * (to - from),
-    scale: (from: number = 0.8, to: number = 1) => from + scrollProgress * (to - from)
+    scale: (from: number = 0.8, to: number = 1) => from + scrollProgress * (to - from),
+    // Elastic transform with velocity
+    elasticTransform: (distance: number) => {
+      const velocityMultiplier = 1 + Math.min(scrollVelocity * 0.0002, 0.5);
+      return scrollProgress * distance * velocityMultiplier;
+    }
   };
 };
 

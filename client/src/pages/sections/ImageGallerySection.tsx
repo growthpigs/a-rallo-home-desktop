@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { PersistentLazyImage } from "@/components/PersistentLazyImage";
+// Removed PersistentLazyImage - using regular img tags for NO FADE
 import { DemoModal } from "@/components/DemoModal";
-import { useIndividualScrollAnimation } from "@/hooks/useIndividualScrollAnimation";
+import { useScrollLinkedAnimation } from "@/hooks/useScrollLinkedAnimation";
 import { ChevronRightIcon } from "lucide-react";
 import { Waves } from "@/components/ui/wave-background";
 
@@ -56,22 +56,33 @@ const galleryItems = [
 ];
 
 // Individual Card Component with its own scroll animation
-const ProductCard = ({ item, direction, waveApi, isStaggered }: { 
+const ProductCard = ({ item, direction, waveApi }: { 
   item: typeof galleryItems[0], 
   direction: 'left' | 'right',
-  waveApi: React.MutableRefObject<{ createRipple: (x: number, y: number) => void } | null>,
-  isStaggered?: boolean // For the right-side cards that need extra distance
+  waveApi: React.MutableRefObject<{ createRipple: (x: number, y: number) => void } | null>
 }) => {
   const [activeDemo, setActiveDemo] = useState<'video' | 'chat' | 'voice' | null>(null);
   const [hasTriggeredRipple, setHasTriggeredRipple] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const mountCountRef = useRef(0);
   
-  // Each card gets its own individual scroll animation
-  const { ref, progress } = useIndividualScrollAnimation({
-    threshold: 0.5, // Cards trigger at middle of viewport for natural flow
-    animationDistance: 800, // Much longer animation distance for ultra-smooth floating
-    debugName: `ProductCard-${item.title}`
-  });
+  // CRITICAL DEBUG: Track mounting/unmounting
+  useEffect(() => {
+    mountCountRef.current++;
+    console.log(`🔵 [${item.title}] MOUNTED - Mount count: ${mountCountRef.current}`);
+    
+    return () => {
+      console.log(`🔴 [${item.title}] UNMOUNTING!`);
+    };
+  }, [item.title]);
+  
+  // Debug modal state
+  useEffect(() => {
+    console.log('🟢 Modal state changed:', item.title, 'activeDemo:', activeDemo);
+  }, [activeDemo, item.title]);
+  
+  // Each card gets direct scroll-linked animation - every pixel of scroll moves elements proportionally
+  const { ref, progress } = useScrollLinkedAnimation(`ProductCard-${item.title}`);
   
   // Trigger ripple effect when card animates in
   useEffect(() => {
@@ -97,37 +108,60 @@ const ProductCard = ({ item, direction, waveApi, isStaggered }: {
   
   let translateX: number;
   
-  // Apply smooth, Apple-like easing (cubic ease for natural motion)
-  const smoothEase = (t: number) => {
-    // Cubic bezier approximation of Apple's smooth scroll
-    return t < 0.5
-      ? 4 * t * t * t
-      : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  };
+  // Use actual scroll progress for animation
+  const easedProgress = progress; // Use real scroll progress
   
-  // Apply lerp for floating effect
-  const [smoothedProgress, setSmoothedProgress] = useState(0);
+  // ENHANCED DEBUG LOGGING - Find the opacity issue!
   useEffect(() => {
-    const lerp = 0.15; // Low value for water-like floating
-    setSmoothedProgress(prev => prev + (progress - prev) * lerp);
-  }, [progress]);
-  
-  const easedProgress = smoothEase(smoothedProgress);
+    if (cardRef.current) {
+      const computedStyle = window.getComputedStyle(cardRef.current);
+      const opacity = computedStyle.opacity;
+      const transition = computedStyle.transition;
+      const parentElement = cardRef.current.parentElement;
+      const parentStyles = parentElement ? window.getComputedStyle(parentElement) : null;
+      
+      // Check for ANY transition properties
+      if (transition && transition !== 'none') {
+        console.error(`🚨 [${item.title}] TRANSITION DETECTED: ${transition}`);
+      }
+      
+      // Check parent transitions
+      if (parentStyles && parentStyles.transition !== 'none') {
+        console.error(`🚨 [${item.title}] PARENT TRANSITION: ${parentStyles.transition}`);
+      }
+      
+      // Check opacity changes
+      if (opacity !== '1' && opacity !== '1.0') {
+        console.warn(`⚠️ [${item.title}] OPACITY: ${opacity} (Progress: ${progress.toFixed(3)})`);
+        
+        // Check all ancestor elements
+        let ancestor = cardRef.current.parentElement;
+        let level = 1;
+        while (ancestor && level <= 5) {
+          const ancestorOpacity = window.getComputedStyle(ancestor).opacity;
+          if (ancestorOpacity !== '1') {
+            console.error(`🔥 [${item.title}] ANCESTOR ${level} has opacity: ${ancestorOpacity}`);
+          }
+          ancestor = ancestor.parentElement;
+          level++;
+        }
+      }
+    }
+  }, [progress, item.title]);
   
   if (direction === 'left') {
-    // Left cards START spread out and MOVE IN
-    const startX = -150;
-    const endX = 0; // Final position
+    // Left cards: subtle movement from slightly off-page
+    const startX = -100; // Start 100px off to the left
+    const endX = 0; // End at normal position
     translateX = startX + (easedProgress * (endX - startX));
   } else {
-    // Right cards START spread out and MOVE IN
-    const startX = isStaggered ? 300 : 200; // Staggered cards start further
-    const endX = 0; // Final position
+    // Right cards: subtle movement from slightly off-page
+    const startX = 100; // Start 100px off to the right
+    const endX = 0; // End at normal position
     translateX = startX + (easedProgress * (endX - startX));
   }
   
-  // Very subtle scale for smooth appearance
-  const scale = 0.92 + (easedProgress * 0.08); // Scale from 92% to 100% smoothly
+  // NO SCALING - just simple slide-in at 100% opacity and size
   
   return (
     <>
@@ -139,18 +173,27 @@ const ProductCard = ({ item, direction, waveApi, isStaggered }: {
         }}
         className="flex flex-col items-start gap-8 relative"
         style={{ 
-          transform: `translateX(${translateX}px) scale(${scale})`
+          transform: `translateX(${translateX}px)`, // Use calculated animation position
+          opacity: 1,  // Keep 100% OPACITY
+          transition: 'none',  // No CSS transitions - using scroll-linked animation
+          willChange: 'transform'  // Only animate transform, NOT opacity
         }}
+        data-no-transition="true"
+        data-mount-count={mountCountRef.current}
       >
         <Card className={`flex-col ${item.maxWidth} items-start gap-2 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
           <CardContent className="p-0 w-full">
             <div>
-              <PersistentLazyImage
-                className={`w-[400px] ${item.imageHeight} relative object-cover`}
+              {/* Using regular img tag to avoid ALL lazy loading and opacity effects */}
+              <img
+                className={`w-[400px] ${item.imageHeight} relative object-cover opacity-100`}
                 alt={item.title}
                 src={item.image}
                 width={400}
                 height={400}
+                loading="eager"  // Force immediate loading
+                decoding="sync"   // Force synchronous decoding
+                style={{ opacity: 1 }}  // Double-ensure no opacity
               />
             </div>
             <div className="flex-col items-start gap-3 w-full flex-[0_0_auto] flex relative mt-6">
@@ -170,7 +213,10 @@ const ProductCard = ({ item, direction, waveApi, isStaggered }: {
               </p>
               <Button
                 variant="ghost"
-                onClick={() => setActiveDemo(item.demoType)}
+                onClick={() => {
+                  console.log('🔴 Demo button clicked!', item.title, item.demoType);
+                  setActiveDemo(item.demoType);
+                }}
                 className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] w-fit"
               >
                 Click for Demo
@@ -192,11 +238,7 @@ const ProductCard = ({ item, direction, waveApi, isStaggered }: {
 
 // Header Component with its own scroll animation
 const SectionHeader = () => {
-  const { ref, progress } = useIndividualScrollAnimation({
-    threshold: 0.4, // Natural trigger point
-    animationDistance: 400, // Longer for smooth floating
-    debugName: "SectionHeader"
-  });
+  const { ref, progress } = useScrollLinkedAnimation("SectionHeader");
   
   // Apply smooth easing for floating effect
   const smoothEase = (t: number) => {
@@ -265,7 +307,7 @@ export const ImageGallerySection = (): JSX.Element => {
   });
   
   return (
-    <section className="pt-20 pb-0 flex flex-col items-center relative w-full overflow-hidden">
+    <section className="pt-[240px] pb-0 flex flex-col items-center relative w-full overflow-hidden">
       {/* Visible wave background at bottom */}
       <Waves 
         className="absolute inset-0 z-0"
@@ -276,14 +318,15 @@ export const ImageGallerySection = (): JSX.Element => {
         isOverlay={false}
       />
       
-      {/* Invisible wave overlay at top for mouse capture */}
+      {/* Invisible wave overlay - DISABLED to allow button clicks
       <Waves 
-        className="absolute inset-0 z-20"
+        className="absolute inset-0 z-20 pointer-events-none"
         lineColor="transparent"
         backgroundColor="transparent"
         sharedMouseRef={sharedMouseRef}
         isOverlay={true}
       />
+      */}
       
       
       {/* Content container with padding - NO BACKGROUND so waves show through */}
@@ -293,20 +336,23 @@ export const ImageGallerySection = (): JSX.Element => {
         {/* Header with individual animation */}
         <SectionHeader />
 
-        {/* Grid with individual card animations - creating the "concertina" effect */}
+        {/* Grid with staggered vertical positioning - deliberate offset */}
         <div className="grid grid-cols-2 gap-16 w-full">
-          {/* Top Row */}
+          {/* Top Row - right card offset down */}
           <ProductCard item={galleryItems[0]} direction="left" waveApi={waveApiRef} />
           <div className="pt-[200px] pb-0 px-0">
-            <ProductCard item={galleryItems[1]} direction="right" waveApi={waveApiRef} isStaggered={true} />
+            <ProductCard item={galleryItems[1]} direction="right" waveApi={waveApiRef} />
           </div>
 
-          {/* Bottom Row */}
+          {/* Bottom Row - right card offset down */}
           <ProductCard item={galleryItems[2]} direction="left" waveApi={waveApiRef} />
           <div className="pt-[200px] pb-0 px-0">
-            <ProductCard item={galleryItems[3]} direction="right" waveApi={waveApiRef} isStaggered={true} />
+            <ProductCard item={galleryItems[3]} direction="right" waveApi={waveApiRef} />
           </div>
         </div>
+        
+        {/* Extra spacing at bottom */}
+        <div className="h-[100px]"></div>
       </div>
       </div>
     </section>

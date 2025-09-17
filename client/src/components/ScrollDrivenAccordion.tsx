@@ -60,12 +60,12 @@ export const ScrollDrivenAccordion: React.FC<ScrollDrivenAccordionProps> = ({
       const tabIndex = Math.floor(tabProgress);
       const tabSubProgress = tabProgress - tabIndex; // Progress within current tab section
       
-      // BRIEF but EXPONENTIAL resistance thresholds - increasingly harder
-      const resistanceThresholds = [0.75, 0.82, 0.87, 0.91, 0.94]; // Much higher thresholds = more resistance
-      const currentThreshold = resistanceThresholds[tabIndex] || 0.94; // Final tab has most resistance
+      // SPRINGY resistance thresholds - more forgiving but bouncy
+      const resistanceThresholds = [0.65, 0.70, 0.75]; // Lower thresholds = easier progression
+      const currentThreshold = resistanceThresholds[tabIndex] || 0.75; // More forgiving
       
-      // Create exponentially harder elastic effect - brief but noticeable
-      const elasticPower = 3.5 + (tabIndex * 0.8); // Much more dramatic exponential curves
+      // Create springy elastic effect with bounce
+      const elasticPower = 2.2 + (tabIndex * 0.3); // Much gentler curves
       const elasticProgress = Math.pow(tabSubProgress, elasticPower);
       
       let newActiveTab = tabIndex + 1; // Start with current section
@@ -111,7 +111,7 @@ export const ScrollDrivenAccordion: React.FC<ScrollDrivenAccordionProps> = ({
       className="relative w-full"
       style={{ 
         // ELASTIC scroll distance for longer pauses and elasticity effect
-        height: `calc(100vh + ${tabs.length * 400}px)`, // Each tab gets 400px for elasticity
+        height: `calc(100vh + ${tabs.length * 700}px)`, // Each tab gets 700px for proper scroll timing
       }}
       data-name="ScrollDrivenAccordion"
     >
@@ -132,7 +132,7 @@ export const ScrollDrivenAccordion: React.FC<ScrollDrivenAccordionProps> = ({
               key={tab.id}
               className={`
                 relative border-r border-solid border-black last:border-r-0 
-                transition-all duration-700 ease-out
+                transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)]
                 ${isActive ? 'flex-1' : 'flex-none w-[120px]'}
               `}
               style={{
@@ -140,39 +140,54 @@ export const ScrollDrivenAccordion: React.FC<ScrollDrivenAccordionProps> = ({
                 flex: isActive ? '1 1 auto' : '0 0 120px'
               }}
             >
-              {/* Tab Number & Title (Always Visible) */}
-              <div className={`absolute z-20 ${isActive ? 'top-8 left-8' : 'bottom-8 left-8'}`}>
-                <div className="flex flex-col gap-2">
-                  <span className={`font-mono text-black/80 font-bold transition-all duration-500 ease-out ${
-                    isActive ? 'text-4xl' : 'text-6xl'
-                  }`}>
-                    {tab.number}
-                  </span>
+              {/* Tab Number (Always at Top) - JetBrains Mono */}
+              <div className="absolute top-8 left-8 z-20">
+                <span className={`font-bold transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-6xl ${
+                  isActive ? 'text-[#fd815aff]' : 'text-black/80'
+                }`} style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                  {tab.number}
+                </span>
+              </div>
+              
+              {/* Tab Title (Inactive only - vertical, at bottom) */}
+              {!isActive && (
+                <div className="absolute bottom-8 left-8 z-20">
                   <h3 
-                    className={`
+                    className="
                       font-heading-h4 font-[number:var(--heading-h4-font-weight)] 
                       text-black text-[length:var(--heading-h4-font-size)] 
                       tracking-[var(--heading-h4-letter-spacing)] 
                       leading-[var(--heading-h4-line-height)]
-                    `}
+                    "
                     style={{
-                      writingMode: isActive ? 'horizontal-tb' : 'vertical-rl',
-                      textOrientation: isActive ? 'mixed' : 'mixed',
-                      transform: isActive ? 'rotate(0deg)' : 'rotate(180deg)'
+                      writingMode: 'vertical-rl',
+                      textOrientation: 'mixed',
+                      transform: 'rotate(180deg)'
                     }}
                   >
                     {tab.title}
                   </h3>
                 </div>
-              </div>
+              )}
 
               {/* Active Tab Content */}
               {isActive && (
                 <div className="flex h-full">
                   {/* Left Side: Content */}
                   <div className="flex-1 p-8 pt-32 flex flex-col justify-center">
-                    <div className="max-w-md">
-                      <p className="text-[length:var(--text-large-normal-font-size)] leading-[var(--text-large-normal-line-height)] font-text-large-normal font-[number:var(--text-large-normal-font-weight)] text-black">
+                    <div className="max-w-md space-y-4">
+                      {/* Title positioned just above content */}
+                      <h3 className="
+                        font-heading-h4 font-[number:var(--heading-h4-font-weight)] 
+                        text-black text-[length:var(--heading-h4-font-size)] 
+                        tracking-[var(--heading-h4-letter-spacing)] 
+                        leading-[var(--heading-h4-line-height)]
+                      ">
+                        {tab.title}
+                      </h3>
+                      
+                      {/* Content text - much smaller size */}
+                      <p className="text-[length:var(--text-small-normal-font-size)] leading-[var(--text-small-normal-line-height)] font-text-small-normal font-[number:var(--text-small-normal-font-weight)] text-black">
                         {tab.content}
                       </p>
                     </div>
