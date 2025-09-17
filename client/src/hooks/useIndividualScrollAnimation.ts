@@ -52,7 +52,7 @@ export const useIndividualScrollAnimation = (options: IndividualScrollAnimationO
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [animationDistance, threshold, debugName, progress]);
+  }, [animationDistance, threshold, debugName]); // Remove 'progress' from dependencies to prevent infinite loop
 
   return { ref: elementRef, progress };
 };

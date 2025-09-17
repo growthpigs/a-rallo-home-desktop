@@ -19,22 +19,32 @@ export const useUnifiedScrollAnimation = (options: UnifiedScrollAnimationOptions
       if (!containerRef.current) return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const elementTop = containerRect.top;
+      const elementHeight = containerRect.height;
       
-      // Calculate progress based on how much we've scrolled through the container
-      // Same system as video: negative top means we've scrolled past the top
-      const scrolledIntoContainer = -containerRect.top + startOffset;
+      // Calculate trigger point - element should animate when it's in the middle of viewport
+      // Start when element top reaches 75% of viewport height (closer to center)
+      const triggerPoint = windowHeight * 0.75;
       
-      // Calculate progress over the animation distance
-      const progress = Math.min(1, Math.max(0, scrolledIntoContainer / animationDistance));
+      // How far we've scrolled past the trigger point
+      const scrolledPastTrigger = triggerPoint - elementTop;
+      
+      // Apply startOffset and calculate progress
+      const adjustedProgress = (scrolledPastTrigger - startOffset) / animationDistance;
+      
+      // Clamp between 0 and 1
+      const progress = Math.min(1, Math.max(0, adjustedProgress));
       setScrollProgress(progress);
       
       // Debug logging when progress changes significantly
       if (Math.abs(scrollProgress - progress) > 0.05) {
         console.log(`📊 [${debugName}] Scroll progress:`, {
           progress: progress.toFixed(2),
-          scrolledIntoContainer,
-          animationDistance,
-          containerTop: containerRect.top
+          elementTop,
+          triggerPoint,
+          scrolledPastTrigger,
+          animationDistance
         });
       }
     };

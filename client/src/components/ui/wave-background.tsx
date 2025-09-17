@@ -129,14 +129,23 @@ export function Waves({
   tension = 0.005,
   maxCursorMove = 100,
   className,
-}: WavesProps) {
+  onRef,
+  isOverlay = false,
+  sharedMouseRef,
+}: WavesProps & { 
+  onRef?: (api: { createRipple: (x: number, y: number) => void }) => void;
+  isOverlay?: boolean;
+  sharedMouseRef?: React.MutableRefObject<{ x: number; y: number } | null>;
+}) {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const boundingRef = useRef({ width: 0, height: 0, left: 0, top: 0 })
   const noiseRef = useRef(new Noise(Math.random()))
   const linesRef = useRef<any[]>([])
-  const mouseRef = useRef({
+  
+  // Use shared mouse ref if provided (for twin waves), otherwise create local one
+  const localMouseRef = useRef({
     x: -10,
     y: 0,
     lx: 0,
@@ -148,7 +157,10 @@ export function Waves({
     a: 0,
     set: false,
   })
+  const mouseRef = sharedMouseRef ? sharedMouseRef : localMouseRef
+  
   const animationRef = useRef<number>()
+  const updateMouseRef = useRef<((x: number, y: number) => void) | null>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -243,27 +255,35 @@ export function Waves({
       if (!ctx) return
       
       ctx.clearRect(0, 0, width, height)
-      ctx.beginPath()
-      ctx.strokeStyle = lineColor
-      linesRef.current.forEach((points) => {
-        let p1 = moved(points[0], false)
-        ctx.moveTo(p1.x, p1.y)
-        points.forEach((p, idx) => {
-          const isLast = idx === points.length - 1
-          p1 = moved(p, !isLast)
-          const p2 = moved(
-            points[idx + 1] || points[points.length - 1],
-            !isLast,
-          )
-          ctx.lineTo(p1.x, p1.y)
-          if (isLast) ctx.moveTo(p2.x, p2.y)
+      
+      // Only draw lines if not an overlay (overlay is invisible)
+      if (!isOverlay) {
+        ctx.beginPath()
+        ctx.strokeStyle = lineColor
+        linesRef.current.forEach((points) => {
+          let p1 = moved(points[0], false)
+          ctx.moveTo(p1.x, p1.y)
+          points.forEach((p, idx) => {
+            const isLast = idx === points.length - 1
+            p1 = moved(p, !isLast)
+            const p2 = moved(
+              points[idx + 1] || points[points.length - 1],
+              !isLast,
+            )
+            ctx.lineTo(p1.x, p1.y)
+            if (isLast) ctx.moveTo(p2.x, p2.y)
+          })
         })
-      })
-      ctx.stroke()
+        ctx.stroke()
+      }
     }
 
     function tick(t: number) {
       const mouse = mouseRef.current
+      if (!mouse) {
+        console.error('❌ No mouse ref in tick!');
+        return;
+      }
 
       mouse.sx += (mouse.x - mouse.sx) * 0.1
       mouse.sy += (mouse.y - mouse.sy) * 0.1
@@ -277,6 +297,18 @@ export function Waves({
       mouse.lx = mouse.x
       mouse.ly = mouse.y
       mouse.a = Math.atan2(dy, dx)
+
+      // Debug: Log significant mouse movement
+      if (d > 2) { // Lower threshold to see any movement
+        console.log(`🌊 Wave ${isOverlay ? 'OVERLAY' : 'VISIBLE'} detecting movement:`, {
+          velocity: d.toFixed(1),
+          mouseX: mouse.x.toFixed(0),
+          mouseY: mouse.y.toFixed(0),
+          smoothX: mouse.sx.toFixed(0),
+          smoothY: mouse.sy.toFixed(0),
+          isShared: !!sharedMouseRef
+        });
+      }
 
       if (container) {
         container.style.setProperty("--x", `${mouse.sx}px`)
@@ -293,7 +325,7 @@ export function Waves({
       setLines()
     }
     function onMouseMove(e: MouseEvent) {
-      updateMouse(e.pageX, e.pageY)
+      updateMouse(e.clientX, e.clientY)
     }
     function onTouchMove(e: TouchEvent) {
       e.preventDefault()
@@ -302,9 +334,29 @@ export function Waves({
     }
     function updateMouse(x: number, y: number) {
       const mouse = mouseRef.current
+      if (!mouse) {
+        console.error('❌ No mouse ref available!');
+        return;
+      }
+      
       const b = boundingRef.current
+      
+      // Calculate canvas coordinates
       mouse.x = x - b.left
-      mouse.y = y - b.top + window.scrollY
+      mouse.y = y - b.top
+      
+      // Debug logging
+      if (Math.random() < 0.05) { // Log 5% of updates
+        console.log('📍 Mouse position updated:', {
+          isOverlay,
+          canvasX: mouse.x,
+          canvasY: mouse.y,
+          boundingLeft: b.left,
+          boundingTop: b.top,
+          isShared: !!sharedMouseRef
+        });
+      }
+      
       if (!mouse.set) {
         mouse.sx = mouse.x
         mouse.sy = mouse.y
@@ -313,21 +365,63 @@ export function Waves({
         mouse.set = true
       }
     }
+    
+    // Store updateMouse in ref so it can be accessed from outside useEffect
+    updateMouseRef.current = updateMouse
+
+    // Create ripple effect at specific position
+    function createRipple(x: number, y: number) {
+      const b = boundingRef.current
+      const lines = linesRef.current
+      
+      // Convert page coordinates to canvas coordinates
+      const canvasX = x - b.left
+      const canvasY = y - b.top
+      
+      // Create disturbance at this position
+      lines.forEach((pts) => {
+        pts.forEach((p: any) => {
+          const dx = p.x - canvasX
+          const dy = p.y - canvasY
+          const dist = Math.hypot(dx, dy)
+          
+          // Create ripple effect within radius
+          if (dist < 200) {
+            const force = (1 - dist / 200) * 50
+            const angle = Math.atan2(dy, dx)
+            p.cursor.vx += Math.cos(angle) * force * 0.5
+            p.cursor.vy += Math.sin(angle) * force * 0.5
+          }
+        })
+      })
+    }
+
+    // Expose API via ref callback
+    if (onRef) {
+      onRef({ createRipple })
+    }
 
     setSize()
     setLines()
     animationRef.current = requestAnimationFrame(tick)
     window.addEventListener("resize", onResize)
-    window.addEventListener("mousemove", onMouseMove)
-    window.addEventListener("touchmove", onTouchMove, { passive: false })
+    
+    // Only add global mouse listeners for the overlay
+    if (isOverlay) {
+      window.addEventListener("mousemove", onMouseMove)
+      window.addEventListener("touchmove", onTouchMove, { passive: false })
+      console.log('🎯 Overlay: Added global mouse listeners');
+    }
 
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
       window.removeEventListener("resize", onResize)
-      window.removeEventListener("mousemove", onMouseMove)
-      window.removeEventListener("touchmove", onTouchMove)
+      if (isOverlay) {
+        window.removeEventListener("mousemove", onMouseMove)
+        window.removeEventListener("touchmove", onTouchMove)
+      }
     }
   }, [
     lineColor,
@@ -341,13 +435,40 @@ export function Waves({
     maxCursorMove,
     xGap,
     yGap,
+    isOverlay,
   ])
+
+  // Debug: Log component mount
+  useEffect(() => {
+    console.log(`🎯 Wave Component Mounted:`, {
+      isOverlay,
+      hasSharedRef: !!sharedMouseRef,
+      className
+    });
+  }, []);
 
   return (
     <div
       ref={containerRef}
+      onMouseMove={(e) => {
+        // Only the overlay should capture events
+        if (isOverlay && updateMouseRef.current) {
+          updateMouseRef.current(e.clientX, e.clientY);
+        }
+      }}
+      onMouseEnter={(e) => {
+        if (isOverlay) {
+          console.log('✅ Mouse entered overlay!');
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (isOverlay) {
+          console.log('❌ Mouse left overlay!');
+        }
+      }}
       style={{
-        backgroundColor,
+        backgroundColor: isOverlay ? 'transparent' : backgroundColor,
+        pointerEvents: isOverlay ? 'auto' : 'none', // Overlay captures events, visible doesn't
         // @ts-ignore - CSS custom properties
         "--x": "-0.5rem",
         "--y": "50%",
@@ -357,17 +478,20 @@ export function Waves({
         className,
       )}
     >
-      <div
-        className={cn(
-          "absolute top-0 left-0 rounded-full",
-          "w-2 h-2 bg-black/10",
-        )}
-        style={{
-          transform:
-            "translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)",
-          willChange: "transform",
-        }}
-      />
+      {/* Only show cursor dot if not an overlay */}
+      {!isOverlay && (
+        <div
+          className={cn(
+            "absolute top-0 left-0 rounded-full",
+            "w-2 h-2 bg-black/10",
+          )}
+          style={{
+            transform:
+              "translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)",
+            willChange: "transform",
+          }}
+        />
+      )}
       <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   )

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PersistentLazyImage } from "@/components/PersistentLazyImage";
@@ -56,28 +56,88 @@ const galleryItems = [
 ];
 
 // Individual Card Component with its own scroll animation
-const ProductCard = ({ item, direction }: { item: typeof galleryItems[0], direction: 'left' | 'right' }) => {
+const ProductCard = ({ item, direction, waveApi, isStaggered }: { 
+  item: typeof galleryItems[0], 
+  direction: 'left' | 'right',
+  waveApi: React.MutableRefObject<{ createRipple: (x: number, y: number) => void } | null>,
+  isStaggered?: boolean // For the right-side cards that need extra distance
+}) => {
   const [activeDemo, setActiveDemo] = useState<'video' | 'chat' | 'voice' | null>(null);
+  const [hasTriggeredRipple, setHasTriggeredRipple] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
   
   // Each card gets its own individual scroll animation
   const { ref, progress } = useIndividualScrollAnimation({
-    threshold: 0.3, // Cards trigger much earlier - when 30% down the viewport
-    animationDistance: 300, // Animation completes over 300px of scrolling for smoother feel
+    threshold: 0.5, // Cards trigger at middle of viewport for natural flow
+    animationDistance: 800, // Much longer animation distance for ultra-smooth floating
     debugName: `ProductCard-${item.title}`
   });
   
-  // Calculate movement FROM OUTSIDE toward CENTER ("inside in")
-  // At progress=0: cards are OUTSIDE (left cards at -150px, right cards at +150px)  
-  // At progress=1: cards are at CENTER (translateX=0)
-  const outsidePosition = direction === 'left' ? -150 : 150; // Outside positions
-  const translateX = outsidePosition + (progress * -outsidePosition); // Move toward center (0)
-  const scale = 0.95 + (progress * 0.05); // Subtle scale from 95% to 100%
+  // Trigger ripple effect when card animates in
+  useEffect(() => {
+    if (progress > 0.5 && !hasTriggeredRipple && waveApi.current && cardRef.current) {
+      const rect = cardRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      // Create ripple at card center
+      waveApi.current.createRipple(centerX, centerY);
+      setHasTriggeredRipple(true);
+    }
+    
+    // Reset when card goes off screen
+    if (progress < 0.1) {
+      setHasTriggeredRipple(false);
+    }
+  }, [progress, hasTriggeredRipple, waveApi, item.title]);
+  
+  // Calculate movement - cards CONVERGE from outside positions toward CENTER
+  // At progress=0: cards are SPREAD OUT (far apart)
+  // At progress=1: cards CONVERGE together toward center
+  
+  let translateX: number;
+  
+  // Apply smooth, Apple-like easing (cubic ease for natural motion)
+  const smoothEase = (t: number) => {
+    // Cubic bezier approximation of Apple's smooth scroll
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  };
+  
+  // Apply lerp for floating effect
+  const [smoothedProgress, setSmoothedProgress] = useState(0);
+  useEffect(() => {
+    const lerp = 0.15; // Low value for water-like floating
+    setSmoothedProgress(prev => prev + (progress - prev) * lerp);
+  }, [progress]);
+  
+  const easedProgress = smoothEase(smoothedProgress);
+  
+  if (direction === 'left') {
+    // Left cards START spread out and MOVE IN
+    const startX = -150;
+    const endX = 0; // Final position
+    translateX = startX + (easedProgress * (endX - startX));
+  } else {
+    // Right cards START spread out and MOVE IN
+    const startX = isStaggered ? 300 : 200; // Staggered cards start further
+    const endX = 0; // Final position
+    translateX = startX + (easedProgress * (endX - startX));
+  }
+  
+  // Very subtle scale for smooth appearance
+  const scale = 0.92 + (easedProgress * 0.08); // Scale from 92% to 100% smoothly
   
   return (
     <>
       <div 
-        ref={ref}
-        className="flex flex-col items-start gap-8 relative transition-all duration-700 ease-out"
+        ref={(el) => {
+          // Combine both refs
+          (ref as any).current = el;
+          cardRef.current = el;
+        }}
+        className="flex flex-col items-start gap-8 relative"
         style={{ 
           transform: `translateX(${translateX}px) scale(${scale})`
         }}
@@ -111,7 +171,7 @@ const ProductCard = ({ item, direction }: { item: typeof galleryItems[0], direct
               <Button
                 variant="ghost"
                 onClick={() => setActiveDemo(item.demoType)}
-                className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] w-fit pointer-events-auto"
+                className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] w-fit"
               >
                 Click for Demo
               </Button>
@@ -133,17 +193,25 @@ const ProductCard = ({ item, direction }: { item: typeof galleryItems[0], direct
 // Header Component with its own scroll animation
 const SectionHeader = () => {
   const { ref, progress } = useIndividualScrollAnimation({
-    threshold: 0.3, // Earlier trigger for readability
-    animationDistance: 150,
+    threshold: 0.4, // Natural trigger point
+    animationDistance: 400, // Longer for smooth floating
     debugName: "SectionHeader"
   });
   
-  const translateY = progress * -80; // Slide up from below
+  // Apply smooth easing for floating effect
+  const smoothEase = (t: number) => {
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  };
+  
+  const easedProgress = smoothEase(progress);
+  const translateY = easedProgress * -60; // Gentle slide up from below
   
   return (
     <header 
       ref={ref}
-      className="flex-col max-w-screen-md items-start gap-8 w-full flex-[0_0_auto] flex relative transition-all duration-600 ease-out"
+      className="flex-col max-w-screen-md items-start gap-8 w-full flex-[0_0_auto] flex relative"
       style={{
         transform: `translateY(${translateY}px)`
       }}
@@ -168,7 +236,7 @@ const SectionHeader = () => {
 
       <Button
         variant="ghost"
-        className="inline-flex items-center gap-2 relative flex-[0_0_auto] h-auto p-0 hover:bg-transparent pointer-events-auto"
+        className="inline-flex items-center gap-2 relative flex-[0_0_auto] h-auto p-0 hover:bg-transparent"
       >
         <div className="inline-flex items-center justify-center gap-2 relative flex-[0_0_auto]">
           <span className="relative w-fit font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] whitespace-nowrap [font-style:var(--text-regular-normal-font-style)]">
@@ -182,17 +250,43 @@ const SectionHeader = () => {
 };
 
 export const ImageGallerySection = (): JSX.Element => {
+  const waveApiRef = useRef<{ createRipple: (x: number, y: number) => void } | null>(null);
+  const sharedMouseRef = useRef<{ x: number; y: number; lx: number; ly: number; sx: number; sy: number; v: number; vs: number; a: number; set: boolean } | null>({
+    x: -10,
+    y: 0,
+    lx: 0,
+    ly: 0,
+    sx: 0,
+    sy: 0,
+    v: 0,
+    vs: 0,
+    a: 0,
+    set: false,
+  });
+  
   return (
-    <section className="pt-20 pb-0 flex flex-col items-center relative w-full bg-white overflow-hidden">
-      {/* Wave background - edge to edge */}
+    <section className="pt-20 pb-0 flex flex-col items-center relative w-full overflow-hidden">
+      {/* Visible wave background at bottom */}
       <Waves 
         className="absolute inset-0 z-0"
-        strokeColor="#000000"  // Black lines
-        backgroundColor="#FFFFFF"  // White background
-        pointerSize={0.5}
+        lineColor="rgba(0, 0, 0, 0.17)"  // Black lines at 17% opacity
+        backgroundColor="#FFFFFF"  // White background for the waves
+        onRef={(api) => { waveApiRef.current = api }}
+        sharedMouseRef={sharedMouseRef}
+        isOverlay={false}
       />
       
-      {/* Content container with padding */}
+      {/* Invisible wave overlay at top for mouse capture */}
+      <Waves 
+        className="absolute inset-0 z-20"
+        lineColor="transparent"
+        backgroundColor="transparent"
+        sharedMouseRef={sharedMouseRef}
+        isOverlay={true}
+      />
+      
+      
+      {/* Content container with padding - NO BACKGROUND so waves show through */}
       <div className="px-16 w-full relative z-10">
         <div className="flex-col max-w-screen-xl items-start w-full flex relative mx-auto">
         
@@ -200,17 +294,17 @@ export const ImageGallerySection = (): JSX.Element => {
         <SectionHeader />
 
         {/* Grid with individual card animations - creating the "concertina" effect */}
-        <div className="grid grid-cols-2 gap-16 w-full pointer-events-none">
+        <div className="grid grid-cols-2 gap-16 w-full">
           {/* Top Row */}
-          <ProductCard item={galleryItems[0]} direction="left" />
+          <ProductCard item={galleryItems[0]} direction="left" waveApi={waveApiRef} />
           <div className="pt-[200px] pb-0 px-0">
-            <ProductCard item={galleryItems[1]} direction="right" />
+            <ProductCard item={galleryItems[1]} direction="right" waveApi={waveApiRef} isStaggered={true} />
           </div>
 
           {/* Bottom Row */}
-          <ProductCard item={galleryItems[2]} direction="left" />
+          <ProductCard item={galleryItems[2]} direction="left" waveApi={waveApiRef} />
           <div className="pt-[200px] pb-0 px-0">
-            <ProductCard item={galleryItems[3]} direction="right" />
+            <ProductCard item={galleryItems[3]} direction="right" waveApi={waveApiRef} isStaggered={true} />
           </div>
         </div>
       </div>
