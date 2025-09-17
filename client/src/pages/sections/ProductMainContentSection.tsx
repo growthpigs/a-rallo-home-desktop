@@ -30,20 +30,20 @@ export const ProductMainContentSection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
       <div className="flex flex-col max-w-screen-xl items-center gap-20 relative w-full flex-[0_0_auto]">
-        <header className="flex flex-col max-w-screen-md items-center gap-4 relative w-full flex-[0_0_auto]">
+        <header className="flex flex-col max-w-screen-md items-center gap-8 relative w-full flex-[0_0_auto]">
           <div className="inline-flex items-center relative flex-[0_0_auto]">
             <div className="relative w-fit mt-[-1.00px] font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] text-center tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
-              Products
+              PRODUCTS
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-6 relative self-stretch w-full flex-[0_0_auto]">
-            <h2 className="relative self-stretch mt-[-1.00px] font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black text-[length:var(--heading-h2-font-size)] text-center tracking-[var(--heading-h2-letter-spacing)] leading-[var(--heading-h2-line-height)] [font-style:var(--heading-h2-font-style)]">
-              PRODUCTS
+          <div className="flex flex-col items-center gap-3 relative self-stretch w-full flex-[0_0_auto]">
+            <h2 className="relative self-stretch font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black text-[length:var(--heading-h2-font-size)] text-center tracking-[var(--heading-h2-letter-spacing)] leading-[var(--heading-h2-line-height)] [font-style:var(--heading-h2-font-style)]">
+              POWERFUL AI AGENTS FOR EVERY NEED
             </h2>
 
-            <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+              Discover how Rallo transforms your digital communication strategy.
             </p>
           </div>
         </header>

@@ -72,13 +72,13 @@ export const NavigationHeader = (): JSX.Element => {
       </motion.div>
       
       <motion.div 
-        className="flex items-center gap-6"
+        className="flex items-center gap-8"
         variants={navBarDrop}
       >
         <motion.div variants={dropDownFromAbove}>
           <Link 
             href="/" 
-            className="font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
+            className="font-['JetBrains_Mono'] text-xs font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
             data-testid="nav-home"
           >
             HOME
@@ -87,7 +87,7 @@ export const NavigationHeader = (): JSX.Element => {
         <motion.div variants={dropDownFromAbove}>
           <Link 
             href="/product" 
-            className="font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
+            className="font-['JetBrains_Mono'] text-xs font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
             data-testid="nav-product"
           >
             PRODUCT
@@ -96,7 +96,7 @@ export const NavigationHeader = (): JSX.Element => {
         <motion.div variants={dropDownFromAbove}>
           <Link 
             href="/pricing" 
-            className="font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
+            className="font-['JetBrains_Mono'] text-xs font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
             data-testid="nav-pricing"
           >
             PRICING
@@ -105,7 +105,7 @@ export const NavigationHeader = (): JSX.Element => {
         <motion.div variants={dropDownFromAbove}>
           <Link 
             href="/book-demo" 
-            className="font-['JetBrains_Mono'] text-sm font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
+            className="font-['JetBrains_Mono'] text-xs font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black border border-black px-4 py-2 hover:bg-black hover:text-white" 
             data-testid="nav-book-demo"
           >
             BOOK DEMO

@@ -12,141 +12,130 @@ export const BookDemoPage = (): JSX.Element => {
       <NavigationHeader />
       <main className="flex-1 pt-24">
         {/* Hero Section */}
-        <section className="container mx-auto px-8 py-16">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold mb-6 leading-tight">
-                Experience<br />
-                the future of<br />
-                ai-powered<br />
-                engagement
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Rallo is the future of tailored<br />
-                interactions across multiple<br />
-                channels. Transform your<br />
-                business communication with<br />
-                intelligent agents that deliver<br />
-                personalized experiences<br />
-                everywhere your customers are.
-              </p>
-              <div className="flex gap-4">
+        <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-black">
+          <div className="flex flex-col max-w-screen-xl items-center gap-20 relative w-full flex-[0_0_auto]">
+            <div className="flex flex-col max-w-screen-md items-center gap-8 relative w-full flex-[0_0_auto]">
+              <div className="flex flex-col items-center gap-4 relative self-stretch w-full flex-[0_0_auto]">
+                <div className="inline-flex items-center relative flex-[0_0_auto]">
+                  <div className="relative w-fit font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-white text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)] uppercase">
+                    BOOK DEMO
+                  </div>
+                </div>
+
+                <div className="flex-col items-center gap-3 self-stretch w-full flex-[0_0_auto] flex relative">
+                  <h1 className="relative self-stretch font-heading-h1 font-[number:var(--heading-h1-font-weight)] text-white text-[length:var(--heading-h1-font-size)] text-center tracking-[var(--heading-h1-letter-spacing)] leading-[var(--heading-h1-line-height)] [font-style:var(--heading-h1-font-style)]">
+                    EXPERIENCE THE FUTURE OF AI-POWERED ENGAGEMENT
+                  </h1>
+
+                  <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-white text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+                    Transform your business communication with intelligent agents that deliver personalized experiences everywhere your customers are.
+                  </p>
+                </div>
+              </div>
+
+              <div className="inline-flex gap-4 flex-[0_0_auto] items-center relative mt-6">
                 <Button 
-                  className="bg-black text-white hover:bg-gray-800"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] bg-white border border-solid text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-gray-100"
                   data-testid="button-explore"
                 >
                   Explore
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="border-black text-black hover:bg-gray-50"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 relative flex-[0_0_auto] border border-solid border-white bg-transparent text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-white hover:text-black"
                   data-testid="button-watch"
                 >
-                  Watch
+                  Watch Demo
                 </Button>
               </div>
-            </div>
-            <div className="bg-gray-200 rounded-lg aspect-square flex items-center justify-center">
-              <div className="text-gray-400 text-6xl">📷</div>
             </div>
           </div>
         </section>
 
         {/* Custom Experience Section */}
-        <section className="bg-gray-50 py-20">
-          <div className="container mx-auto px-8">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2 className="text-4xl font-bold mb-6">
-                Your custom rallo<br />
-                experience awaits
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Tailored to your unique business needs and<br />
-                communication goals.
-              </p>
-            </div>
+        <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-white">
+          <div className="flex flex-col max-w-screen-xl items-center gap-20 relative w-full flex-[0_0_auto]">
+            <header className="flex flex-col max-w-screen-md items-center gap-8 relative w-full flex-[0_0_auto]">
+              <div className="flex flex-col items-center gap-4 relative self-stretch w-full flex-[0_0_auto]">
+                <div className="inline-flex items-center relative flex-[0_0_auto]">
+                  <div className="relative w-fit font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)] uppercase">
+                    PROCESS
+                  </div>
+                </div>
+
+                <div className="flex-col items-center gap-3 self-stretch w-full flex-[0_0_auto] flex relative">
+                  <h2 className="relative self-stretch font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black text-[length:var(--heading-h2-font-size)] text-center tracking-[var(--heading-h2-letter-spacing)] leading-[var(--heading-h2-line-height)] [font-style:var(--heading-h2-font-style)]">
+                    YOUR CUSTOM RALLO EXPERIENCE AWAITS
+                  </h2>
+
+                  <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+                    Tailored to your unique business needs and communication goals.
+                  </p>
+                </div>
+              </div>
+            </header>
 
             {/* Process Steps */}
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white rounded-lg p-8 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <div className="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm">
-                    ⚙️
+            <div className="grid md:grid-cols-2 gap-8 w-full">
+              <div className="bg-white border border-gray-200 p-8">
+                <div className="flex items-start gap-6">
+                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)]">
+                    01
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">STEP 1</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur<br />
-                      adipiscing elit, sed do eiusmod tempor<br />
-                      incididunt ut labore et dolore magna aliqua.<br />
-                      Ut enim ad minim veniam, quis nostrud<br />
-                      exercitation ullamco laboris nisi ut aliquip<br />
-                      ex ea commodo consequat. Duis aute irure<br />
-                      dolor in reprehenderit in voluptate velit esse<br />
-                      cillum dolore eu fugiat nulla pariatur.
+                  <div className="flex-1">
+                    <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)] mb-3">
+                      DISCOVERY
+                    </h3>
+                    <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] uppercase">
+                      We analyze your current communication channels and identify optimization opportunities for AI integration.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg p-8 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <div className="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm">
-                    ⚙️
+              <div className="bg-white border border-gray-200 p-8">
+                <div className="flex items-start gap-6">
+                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)]">
+                    02
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">STEP 2</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur<br />
-                      adipiscing elit, sed do eiusmod tempor<br />
-                      incididunt ut labore et dolore magna aliqua.<br />
-                      Ut enim ad minim veniam, quis nostrud<br />
-                      exercitation ullamco laboris nisi ut aliquip<br />
-                      ex ea commodo consequat. Duis aute irure<br />
-                      dolor in reprehenderit in voluptate velit esse<br />
-                      cillum dolore eu fugiat nulla pariatur.
+                  <div className="flex-1">
+                    <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)] mb-3">
+                      CONFIGURATION
+                    </h3>
+                    <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] uppercase">
+                      Custom AI agents are built to match your brand voice and handle your specific use cases.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg p-8 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <div className="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm">
-                    ⚙️
+              <div className="bg-white border border-gray-200 p-8">
+                <div className="flex items-start gap-6">
+                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)]">
+                    03
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">STEP 3</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur<br />
-                      adipiscing elit, sed do eiusmod tempor<br />
-                      incididunt ut labore et dolore magna aliqua.<br />
-                      Ut enim ad minim veniam, quis nostrud<br />
-                      exercitation ullamco laboris nisi ut aliquip<br />
-                      ex ea commodo consequat. Duis aute irure<br />
-                      dolor in reprehenderit in voluptate velit esse<br />
-                      cillum dolore eu fugiat nulla pariatur.
+                  <div className="flex-1">
+                    <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)] mb-3">
+                      DEPLOYMENT
+                    </h3>
+                    <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] uppercase">
+                      Seamless integration across all your platforms with comprehensive testing and training.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg p-8 shadow-sm">
-                <div className="flex items-start gap-4">
-                  <div className="bg-black text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm">
-                    ⚙️
+              <div className="bg-white border border-gray-200 p-8">
+                <div className="flex items-start gap-6">
+                  <div className="bg-black text-white w-12 h-12 flex items-center justify-center font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)]">
+                    04
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">STEP 4</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur<br />
-                      adipiscing elit, sed do eiusmod tempor<br />
-                      incididunt ut labore et dolore magna aliqua.<br />
-                      Ut enim ad minim veniam, quis nostrud<br />
-                      exercitation ullamco laboris nisi ut aliquip<br />
-                      ex ea commodo consequat. Duis aute irure<br />
-                      dolor in reprehenderit in voluptate velit esse<br />
-                      cillum dolore eu fugiat nulla pariatur.
+                  <div className="flex-1">
+                    <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)] mb-3">
+                      OPTIMIZATION
+                    </h3>
+                    <p className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] uppercase">
+                      Continuous monitoring and refinement to maximize performance and customer satisfaction.
                     </p>
                   </div>
                 </div>
@@ -156,29 +145,41 @@ export const BookDemoPage = (): JSX.Element => {
         </section>
 
         {/* Stay Current Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-8">
-            <div className="max-w-md mx-auto text-center">
-              <h2 className="text-2xl font-bold mb-4">Stay Current</h2>
-              <p className="text-gray-600 mb-8">
-                Get the latest on insights and data updates.
-              </p>
-              <div className="flex gap-4">
-                <Input
-                  type="email"
-                  placeholder="EMAIL ADDRESS"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1"
-                  data-testid="input-email-signup"
-                />
-                <Button 
-                  className="bg-black text-white hover:bg-gray-800"
-                  data-testid="button-subscribe"
-                >
-                  Subscribe
-                </Button>
+        <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto] bg-gray-50">
+          <div className="flex flex-col max-w-screen-md items-center gap-8 relative w-full flex-[0_0_auto]">
+            <header className="flex flex-col items-center gap-4 relative self-stretch w-full flex-[0_0_auto]">
+              <div className="inline-flex items-center relative flex-[0_0_auto]">
+                <div className="relative w-fit font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)] uppercase">
+                  NEWSLETTER
+                </div>
               </div>
+
+              <div className="flex-col items-center gap-3 self-stretch w-full flex-[0_0_auto] flex relative">
+                <h2 className="relative self-stretch font-heading-h3 font-[number:var(--heading-h3-font-weight)] text-black text-[length:var(--heading-h3-font-size)] text-center tracking-[var(--heading-h3-letter-spacing)] leading-[var(--heading-h3-line-height)] [font-style:var(--heading-h3-font-style)]">
+                  STAY CURRENT
+                </h2>
+
+                <p className="relative self-stretch font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] text-black text-[length:var(--text-medium-normal-font-size)] text-center tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)] uppercase">
+                  Get the latest insights and AI advancement updates.
+                </p>
+              </div>
+            </header>
+
+            <div className="flex gap-4 w-full max-w-md">
+              <Input
+                type="email"
+                placeholder="EMAIL ADDRESS"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                data-testid="input-email-signup"
+              />
+              <Button 
+                className="bg-black text-white hover:bg-gray-800 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
+                data-testid="button-subscribe"
+              >
+                Subscribe
+              </Button>
             </div>
           </div>
         </section>
