@@ -73,7 +73,7 @@ const backgroundSlideIn = {
 
 export const HeaderSection = (): JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeDemo, setActiveDemo] = useState<'video' | 'chat' | 'voice' | null>(null);
+  const [activeDemo, setActiveDemo] = useState<'video' | 'chat' | 'voice' | 'interactive' | null>(null);
   
   // SCROLL ANIMATION SYSTEM: Only specific text elements animate
   const { ref: heroRef, progress } = useUnifiedScrollAnimation({
@@ -87,6 +87,9 @@ export const HeaderSection = (): JSX.Element => {
   const multipliedTransform = progress * -40;     // "MULTIPLIED" moves LEFT
   const descriptionTransform = progress * 20;     // Description text moves RIGHT slightly
   const iconsTransform = progress * -25;          // Icons move LEFT
+  
+  // DEBUG: Log values to console
+  console.log('🚀 HeaderSection Debug:', { progress, iconsTransform, youTextTransform });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -129,57 +132,80 @@ export const HeaderSection = (): JSX.Element => {
             initial="hidden"
             animate="visible"
             variants={navBarDrop}
+            style={{
+              position: 'relative',
+              right: '-70px' // Move entire unit 70px to the right
+            }}
           >
             <motion.div 
               className="flex flex-col items-end mb-4"
               variants={slideInFromLeft}
             >
               <motion.div 
-                className="text-right mb-2"
+                className="text-right"
                 variants={slideUpFromBelow}
                 transition={{ delay: 0.6 }}
                 style={{
                   // SCROLL ANIMATION: "You," moves LEFT as you scroll down
-                  transform: `translateY(60px) translateX(${youTextTransform}px)`
+                  transform: `translateX(${youTextTransform}px)`
                 }}
               >
-                <span className="italic text-black font-['Libre_Baskerville'] lg:text-7xl md:text-6xl">You,</span>
+                <span 
+                  className="italic text-black font-['Libre_Baskerville']" 
+                  style={{
+                    fontSize: 'calc(6rem * 0.5 * 1.2)', // 50% of original, then increase by 20%
+                    position: 'relative',
+                    top: '7px' // Move down 5px from current position (2px + 5px = 7px)
+                  }}
+                >
+                  You,
+                </span>
               </motion.div>
               <motion.div 
-                className="text-white font-['JetBrains_Mono'] lg:text-6xl md:text-5xl font-light lg:tracking-[0.25em] md:tracking-[0.15em] leading-tight"
-                style={{ 
-                  // SCROLL ANIMATION: "MULTIPLIED" moves LEFT as you scroll down
-                  transform: `translateX(${18 + multipliedTransform}px)`
-                }}
+                className="text-white font-['JetBrains_Mono'] lg:text-5xl md:text-5xl font-light lg:tracking-[0.25em] md:tracking-[0.15em] leading-tight text-right"
                 variants={slideUpFromBelow}
                 transition={{ delay: 0.8 }}
+                style={{
+                  position: 'relative',
+                  left: '5px' // Direct CSS positioning to move 5px to the right
+                }}
               >
                 MULTIPLIED
               </motion.div>
             </motion.div>
             
             <motion.div 
-              className="text-right max-w-lg mt-4"
+              className="text-right max-w-sm mt-4"
+              style={{
+                marginTop: '-10px',
+                marginRight: '32px'
+              }}
               variants={slideUpFromBelow}
               transition={{ delay: 1.0 }}
             >
               <p 
-                className="text-white font-['JetBrains_Mono'] lg:text-sm md:text-xs tracking-[0.05em] leading-none font-thin  uppercase" 
+                className="text-white font-['JetBrains_Mono'] lg:text-[13px] md:text-[11px] tracking-[0.05em] leading-relaxed font-thin uppercase" 
                 style={{ 
                   // SCROLL ANIMATION: Description moves RIGHT slightly as you scroll down
-                  transform: `translateY(-20px) translateX(${descriptionTransform}px)` 
+                  transform: `translateX(${descriptionTransform}px)` 
                 }}
               >
-                Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere - while you focus on what matters most.
+                Create AI-powered video, chat, and voice agents that represent you, 24/7. Record once, engage everywhere while you focus on what matters most.
               </p>
               <motion.div 
-                className="flex justify-end mt-4"
-                variants={slideUpFromBelow}
+                className="flex justify-end mt-8"
+                // REMOVED variants={slideUpFromBelow} to test if it was overriding animate
                 transition={{ delay: 1.2 }}
-                style={{
-                  // SCROLL ANIMATION: Icons move LEFT as you scroll down
-                  transform: `translateX(${iconsTransform}px)`
+                animate={{
+                  // MOVE RIGHT (positive X) and UP (negative Y) from your perspective
+                  x: 55, // Move 55px to the right
+                  y: -20, // Move 20px up 
+                  scale: 0.7
                 }}
+                style={{
+                  border: '2px solid red' // DEBUG: Visual indicator
+                }}
+                onMouseEnter={() => console.log('DESKTOP ICONS - Transform:', `translateX(${iconsTransform - 30}px) scale(0.7)`, 'iconsTransform:', iconsTransform)}
               >
                 <DemoIcons onIconClick={setActiveDemo} />
               </motion.div>
@@ -236,7 +262,7 @@ export const HeaderSection = (): JSX.Element => {
                 transform: `translateX(${youTextTransform}px)`
               }}
             >
-              <span className="italic text-black font-['Libre_Baskerville'] text-7xl">You,</span>
+              <span className="italic text-black font-['Libre_Baskerville'] text-6xl">You,</span>
             </motion.div>
             <motion.div 
               className="text-white font-['JetBrains_Mono'] text-5xl font-light tracking-[0.1em] leading-tight" 
@@ -257,9 +283,9 @@ export const HeaderSection = (): JSX.Element => {
             transition={{ delay: 1.2 }}
           >
             <p 
-              className="text-white font-['JetBrains_Mono'] text-xs font-thin tracking-[0.05em] leading-none uppercase" 
+              className="text-white font-['JetBrains_Mono'] font-thin tracking-[0.05em] leading-none uppercase" 
               style={{ 
-                fontSize: '11px',
+                fontSize: '10px',
                 // SCROLL ANIMATION: Description moves RIGHT slightly on mobile
                 transform: `translateX(${descriptionTransform}px)`
               }}
@@ -272,8 +298,10 @@ export const HeaderSection = (): JSX.Element => {
               transition={{ delay: 1.4 }}
               style={{
                 // SCROLL ANIMATION: Icons move LEFT on mobile
-                transform: `translateX(${iconsTransform}px)`
+                transform: `translateX(${iconsTransform + 15}px)`,
+                border: '2px solid blue' // DEBUG: Visual indicator for mobile
               }}
+              onMouseEnter={() => console.log('MOBILE ICONS - Transform:', `translateX(${iconsTransform + 15}px)`, 'iconsTransform:', iconsTransform)}
             >
               <DemoIcons onIconClick={setActiveDemo} />
             </motion.div>

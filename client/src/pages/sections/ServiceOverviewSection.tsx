@@ -87,6 +87,12 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
   const itemMovement = progress * (80 + index * 20);
   // Consistent positioning for all numbers
   const numberOffset = -50; // Same alignment for all numbers
+  
+  // Calculate staggered animations for each element
+  const taglineMovement = 200 - (progress * 200); // No delay
+  const headingMovement = 200 - (Math.max(0, progress - 0.1) * 222); // Slight delay
+  const descriptionMovement = 200 - (Math.max(0, progress - 0.2) * 250); // More delay
+  const buttonMovement = 200 - (Math.max(0, progress - 0.3) * 285); // Most delay
 
   return (
     <div
@@ -123,8 +129,6 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
       <div 
         className="flex-col h-[349px] items-start gap-2 flex-1 grow flex relative z-10"
         style={{
-          transform: `translateX(${200 - (progress * 200)}px)`,  // Start +200px (from middle-right), slide LEFT to 0
-          opacity: 1,  // NO FADE - Always 100% opacity
           padding: '24px',
           marginLeft: '-24px',
           backgroundColor: '#ebe6daff',
@@ -139,7 +143,13 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
         <div className="flex-col items-start gap-8 self-stretch w-full flex-[0_0_auto] flex relative">
           <div className="flex flex-col items-start gap-4 self-stretch flex-[0_0_auto] relative w-full">
             <div className="inline-flex items-center relative flex-[0_0_auto]">
-              <div className="relative w-fit  font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]">
+              <div 
+                className="relative w-fit  font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] whitespace-nowrap [font-style:var(--heading-tagline-font-style)]"
+                style={{
+                  transform: `translateX(${taglineMovement}px)`,
+                  transition: 'transform 0.3s ease-out'
+                }}
+              >
                 {item.tagline}
               </div>
             </div>
@@ -147,16 +157,32 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
             <div className="flex flex-col items-start gap-3 relative self-stretch w-full flex-[0_0_auto]">
               <h2 
                 className="self-stretch  text-[length:var(--heading-h2-font-size)] leading-[var(--heading-h2-line-height)] relative font-heading-h2 font-[number:var(--heading-h2-font-weight)] text-black tracking-[var(--heading-h2-letter-spacing)] [font-style:var(--heading-h2-font-style)]"
+                style={{
+                  transform: `translateX(${headingMovement}px)`,
+                  transition: 'transform 0.3s ease-out'
+                }}
                 dangerouslySetInnerHTML={{ __html: item.heading }}
               />
 
-              <p className="relative max-w-[550px] font-['Inter'] font-normal text-black text-xl leading-relaxed">
+              <p 
+                className="relative max-w-[550px] font-['Inter'] font-normal text-black text-xl leading-relaxed"
+                style={{
+                  transform: `translateX(${descriptionMovement}px)`,
+                  transition: 'transform 0.3s ease-out'
+                }}
+              >
                 {item.description}
               </p>
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-1 relative flex-[0_0_auto]">
+          <div 
+            className="inline-flex items-center gap-1 relative flex-[0_0_auto]"
+            style={{
+              transform: `translateX(${buttonMovement}px)`,
+              transition: 'transform 0.3s ease-out'
+            }}
+          >
             <Button
               variant="ghost"
               className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"

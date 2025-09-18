@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface DemoIconsProps {
-  onIconClick: (iconType: 'video' | 'chat' | 'voice') => void;
+  onIconClick: (iconType: 'video' | 'chat' | 'voice' | 'interactive') => void;
 }
 
 export const DemoIcons: React.FC<DemoIconsProps> = ({ onIconClick }) => {
@@ -10,20 +10,28 @@ export const DemoIcons: React.FC<DemoIconsProps> = ({ onIconClick }) => {
 
   const icons = [
     { 
-      type: 'video' as const, 
-      path: '/icons/Video-pyramid.svg', 
-      label: 'Video',
-      hoverText: 'Click for Demo',
-      width: 63.25,
-      height: 63.25
-    },
-    { 
       type: 'chat' as const, 
       path: '/icons/Chat-cube.svg', 
       label: 'Chat',
       hoverText: 'Click for Demo',
       width: 57.5,
       height: 57.5
+    },
+    { 
+      type: 'interactive' as const, 
+      path: '/icons/diamond-interactive.svg', 
+      label: 'Interactive',
+      hoverText: 'Click for Demo',
+      width: 60,
+      height: 60
+    },
+    { 
+      type: 'video' as const, 
+      path: '/icons/Video-pyramid.svg', 
+      label: 'Video',
+      hoverText: 'Click for Demo',
+      width: 63.25,
+      height: 63.25
     },
     { 
       type: 'voice' as const, 
@@ -36,7 +44,13 @@ export const DemoIcons: React.FC<DemoIconsProps> = ({ onIconClick }) => {
   ];
 
   return (
-    <div className="inline-flex items-center gap-6 -mt-5">
+    <div 
+      className="inline-flex items-center gap-5" 
+      style={{
+        border: '3px solid green', // DEBUG: Visual indicator
+        transform: 'translateX(55px) translateY(-24px)' // Move right 55px, up 24px (4px more up)
+      }}
+    >
       {icons.map((icon) => (
         <div key={icon.type} className="relative">
           {/* Tooltip - rendered first so it's behind the icon but above everything else */}

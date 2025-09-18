@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 interface DemoModalProps {
   isOpen: boolean;
   onClose: () => void;
-  type: 'video' | 'chat' | 'voice' | null;
+  type: 'video' | 'chat' | 'voice' | 'interactive' | null;
 }
 
 export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, type }) => {
@@ -117,6 +117,90 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, type }) =
           </motion.div>
           <p className="text-white mt-8 font-['JetBrains_Mono'] text-sm uppercase tracking-wider">VOICE AI ACTIVE</p>
           <p className="text-gray-400 mt-2 text-xs font-['JetBrains_Mono'] uppercase tracking-wider">CLICK TO SPEAK</p>
+        </div>
+      )
+    },
+    interactive: {
+      icon: '/icons/diamond-interactive.svg',
+      title: 'INTERACTIVE EXPERIENCES',
+      subtitle: 'Engage through dynamic interactions',
+      description: 'Create immersive, real-time interactive experiences that adapt to user behavior. Perfect for personalized demos, dynamic presentations, and engaging customer journeys.',
+      cta: 'Experience Interactive AI',
+      demoContent: (
+        <div className="w-full h-[300px] bg-gradient-to-br from-purple-500/20 to-blue-500/20 backdrop-blur-sm border border-white/20 rounded-lg p-6 overflow-hidden relative">
+          {/* Interactive floating elements */}
+          <motion.div
+            className="absolute w-20 h-20 bg-gradient-to-br from-[#fd815a] to-[#ff9570] rounded-lg opacity-60"
+            animate={{
+              x: [0, 100, 0],
+              y: [0, 50, 0],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            style={{ left: '10%', top: '20%' }}
+          />
+          <motion.div
+            className="absolute w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full opacity-50"
+            animate={{
+              x: [0, -80, 0],
+              y: [0, 80, 0],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+            style={{ right: '15%', top: '30%' }}
+          />
+          <motion.div
+            className="absolute w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-lg opacity-50"
+            animate={{
+              x: [0, 60, 0],
+              y: [0, -40, 0],
+              rotate: [0, -180, -360],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+            style={{ left: '40%', bottom: '20%' }}
+          />
+          
+          {/* Center content */}
+          <div className="flex flex-col items-center justify-center h-full relative z-10">
+            <motion.div
+              className="text-white font-['JetBrains_Mono'] text-lg uppercase tracking-wider mb-4"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              INTERACTIVE MODE
+            </motion.div>
+            <p className="text-gray-300 text-sm text-center font-['JetBrains_Mono'] uppercase tracking-wide">
+              Click and drag to interact
+            </p>
+            
+            {/* Interactive cursor indicator */}
+            <motion.div
+              className="mt-6 w-8 h-8 border-2 border-white rounded-full"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.8, 0.3]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
         </div>
       )
     }
