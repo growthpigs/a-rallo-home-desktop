@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { FastImage } from "@/components/FastImage";
 import { useSmoothScrollAnimation, getStaggeredProgress } from "@/hooks/useSmoothScrollAnimation";
+import { LazyWebP } from "@/components/LazyWebP";
 
 export const GeneralLayoutSection = (): JSX.Element => {
   // Use smooth scroll animation with Apple-like smoothness
@@ -89,13 +89,12 @@ export const GeneralLayoutSection = (): JSX.Element => {
                 transform: `translateX(${imageMovement}px)`
               }}
             >
-              <FastImage
+              <img
                 className="w-[444px] h-[444px] object-cover"
-                alt="AI facial features with geometric mapping interface"
-                src="/images/ultra_macro_of_multiple_facial_features_with_geometric_mapping_interface_translucent_grid_overlay_a_0f5lrlnl9rpvw7lkx913_0.png"
+                alt="Man with crosshairs - forward and backward loop"
+                src="/videos/man-crosshairs-loop.webp"
                 width={444}
                 height={444}
-                priority={true}
               />
             </div>
           </div>

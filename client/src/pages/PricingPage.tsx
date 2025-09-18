@@ -10,8 +10,8 @@ import { PricingTestimonialSection } from "@/pages/sections/PricingTestimonialSe
 export const PricingPage = (): JSX.Element => {
   return (
     <div className="flex flex-col min-h-screen w-full">
-      <NavigationHeader />
-      <main className="flex-1 pt-24">
+      <NavigationHeader isDark />
+      <main className="flex-1">
         <PricingHeroSection />
         <PricingOptionsSection />
         <PricingComparisonSection />

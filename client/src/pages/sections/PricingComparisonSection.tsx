@@ -114,7 +114,7 @@ export const PricingComparisonSection = (): JSX.Element => {
 
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 w-full bg-gray-50">
-      <div className="flex-col max-w-screen-xl gap-20 flex items-center w-full">
+      <div className="flex-col max-w-5xl gap-20 flex items-center w-full">
         <header className="flex-col max-w-screen-md items-center gap-8 w-full flex">
           <div className="inline-flex items-center">
             <div className="font-heading-tagline font-[number:var(--heading-tagline-font-weight)] text-black text-[length:var(--heading-tagline-font-size)] tracking-[var(--heading-tagline-letter-spacing)] leading-[var(--heading-tagline-line-height)] [font-style:var(--heading-tagline-font-style)] text-center uppercase">
@@ -134,28 +134,32 @@ export const PricingComparisonSection = (): JSX.Element => {
         </header>
 
         <div className="flex-col gap-16 w-full flex">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-lg">
             <Table className="w-full border-collapse">
               <TableHeader>
-                <TableRow className="border-b border-gray-200">
-                  <TableHead className="text-left p-6 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
-                    Plan
+                <TableRow className="border-b-2 border-gray-200 bg-gray-50">
+                  <TableHead className="text-left p-4 font-['Inter'] font-medium text-gray-700 text-sm uppercase tracking-wider">
+                    Features
                   </TableHead>
                   {pricingPlans.map((plan, index) => (
-                    <TableHead key={index} className="text-center p-6">
-                      <div className="flex flex-col gap-2">
-                        <h3 className="font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black text-[length:var(--heading-h4-font-size)] tracking-[var(--heading-h4-letter-spacing)] leading-[var(--heading-h4-line-height)] [font-style:var(--heading-h4-font-style)]">
+                    <TableHead key={index} className="text-center p-4 min-w-[150px]">
+                      <div className="flex flex-col gap-3 items-center">
+                        <h3 className="font-['JetBrains_Mono'] font-medium text-black text-lg">
                           {plan.name}
                         </h3>
                         <div className="flex items-baseline justify-center gap-1">
-                          <span className="font-heading-h3 font-[number:var(--heading-h3-font-weight)] text-black text-[length:var(--heading-h3-font-size)] tracking-[var(--heading-h3-letter-spacing)] leading-[var(--heading-h3-line-height)] [font-style:var(--heading-h3-font-style)]">
+                          <span className="font-['JetBrains_Mono'] font-bold text-black text-2xl">
                             {plan.price}
                           </span>
-                          <span className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-gray-600 text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                          <span className="font-['Inter'] text-gray-600 text-sm">
                             /mo
                           </span>
                         </div>
-                        <Button className="bg-black text-white hover:bg-gray-800 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] rounded-none px-4 py-2">
+                        <Button className={`w-full px-4 py-2 rounded-lg font-['JetBrains_Mono'] text-xs tracking-wider uppercase transition-all duration-200 ${
+                          index === 1 
+                            ? "bg-orange-500 text-white hover:bg-orange-600 border-0" 
+                            : "bg-black text-white hover:bg-gray-800 border-0"
+                        }`}>
                           Get Started
                         </Button>
                       </div>
@@ -166,29 +170,33 @@ export const PricingComparisonSection = (): JSX.Element => {
               <TableBody>
                 {featureCategories.map((category, categoryIndex) => (
                   <>
-                    <TableRow key={`category-${categoryIndex}`} className="bg-gray-100">
+                    <TableRow key={`category-${categoryIndex}`} className="bg-gray-50 border-y border-gray-200">
                       <TableCell 
                         colSpan={4} 
-                        className="p-6 font-heading-h5 font-[number:var(--heading-h5-font-weight)] text-black text-[length:var(--heading-h5-font-size)] tracking-[var(--heading-h5-letter-spacing)] leading-[var(--heading-h5-line-height)] [font-style:var(--heading-h5-font-style)]"
+                        className="p-3 font-['JetBrains_Mono'] font-medium text-black text-sm uppercase tracking-wider"
                       >
                         {category.title}
                       </TableCell>
                     </TableRow>
                     {category.features.map((feature, featureIndex) => (
-                      <TableRow key={`feature-${categoryIndex}-${featureIndex}`} className="border-b border-gray-200">
-                        <TableCell className="p-6 font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                      <TableRow key={`feature-${categoryIndex}-${featureIndex}`} className="border-b border-gray-100 hover:bg-gray-50 transition-colors duration-150">
+                        <TableCell className="p-4 font-['Inter'] font-normal text-gray-700 text-sm">
                           {feature.name}
                         </TableCell>
                         {feature.values.map((value, valueIndex) => (
-                          <TableCell key={valueIndex} className="p-6 text-center">
+                          <TableCell key={valueIndex} className={`p-4 text-center ${
+                            valueIndex === 1 ? "bg-orange-50/30" : ""
+                          }`}>
                             {typeof value === "boolean" ? (
                               value ? (
-                                <CheckIcon className="w-5 h-5 text-green-600 mx-auto" />
+                                <div className="flex justify-center">
+                                  <CheckIcon className="w-5 h-5 text-green-600" />
+                                </div>
                               ) : (
-                                <span className="text-gray-400">—</span>
+                                <span className="text-gray-300 text-lg">—</span>
                               )
                             ) : (
-                              <span className="font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] text-black text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]">
+                              <span className="font-['Inter'] font-normal text-gray-900 text-sm">
                                 {value}
                               </span>
                             )}

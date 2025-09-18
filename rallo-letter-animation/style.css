@@ -1,3 +1,33 @@
+/* Version Control Display */
+.version-display {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.2;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 10px;
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.version-number {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.version-timestamp {
+    font-size: 10px;
+    color: #999;
+    font-weight: 400;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -30,20 +60,48 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 0px;
     padding: 40px;
     width: 100%;
     max-width: 1400px;
+    position: relative;
+    /* CRITICAL: Remove all wrapper backgrounds */
+    background: transparent !important;
+    background-color: transparent !important;
+    /* Ensure proper letter overlap and natural connections */
+    overflow: visible;
+    /* Allow letters to blend naturally */
+    isolation: isolate;
+    /* Remove any potential backgrounds */
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 /* Individual letter container */
 .letter-container {
-    flex: 1;
-    max-width: 250px;
+    flex: 0 0 auto;
+    width: 180px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
-    aspect-ratio: 1;
+    position: relative;
+    margin: 0;
+    /* CRITICAL: Remove all container backgrounds */
+    background: transparent !important;
+    background-color: transparent !important;
+    /* Designer feedback: Allow tight kerning and natural orange logo connection */
+    z-index: 1;
+    /* Optimized for tight kerning and background removal */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    /* Enhanced for orange logo blending */
+    overflow: visible;
+    /* Ensure no container styling interferes */
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 /* Letter images */
@@ -52,39 +110,42 @@ body {
     height: 100%;
     object-fit: contain;
     transition: opacity 0.2s ease-in-out, transform 0.3s ease;
+    /* NO FILTERS - Use original images as they are */
+    background: transparent;
+}
+
+/* Style variation images (non-logo) - maintain current appearance */
+.letter-image:not([src*="logo"]) {
+    /* Standard rendering for style variations */
+    mix-blend-mode: normal;
+    opacity: 1;
+}
+
+/* Orange logo images - Use original clean images without any filters */
+.letter-image[src*="logo"] {
+    /* NO FILTERS - The original images are already clean! */
+    background: transparent;
+    /* Don't apply any blend modes or filters that create gray backgrounds */
+}
+
+/* Keep containers transparent but don't force it on images */
+
+/* Restore control panel backgrounds (not part of logo) */
+.control-panel,
+.control-panel *,
+.modal-content,
+.modal-content * {
+    background: revert !important;
+    background-color: revert !important;
+    background-image: revert !important;
 }
 
 /* Active letter animation */
 .letter-container.active .letter-image {
     transform: scale(1.05);
-    filter: brightness(1.1);
+    /* NO FILTER - just scale */
 }
 
-/* Final logo container */
-.final-logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 40px;
-    width: 100%;
-    max-width: 1400px;
-}
-
-/* Logo letters */
-.logo-letter {
-    flex: 1;
-    max-width: 250px;
-    height: auto;
-    width: 100%;
-    object-fit: contain;
-    aspect-ratio: 1;
-    animation: fadeIn 0.4s ease-in-out;
-}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.9); }
@@ -458,19 +519,18 @@ body {
     }
     
     .letters-wrapper {
-        gap: 5px;
+        gap: 0px;
         padding: 20px;
     }
     
     .letter-container {
-        max-width: 80px;
+        width: 90px;
+        height: 90px;
+        margin: 0;
+        /* Maintain tight spacing on mobile */
+        z-index: 1;
     }
     
-    .logo-letter {
-        flex: 1;
-        max-width: 80px;
-        height: auto;
-    }
 }
 
 /* Aspect Ratio Maintenance */

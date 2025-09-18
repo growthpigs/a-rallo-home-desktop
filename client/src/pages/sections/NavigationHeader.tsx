@@ -1,39 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "wouter";
-import { motion } from "framer-motion";
+import { Link, useLocation } from "wouter";
 
-// LOAD ANIMATION VARIANTS
-const dropDownFromAbove = {
-  hidden: { y: -30 },
-  visible: { 
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
-  }
-};
+interface NavigationHeaderProps {
+  isDark?: boolean;
+}
 
-const logoDropFromSky = {
-  hidden: { y: -150 },
-  visible: { 
-    y: 0,
-    transition: { duration: 1.2, ease: "easeOut", delay: 0.2 }
-  }
-};
-
-const navBarDrop = {
-  hidden: { y: -100 },
-  visible: {
-    y: 0,
-    transition: {
-      duration: 1.0,
-      ease: "easeOut",
-      staggerChildren: 0.1,
-      delayChildren: 0.4
-    }
-  }
-};
-
-export const NavigationHeader = (): JSX.Element => {
+export const NavigationHeader = ({ isDark = false }: NavigationHeaderProps = {}): JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [location] = useLocation();
+  const isHomepage = location === "/";
+  const isPricingPage = location === "/pricing";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,71 +23,93 @@ export const NavigationHeader = (): JSX.Element => {
   }, []);
 
   return (
-    <motion.nav 
-      className={`flex items-center justify-between px-8 py-2 fixed top-0 left-0 right-0 z-50 ${
-        isScrolled 
-          ? 'backdrop-blur-md bg-white/30' 
-          : 'bg-white/90 backdrop-blur-md' // Always show background on non-hero pages
+    <nav 
+      className={`flex items-center justify-between px-6 py-0.5 fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+        isPricingPage && !isScrolled
+          ? 'bg-transparent'
+          : isHomepage 
+            ? isScrolled 
+              ? 'backdrop-blur-xl bg-white/40' 
+              : 'bg-transparent'
+            : 'backdrop-blur-xl bg-white/80'
       }`}
-      initial="hidden"
-      animate="visible"
-      variants={navBarDrop}
     >
-      <motion.div 
-        className="flex items-center"
-        variants={logoDropFromSky}
+      <div 
+        className="flex items-center ml-1"
       >
         <Link href="/">
           <img 
             src="https://p129.p0.n0.cdn.zight.com/items/E0uvyDD2/0bd8c304-3c98-4392-9f51-b70b775b9cf6.svg?source=client&v=2ac38ca59d73980b9f612d511347a846" 
             alt="Rallo" 
-            className="h-20 brightness-0 transition-all duration-300"
+            className={`h-14 lg:h-16 transition-all duration-500 ease-out ${
+              (isHomepage && !isScrolled) || (isPricingPage && !isScrolled) ? 'brightness-0 invert' : 'brightness-0'
+            }`}
             data-testid="logo"
           />
         </Link>
-      </motion.div>
+      </div>
       
-      <motion.div 
-        className="flex items-center gap-8"
-        variants={navBarDrop}
+      <div 
+        className="flex items-center gap-2 mr-14 lg:mr-18"
       >
-        <motion.div variants={dropDownFromAbove}>
-          <Link 
-            href="/" 
-            className="font-['JetBrains_Mono'] text-xs font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
-            data-testid="nav-home"
-          >
-            HOME
-          </Link>
-        </motion.div>
-        <motion.div variants={dropDownFromAbove}>
-          <Link 
-            href="/product" 
-            className="font-['JetBrains_Mono'] text-xs font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
-            data-testid="nav-product"
-          >
-            PRODUCT
-          </Link>
-        </motion.div>
-        <motion.div variants={dropDownFromAbove}>
-          <Link 
-            href="/pricing" 
-            className="font-['JetBrains_Mono'] text-xs font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black" 
-            data-testid="nav-pricing"
-          >
-            PRICING
-          </Link>
-        </motion.div>
-        <motion.div variants={dropDownFromAbove}>
-          <Link 
-            href="/book-demo" 
-            className="font-['JetBrains_Mono'] text-xs font-thin tracking-[0.2em] hover:brightness-75 transition-colors duration-300 text-black border border-black px-4 py-2 hover:bg-black hover:text-white" 
-            data-testid="nav-book-demo"
-          >
-            BOOK DEMO
-          </Link>
-        </motion.div>
-      </motion.div>
-    </motion.nav>
+        <Link 
+          href="/" 
+          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase px-8 py-4 rounded-sm inline-block ${
+            location === "/" 
+              ? 'text-orange-500 font-bold'
+              : (isHomepage && !isScrolled) || (isPricingPage && !isScrolled)
+                ? 'text-white font-light hover:text-orange-400' 
+                : 'text-black font-light hover:text-orange-500'
+          }`} 
+          data-testid="nav-home"
+        >
+          HOME
+        </Link>
+        
+        <Link 
+          href="/product" 
+          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase px-8 py-4 rounded-sm inline-block ${
+            location === "/product" 
+              ? 'text-orange-500 font-bold'
+              : (isHomepage && !isScrolled) || (isPricingPage && !isScrolled)
+                ? 'text-white font-light hover:text-orange-400' 
+                : 'text-black font-light hover:text-orange-500'
+          }`} 
+          data-testid="nav-product"
+        >
+          PRODUCT
+        </Link>
+        
+        <Link 
+          href="/pricing" 
+          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase px-8 py-4 rounded-sm inline-block ${
+            location === "/pricing" 
+              ? isPricingPage && !isScrolled
+                ? 'text-orange-500 font-bold'
+                : 'text-orange-500 font-bold'
+              : (isHomepage && !isScrolled) || (isPricingPage && !isScrolled)
+                ? 'text-white font-light hover:text-orange-400' 
+                : 'text-black font-light hover:text-orange-500'
+          }`} 
+          data-testid="nav-pricing"
+        >
+          PRICING
+        </Link>
+        
+        <Link 
+          href="/book-demo" 
+          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase border px-8 py-3 rounded-sm inline-block ${
+            location === "/book-demo"
+              ? 'text-orange-500 font-bold border-orange-500'
+              : (isHomepage && !isScrolled) || (isPricingPage && !isScrolled)
+                ? 'text-white font-light border-white hover:text-orange-400 hover:border-orange-400' 
+                : 'text-black font-light border-black hover:text-orange-500 hover:border-orange-500'
+          }`} 
+          data-testid="nav-book-demo"
+        >
+          BOOK DEMO
+        </Link>
+      </div>
+    </nav>
   );
 };

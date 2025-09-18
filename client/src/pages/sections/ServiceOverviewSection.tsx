@@ -4,30 +4,33 @@ import { Button } from "@/components/ui/button";
 const serviceItems = [
   {
     number: "01",
-    tagline: "Use Cases",
-    heading: "Coaches multiplying<br />their audience",
+    rotatedText: "",
+    tagline: "USE CASES",
+    heading: "Coaches multiplying their<br />audience",
     description:
-      "See how different sectors leverage Rallo's powerful AI solutions.",
+      "Transform your coaching expertise into scalable AI agents that engage prospects 24/7 across all channels.",
     primaryButton: "Get Started",
     secondaryButton: "Learn More",
   },
   {
-    number: "02",
-    tagline: "RETAIL & E-COMMERCE",
-    heading: "Businesses capturing<br />every lead",
+    number: "02", 
+    rotatedText: "",
+    tagline: "LEAD CAPTURE",
+    heading: "Businesses capturing every<br />lead",
     description:
-      "Handle peak traffic without hiring. Rallo agents manage thousands of simultaneous conversations, qualify leads instantly, and never miss a sales opportunity.",
+      "Never miss a potential customer again. Your AI agents qualify leads, book meetings, and nurture prospects while you focus on closing deals.",
     primaryButton: "See Demo",
     secondaryButton: "Case Study",
   },
   {
     number: "03",
-    tagline: "DIGITAL AGENCIES",
+    rotatedText: "",
+    tagline: "WHITE LABEL",
     heading: "Agencies selling high-value<br />branded AI suites",
     description:
-      "Package Rallo as your premium AI offering. Custom-branded solutions, monthly recurring revenue, happy clients who stay longer and pay more.",
+      "Offer cutting-edge AI solutions under your brand. Complete white-label platform lets you deliver enterprise-grade automation to your clients.",
     primaryButton: "Partner Program",
-    secondaryButton: "Success Stories",
+    secondaryButton: "Pricing",
   },
 ];
 
@@ -82,6 +85,8 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
   }, []);
 
   const itemMovement = progress * (80 + index * 20);
+  // Consistent positioning for all numbers
+  const numberOffset = -50; // Same alignment for all numbers
 
   return (
     <div
@@ -93,20 +98,37 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
       }}
     >
       <div 
-        className="w-fit text-[224px] leading-[268.8px] whitespace-nowrap relative [font-family:'JetBrains_Mono',monospace] font-bold text-black tracking-[0]"
+        className="w-fit text-[224px] leading-[268.8px] whitespace-nowrap relative [font-family:'JetBrains_Mono',monospace] font-bold text-black tracking-[0] z-20"
         style={{
-          transform: `translateX(${-300 + (progress * 300)}px)`,  // Start -300px OFF-SCREEN LEFT, slide RIGHT to 0
+          transform: `translateX(${-300 + (progress * 300) + numberOffset}px)`,  // Better alignment within content
           opacity: 1  // NO FADE - Always 100% opacity
         }}
       >
         {item.number}
       </div>
+      
+      {/* Rotated text labels */}
+      <div 
+        className="absolute left-[-120px] top-1/2 transform -translate-y-1/2 -rotate-90 origin-center"
+        style={{
+          transform: `translateX(${-50 + (progress * 50)}px) translateY(-50%) rotate(-90deg)`,
+          opacity: progress
+        }}
+      >
+        <span className="text-sm font-['JetBrains_Mono'] font-medium text-black tracking-wider">
+          {item.rotatedText}
+        </span>
+      </div>
 
       <div 
-        className="flex-col h-[349px] items-start gap-2 flex-1 grow flex relative"
+        className="flex-col h-[349px] items-start gap-2 flex-1 grow flex relative bg-white z-10"
         style={{
           transform: `translateX(${200 - (progress * 200)}px)`,  // Start +200px (from middle-right), slide LEFT to 0
-          opacity: 1  // NO FADE - Always 100% opacity
+          opacity: 1,  // NO FADE - Always 100% opacity
+          padding: '24px',
+          marginLeft: '-24px',
+          borderRadius: '8px',
+          boxShadow: '0 0 0 1px rgba(0,0,0,0.1)'
         }}
       >
         <div className="relative self-stretch w-full h-0.5 bg-[#0000001a]">
@@ -127,7 +149,7 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
                 dangerouslySetInnerHTML={{ __html: item.heading }}
               />
 
-              <p className="relative max-w-[550px] font-text-medium-normal font-[number:var(--text-medium-normal-font-weight)] uppercase text-black text-[length:var(--text-medium-normal-font-size)] tracking-[var(--text-medium-normal-letter-spacing)] leading-[var(--text-medium-normal-line-height)] [font-style:var(--text-medium-normal-font-style)]">
+              <p className="relative max-w-[550px] font-['Inter'] font-normal text-black text-xl leading-relaxed">
                 {item.description}
               </p>
             </div>
@@ -149,10 +171,11 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
 
 export const ServiceOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-center gap-20 px-16 pt-28 pb-40 relative self-stretch w-full flex-[0_0_auto] bg-white">
+    <section className="flex flex-col items-center gap-20 px-16 pt-28 relative self-stretch w-full flex-[0_0_auto] bg-white" style={{ paddingBottom: '360px' }}>
       <div className="flex-col max-w-screen-xl items-start justify-center gap-20 w-full flex-[0_0_auto] flex relative">
+        {/* Force refresh - updated content with Record/Distribute/Engage */}
         {serviceItems.map((item, index) => (
-          <ServiceItem key={index} item={item} index={index} />
+          <ServiceItem key={`service-${index}-v2`} item={item} index={index} />
         ))}
       </div>
     </section>

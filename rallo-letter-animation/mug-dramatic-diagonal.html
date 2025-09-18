@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dramatic Diagonal Mug Animation - Corner to Corner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 16:9 Container */
+        .video-container {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            max-width: 100vw;
+            max-height: 100vh;
+            background: white;
+            overflow: hidden;
+        }
+
+        /* Mug wrapper */
+        .mug-diagonal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Base mug styling - STATIC positions with touching/overlapping */
+        .mug {
+            position: absolute;
+            background-image: url('assets/images/trans-mug.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+        }
+
+        /* Dramatic corner-to-corner diagonal - TOUCHING/OVERLAPPING mugs */
+        /* Start at 85% right, 85% down - End at 15% left, 15% up */
+        
+        .mug-0 {
+            /* HERO SIZE - 1.8 scale (360px) */
+            width: 360px;
+            height: 360px;
+            right: 50px;  /* 85% right = ~50px from edge */
+            bottom: 50px; /* 85% down = ~50px from edge */
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0s;
+        }
+
+        .mug-1 {
+            /* 1.4 scale (280px) - overlapping with mug-0 */
+            width: 280px;
+            height: 280px;
+            right: 240px;  /* Overlap by 40% (60% of 180px = 108px gap) */
+            bottom: 155px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.15s;
+        }
+
+        .mug-2 {
+            /* 1.1 scale (220px) - tight overlap */
+            width: 220px;
+            height: 220px;
+            right: 380px;  /* Overlap by 35% */
+            bottom: 245px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.3s;
+        }
+
+        .mug-3 {
+            /* 0.9 scale (180px) - touching formation */
+            width: 180px;
+            height: 180px;
+            right: 490px;  /* Tight spacing */
+            bottom: 320px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.45s;
+        }
+
+        .mug-4 {
+            /* 0.7 scale (140px) - continuous chain */
+            width: 140px;
+            height: 140px;
+            right: 580px;
+            bottom: 385px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.6s;
+        }
+
+        .mug-5 {
+            /* 0.5 scale (100px) - overlapping edges */
+            width: 100px;
+            height: 100px;
+            right: 650px;
+            bottom: 440px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.75s;
+        }
+
+        .mug-6 {
+            /* 0.35 scale (70px) - tight formation */
+            width: 70px;
+            height: 70px;
+            right: 710px;
+            bottom: 485px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.9s;
+        }
+
+        .mug-7 {
+            /* 0.25 scale (50px) - touching edges */
+            width: 50px;
+            height: 50px;
+            right: 760px;
+            bottom: 525px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.05s;
+        }
+
+        .mug-8 {
+            /* 0.2 scale (40px) - continuous flow */
+            width: 40px;
+            height: 40px;
+            right: 800px;
+            bottom: 560px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.2s;
+        }
+
+        .mug-9 {
+            /* 0.15 scale (30px) - chain continues */
+            width: 30px;
+            height: 30px;
+            right: 835px;
+            bottom: 590px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.35s;
+        }
+
+        .mug-10 {
+            /* 0.1 scale (20px) - end of chain */
+            width: 20px;
+            height: 20px;
+            right: 860px;
+            bottom: 615px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.5s;
+        }
+
+        .mug-11 {
+            /* Tiny final mug */
+            width: 15px;
+            height: 15px;
+            right: 880px;
+            bottom: 635px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.65s;
+        }
+
+        /* Fade reveal animation - NO MOVEMENT */
+        @keyframes fadeReveal {
+            0% {
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            75% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Info display */
+        .info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: sans-serif;
+            z-index: 100;
+        }
+
+        .info h3 {
+            margin: 0 0 10px 0;
+            color: #0066FF;
+            font-size: 16px;
+        }
+
+        .info p {
+            margin: 5px 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Guide lines for development (remove in production) */
+        .diagonal-guide {
+            position: absolute;
+            width: 1px;
+            height: 141%;
+            background: rgba(255, 0, 0, 0.2);
+            transform: rotate(-45deg);
+            transform-origin: 0 0;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h3>Dramatic Corner Diagonal</h3>
+        <p>Hero mug: 1.8x scale (360px)</p>
+        <p>Formation: TIGHT touching/overlapping</p>
+        <p>Path: 85% corner to 15% corner</p>
+        <p>Scaling: 1.8→0.1 (continuous chain)</p>
+    </div>
+
+    <div class="video-container" id="videoContainer">
+        <div class="diagonal-guide"></div>
+        <div class="mug-diagonal" id="mugDiagonal">
+            <!-- 12 mugs in tight touching chain formation -->
+            <div class="mug mug-0"></div>
+            <div class="mug mug-1"></div>
+            <div class="mug mug-2"></div>
+            <div class="mug mug-3"></div>
+            <div class="mug mug-4"></div>
+            <div class="mug mug-5"></div>
+            <div class="mug mug-6"></div>
+            <div class="mug mug-7"></div>
+            <div class="mug mug-8"></div>
+            <div class="mug mug-9"></div>
+            <div class="mug mug-10"></div>
+            <div class="mug mug-11"></div>
+        </div>
+    </div>
+
+    <script>
+        // Log animation details
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Dramatic Corner-to-Corner Diagonal Animation');
+            console.log('Hero mug at 1.8x scale (360px) dominates bottom-right');
+            console.log('Mugs touch/overlap forming continuous chain');
+            console.log('Steep diagonal from 85% corner to 15% corner');
+            console.log('Progressive scaling: 1.8→1.4→1.1→0.9→0.7→0.5→0.35→0.25→0.2→0.15→0.1');
+            console.log('Each mug overlaps 30-40% with the next for continuous chain');
+        });
+    </script>
+</body>
+</html>

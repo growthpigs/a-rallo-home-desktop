@@ -20,6 +20,7 @@ const pricingPlans = [
       "Single channel presence",
       "Standard analytics",
     ],
+    recommended: false,
   },
   {
     name: "Pro",
@@ -32,6 +33,7 @@ const pricingPlans = [
       "Priority email support",
       "Custom branding",
     ],
+    recommended: true,
   },
   {
     name: "Enterprise",
@@ -44,6 +46,7 @@ const pricingPlans = [
       "Dedicated account manager",
       "24/7 premium support",
     ],
+    recommended: false,
   },
 ];
 
@@ -72,15 +75,15 @@ export const PricingOptionsSection = (): JSX.Element => {
         </header>
 
         <div className="flex-col items-center gap-12 w-full flex">
-          <div className="inline-flex items-start p-1 bg-white border border-solid border-black">
+          <div className="inline-flex items-start p-1 bg-gray-100 rounded-lg">
             {billingOptions.map((option) => (
               <button
                 key={option.id}
                 onClick={() => setSelectedBilling(option.id)}
-                className={`inline-flex items-center justify-center gap-2 px-6 py-2 font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase whitespace-nowrap transition-all duration-200 ${
+                className={`inline-flex items-center justify-center gap-2 px-6 py-2 rounded-md font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase whitespace-nowrap transition-all duration-200 ${
                   selectedBilling === option.id
-                    ? "bg-black text-white"
-                    : "bg-transparent text-black hover:bg-gray-50"
+                    ? "bg-black text-white shadow-lg"
+                    : "bg-transparent text-black hover:bg-gray-200"
                 }`}
               >
                 {option.label}
@@ -93,8 +96,19 @@ export const PricingOptionsSection = (): JSX.Element => {
               {pricingPlans.map((plan, index) => (
                 <Card
                   key={index}
-                  className="flex flex-col items-end justify-between p-8 h-full bg-white border border-solid border-black rounded-none"
+                  className={`flex flex-col items-end justify-between p-8 h-full bg-white border rounded-lg transition-all duration-200 relative ${
+                    plan.recommended 
+                      ? "border-2 border-orange-500 shadow-xl" 
+                      : "border border-gray-200 hover:border-gray-300 hover:shadow-lg"
+                  }`}
                 >
+                  {plan.recommended && (
+                    <div className="absolute top-0 right-6 transform -translate-y-1/2">
+                      <Badge className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-['JetBrains_Mono'] tracking-wider uppercase shadow-lg border-0">
+                        RECOMMENDED
+                      </Badge>
+                    </div>
+                  )}
                   <CardContent className="flex-col items-end gap-8 w-full flex p-0">
                     <div className="flex flex-col items-start w-full">
                       <div className="flex items-start justify-between w-full mb-4">
@@ -137,7 +151,11 @@ export const PricingOptionsSection = (): JSX.Element => {
                   </CardContent>
 
                   <div className="flex flex-col gap-4 w-full items-start mt-8">
-                    <Button className="flex items-center justify-center gap-2 px-6 py-3 w-full bg-black border border-solid text-white font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase rounded-none hover:bg-gray-800 transition-colors duration-200">
+                    <Button className={`flex items-center justify-center gap-2 px-6 py-3 w-full border font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase rounded-lg transition-all duration-200 ${
+                      plan.recommended
+                        ? "bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 shadow-lg"
+                        : "bg-black border-black text-white hover:bg-gray-800 hover:border-gray-800"
+                    }`}>
                       GET STARTED
                     </Button>
                   </div>

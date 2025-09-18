@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16:9 Mug Animation - Looping</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 16:9 Container */
+        .video-container {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            max-width: 100vw;
+            max-height: 100vh;
+            background: white;
+            overflow: hidden;
+        }
+
+        /* Mug wrapper for positioning */
+        .mug-trail {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Base mug styling */
+        .mug {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url('assets/images/trans-mug.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Looping animation */
+        @keyframes diagonalTrail {
+            0% {
+                transform: translate(0, 0) scale(var(--scale));
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--end-x), var(--end-y)) scale(var(--scale));
+                opacity: 0;
+            }
+        }
+
+        /* Position and animate each mug with tight spacing */
+        .mug-0 {
+            --scale: 1.2;
+            --start-x: 1400px;
+            --start-y: 750px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 0s;
+        }
+
+        .mug-1 {
+            --scale: 1.05;
+            --start-x: 1320px;
+            --start-y: 700px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 0.2s;
+        }
+
+        .mug-2 {
+            --scale: 0.9;
+            --start-x: 1240px;
+            --start-y: 650px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 0.4s;
+        }
+
+        .mug-3 {
+            --scale: 0.75;
+            --start-x: 1160px;
+            --start-y: 600px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 0.6s;
+        }
+
+        .mug-4 {
+            --scale: 0.6;
+            --start-x: 1080px;
+            --start-y: 550px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 0.8s;
+        }
+
+        .mug-5 {
+            --scale: 0.48;
+            --start-x: 1000px;
+            --start-y: 500px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 1.0s;
+        }
+
+        .mug-6 {
+            --scale: 0.37;
+            --start-x: 920px;
+            --start-y: 450px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 1.2s;
+        }
+
+        .mug-7 {
+            --scale: 0.28;
+            --start-x: 840px;
+            --start-y: 400px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 1.4s;
+        }
+
+        .mug-8 {
+            --scale: 0.2;
+            --start-x: 760px;
+            --start-y: 350px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 1.6s;
+        }
+
+        .mug-9 {
+            --scale: 0.12;
+            --start-x: 680px;
+            --start-y: 300px;
+            --end-x: -1700px;
+            --end-y: -850px;
+            left: var(--start-x);
+            top: var(--start-y);
+            animation: diagonalTrail 4s linear infinite;
+            animation-delay: 1.8s;
+        }
+
+        /* Recording indicator */
+        .recording-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            display: none;
+            z-index: 1000;
+        }
+
+        .recording-indicator.active {
+            display: block;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container" id="videoContainer">
+        <div class="mug-trail" id="mugTrail">
+            <!-- 10 mugs with progressively smaller sizes and tighter spacing -->
+            <div class="mug mug-0"></div>
+            <div class="mug mug-1"></div>
+            <div class="mug mug-2"></div>
+            <div class="mug mug-3"></div>
+            <div class="mug mug-4"></div>
+            <div class="mug mug-5"></div>
+            <div class="mug mug-6"></div>
+            <div class="mug mug-7"></div>
+            <div class="mug mug-8"></div>
+            <div class="mug mug-9"></div>
+        </div>
+    </div>
+
+    <div class="recording-indicator" id="recordingIndicator">
+        🔴 Recording...
+    </div>
+
+    <script>
+        // Auto-start animation
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('16:9 Mug Animation Running');
+            console.log('Press R to start recording (requires screen recording software)');
+            
+            // Keyboard shortcut for recording reminder
+            document.addEventListener('keypress', (e) => {
+                if (e.key === 'r' || e.key === 'R') {
+                    const indicator = document.getElementById('recordingIndicator');
+                    indicator.classList.toggle('active');
+                    
+                    if (indicator.classList.contains('active')) {
+                        console.log('Recording indicator ON - Use OBS or QuickTime to record the animation');
+                        // Start a 10-second recording session
+                        setTimeout(() => {
+                            indicator.classList.remove('active');
+                            console.log('Recording session ended');
+                        }, 10000);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

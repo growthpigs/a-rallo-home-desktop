@@ -133,16 +133,18 @@ export const ScrollDrivenAccordion: React.FC<ScrollDrivenAccordionProps> = ({
               className={`
                 relative border-r border-solid border-black last:border-r-0 
                 transition-all duration-1000 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                ${isActive ? 'flex-1' : 'flex-none w-[120px]'}
+                ${isActive ? 'flex-1' : 'flex-none w-[140px]'}
               `}
               style={{
                 // Smooth width transitions based on active state
-                flex: isActive ? '1 1 auto' : '0 0 120px'
+                flex: isActive ? '1 1 auto' : '0 0 140px'
               }}
             >
-              {/* Tab Number (Always at Top) - JetBrains Mono */}
-              <div className="absolute top-8 left-8 z-20">
-                <span className={`font-bold transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-6xl ${
+              {/* Tab Number (Always at Top) - JetBrains Mono LIGHT - Conditional positioning */}
+              <div className={`absolute top-8 z-20 transition-all duration-800 ${
+                isActive ? 'left-8' : 'left-1/2 transform -translate-x-1/2'
+              }`}>
+                <span className={`font-light transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] text-6xl ${
                   isActive ? 'text-[#fd815aff]' : 'text-black/80'
                 }`} style={{ fontFamily: 'JetBrains Mono, monospace' }}>
                   {tab.number}
@@ -186,8 +188,8 @@ export const ScrollDrivenAccordion: React.FC<ScrollDrivenAccordionProps> = ({
                         {tab.title}
                       </h3>
                       
-                      {/* Content text - much smaller size */}
-                      <p className="text-[length:var(--text-small-normal-font-size)] leading-[var(--text-small-normal-line-height)] font-text-small-normal font-[number:var(--text-small-normal-font-weight)] text-black">
+                      {/* Content text - much bigger, easier to read */}
+                      <p className="text-xl leading-relaxed font-['Barlow'] font-normal text-black">
                         {tab.content}
                       </p>
                     </div>

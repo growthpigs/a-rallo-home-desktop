@@ -11,7 +11,7 @@ export const ProductRalloVoiceSection = (): JSX.Element => {
           src="/figmaAssets/placeholder-lightbox-5.png"
         />
 
-        <div className="flex-col items-start justify-center gap-8 pl-20 pr-16 py-28 flex-1 self-stretch grow flex relative">
+        <div className="flex-col items-start justify-center gap-8 pl-20 pr-16 py-20 flex-1 self-stretch grow flex relative">
           <div className="flex-col max-w-[560px] items-start gap-8 w-full flex-[0_0_auto] flex relative">
             <div className="flex flex-col items-start gap-4 relative self-stretch w-full flex-[0_0_auto]">
               <img

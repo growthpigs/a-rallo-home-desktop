@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagonal Perspective Multiplication - Sunglasses</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .perspective-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+        }
+
+        .sunglasses-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sunglasses {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            position: absolute;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Fixed foreground sunglasses */
+        .sunglasses-fixed {
+            z-index: 100;
+            animation: none !important;
+        }
+        
+        .sunglasses-fixed-1 {
+            transform: translate(-150px, 0) scale(1);
+        }
+        
+        .sunglasses-fixed-2 {
+            transform: translate(150px, 0) scale(1);
+        }
+
+        /* Background sunglasses only - start behind fixed sunglasses */
+        .sunglasses-background {
+            animation: diagonalPerspective 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            z-index: 1;
+        }
+
+        /* Background copies with progressive delays */
+        .sunglasses-bg-0 { animation-delay: 0.3s; }
+        .sunglasses-bg-1 { animation-delay: 0.45s; }
+        .sunglasses-bg-2 { animation-delay: 0.6s; }
+        .sunglasses-bg-3 { animation-delay: 0.75s; }
+        .sunglasses-bg-4 { animation-delay: 0.9s; }
+        .sunglasses-bg-5 { animation-delay: 1.05s; }
+        .sunglasses-bg-6 { animation-delay: 1.2s; }
+        .sunglasses-bg-7 { animation-delay: 1.35s; }
+
+        @keyframes diagonalPerspective {
+            0% {
+                transform: translate(0, 0) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: var(--final-transform);
+                opacity: var(--final-opacity);
+            }
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #0066FF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0052CC;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Info display */
+        .info {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            z-index: 100;
+        }
+
+        .info h3 {
+            margin: 0 0 10px 0;
+            color: #0066FF;
+            font-size: 16px;
+        }
+
+        .info p {
+            margin: 5px 0;
+            font-size: 13px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h3>Diagonal Perspective - Sunglasses</h3>
+        <p>Fixed sunglasses: 2 in foreground</p>
+        <p>Background copies: <span id="objectCount">8</span></p>
+        <p>Direction: Upper-left diagonal</p>
+        <p>Scale: 0.8 → 0.1 progressive</p>
+    </div>
+
+    <div class="perspective-container" id="perspectiveContainer">
+        <div class="sunglasses-wrapper" id="sunglassesWrapper">
+            <!-- Fixed foreground sunglasses -->
+            <img src="/Users/rodericandrews/Obsidian/Master/_Projects/Rallo/_rallo-design/Video/OUT Objects/Trans-Sunglasses.png" alt="Sunglasses 1" class="sunglasses sunglasses-fixed sunglasses-fixed-1">
+            <img src="/Users/rodericandrews/Obsidian/Master/_Projects/Rallo/_rallo-design/Video/OUT Objects/Trans-Sunglasses.png" alt="Sunglasses 2" class="sunglasses sunglasses-fixed sunglasses-fixed-2">
+            <!-- Background copies will be added here -->
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" id="playBtn">Play Animation</button>
+        <button class="btn" id="resetBtn">Reset</button>
+        <button class="btn" id="addMoreBtn">Add More Copies</button>
+    </div>
+
+    <script>
+        class PerspectiveMultiplication {
+            constructor() {
+                this.container = document.getElementById('sunglassesWrapper');
+                this.perspectiveContainer = document.getElementById('perspectiveContainer');
+                this.playBtn = document.getElementById('playBtn');
+                this.resetBtn = document.getElementById('resetBtn');
+                this.addMoreBtn = document.getElementById('addMoreBtn');
+                this.objectCountDisplay = document.getElementById('objectCount');
+                
+                this.copies = [];
+                this.backgroundCount = 8; // Only background copies
+                this.isAnimating = false;
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupEventListeners();
+                this.createCopies();
+            }
+            
+            setupEventListeners() {
+                this.playBtn.addEventListener('click', () => this.playAnimation());
+                this.resetBtn.addEventListener('click', () => this.reset());
+                this.addMoreBtn.addEventListener('click', () => this.addMoreCopies());
+            }
+            
+            createCopies() {
+                // Clear existing background copies only
+                this.copies.forEach(copy => copy.remove());
+                this.copies = [];
+                
+                // Create background copies that appear behind fixed sunglasses
+                for (let i = 0; i < this.backgroundCount; i++) {
+                    const copy = document.createElement('img');
+                    copy.src = '/Users/rodericandrews/Obsidian/Master/_Projects/Rallo/_rallo-design/Video/OUT Objects/Trans-Sunglasses.png';
+                    copy.alt = `Background Sunglasses ${i}`;
+                    copy.className = `sunglasses sunglasses-background sunglasses-bg-${i}`;
+                    
+                    // Progressive scaling for depth
+                    const scale = 0.8 - (i * 0.085); // 0.8 → 0.1
+                    // Diagonal movement maintaining relative positions
+                    const translateX = -200 - (i * 100); // Increasing diagonal distance
+                    const translateY = -100 - (i * 50);  // Half of X for diagonal
+                    const opacity = 0.9 - (i * 0.08); // More aggressive fade for background
+                    
+                    // Set CSS custom properties for animation end state
+                    copy.style.setProperty('--final-transform', 
+                        `translate(${translateX}px, ${translateY}px) scale(${scale})`);
+                    copy.style.setProperty('--final-opacity', opacity);
+                    
+                    this.container.appendChild(copy);
+                    this.copies.push(copy);
+                }
+                
+                this.objectCountDisplay.textContent = this.backgroundCount;
+            }
+            
+            playAnimation() {
+                if (this.isAnimating) return;
+                
+                this.isAnimating = true;
+                this.playBtn.disabled = true;
+                
+                // Restart animation for background copies only
+                this.copies.forEach((copy, index) => {
+                    copy.style.animation = 'none';
+                    setTimeout(() => {
+                        copy.style.animation = `diagonalPerspective 3s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+                        copy.style.animationDelay = `${0.3 + (index * 0.15)}s`;
+                    }, 50);
+                });
+                
+                // Re-enable button after animation
+                setTimeout(() => {
+                    this.isAnimating = false;
+                    this.playBtn.disabled = false;
+                }, 3000 + (this.backgroundCount * 150));
+            }
+            
+            reset() {
+                this.copies.forEach(copy => {
+                    copy.style.animation = 'none';
+                    copy.style.transform = 'translate(0, 0) scale(0.8)';
+                    copy.style.opacity = '0';
+                });
+                
+                this.isAnimating = false;
+                this.playBtn.disabled = false;
+            }
+            
+            addMoreCopies() {
+                this.backgroundCount = Math.min(12, this.backgroundCount + 2);
+                this.createCopies();
+                this.reset();
+            }
+        }
+        
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const perspectiveApp = new PerspectiveMultiplication();
+            
+            // Auto-play on load after a short delay
+            setTimeout(() => {
+                perspectiveApp.playAnimation();
+            }, 500);
+        });
+    </script>
+</body>
+</html>

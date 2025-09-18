@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-// Removed PersistentLazyImage - using regular img tags for NO FADE
+import { LazyWebP } from "@/components/LazyWebP";
 import { DemoModal } from "@/components/DemoModal";
 import { useScrollLinkedAnimation } from "@/hooks/useScrollLinkedAnimation";
 import { ChevronRightIcon } from "lucide-react";
@@ -19,7 +19,7 @@ const galleryItems = [
     description: "Always-on website and app chat support.",
     icon: "/icons/Chat-cube.svg",
     demoType: "chat" as const,
-    image: extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0,
+    image: "/videos/rallo-chat-woman-simple.webp",
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
   },
@@ -29,7 +29,7 @@ const galleryItems = [
     description: "Real-time two-way video conversations powered by AI.",
     icon: "/icons/agents-globe.svg",
     demoType: "video" as const,
-    image: finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2,
+    image: "/videos/rallo-interactive-knob-loop.webp",
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
   },
@@ -108,8 +108,22 @@ const ProductCard = ({ item, direction, waveApi }: {
   
   let translateX: number;
   
-  // Use actual scroll progress for animation
-  const easedProgress = progress; // Use real scroll progress
+  // Apply smooth overshoot and settle animation
+  const smoothOvershoot = (t: number) => {
+    // Overshoot slightly past target (1.05) then settle back to 1.0
+    const overshootAmount = 0.08; // 8% overshoot
+    if (t < 0.7) {
+      // Accelerate smoothly to overshoot point
+      const adjustedT = t / 0.7;
+      return (1 + overshootAmount) * (adjustedT * adjustedT * (3 - 2 * adjustedT));
+    } else {
+      // Gently settle back from overshoot
+      const adjustedT = (t - 0.7) / 0.3;
+      return (1 + overshootAmount) - overshootAmount * (adjustedT * adjustedT * (3 - 2 * adjustedT));
+    }
+  };
+  
+  const easedProgress = smoothOvershoot(progress);
   
   // ENHANCED DEBUG LOGGING - Find the opacity issue!
   useEffect(() => {
@@ -149,15 +163,21 @@ const ProductCard = ({ item, direction, waveApi }: {
     }
   }, [progress, item.title]);
   
+  // Add staggered offset based on item index for asymmetric stopping
+  const staggerOffset = item.id === 1 ? 15 : 
+                       item.id === 2 ? -10 :
+                       item.id === 3 ? 20 :
+                       item.id === 4 ? -5 : 0;
+  
   if (direction === 'left') {
-    // Left cards: subtle movement from slightly off-page
-    const startX = -100; // Start 100px off to the left
-    const endX = 0; // End at normal position
+    // Left cards: start far left, move RIGHT toward center
+    const startX = -400; // Start 400px off to the left
+    const endX = 50 + staggerOffset; // End 50px from center (leaves 100px gap total)
     translateX = startX + (easedProgress * (endX - startX));
   } else {
-    // Right cards: subtle movement from slightly off-page
-    const startX = 100; // Start 100px off to the right
-    const endX = 0; // End at normal position
+    // Right cards: start far right, move LEFT toward center
+    const startX = 400; // Start 400px off to the right
+    const endX = -50 + staggerOffset; // End 50px from center (leaves 100px gap total)
     translateX = startX + (easedProgress * (endX - startX));
   }
   
@@ -184,17 +204,26 @@ const ProductCard = ({ item, direction, waveApi }: {
         <Card className={`flex-col ${item.maxWidth} items-start gap-2 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
           <CardContent className="p-0 w-full">
             <div>
-              {/* Using regular img tag to avoid ALL lazy loading and opacity effects */}
-              <img
-                className={`w-[400px] ${item.imageHeight} relative object-cover opacity-100`}
-                alt={item.title}
-                src={item.image}
-                width={400}
-                height={400}
-                loading="eager"  // Force immediate loading
-                decoding="sync"   // Force synchronous decoding
-                style={{ opacity: 1 }}  // Double-ensure no opacity
-              />
+              {/* Using LazyWebP for optimized loading */}
+              {typeof item.image === 'string' && item.image.endsWith('.webp') ? (
+                <LazyWebP
+                  className={`w-[400px] ${item.imageHeight} relative object-cover`}
+                  alt={item.title}
+                  src={item.image}
+                  width={400}
+                  height={400}
+                />
+              ) : (
+                <img
+                  className={`w-[400px] ${item.imageHeight} relative object-cover opacity-100`}
+                  alt={item.title}
+                  src={item.image}
+                  width={400}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
             </div>
             <div className="flex-col items-start gap-3 w-full flex-[0_0_auto] flex relative mt-6">
               <div className="flex items-center gap-4">
@@ -340,19 +369,19 @@ export const ImageGallerySection = (): JSX.Element => {
         <div className="grid grid-cols-2 gap-16 w-full">
           {/* Top Row - right card offset down */}
           <ProductCard item={galleryItems[0]} direction="left" waveApi={waveApiRef} />
-          <div className="pt-[200px] pb-0 px-0">
+          <div className="pt-[200px] pb-0 px-0 flex justify-end">
             <ProductCard item={galleryItems[1]} direction="right" waveApi={waveApiRef} />
           </div>
 
           {/* Bottom Row - right card offset down */}
           <ProductCard item={galleryItems[2]} direction="left" waveApi={waveApiRef} />
-          <div className="pt-[200px] pb-0 px-0">
+          <div className="pt-[200px] pb-0 px-0 flex justify-end">
             <ProductCard item={galleryItems[3]} direction="right" waveApi={waveApiRef} />
           </div>
         </div>
         
         {/* Extra spacing at bottom */}
-        <div className="h-[100px]"></div>
+        <div className="h-[200px]"></div>
       </div>
       </div>
     </section>

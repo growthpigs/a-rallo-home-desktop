@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Diagonal Mug Animation - 16:9</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 16:9 Container */
+        .video-container {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            max-width: 100vw;
+            max-height: 100vh;
+            background: white;
+            overflow: hidden;
+        }
+
+        /* Mug wrapper for positioning */
+        .mug-diagonal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Base mug styling - NO MOVEMENT, only opacity */
+        .mug {
+            position: absolute;
+            background-image: url('assets/images/trans-mug.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+        }
+
+        /* Static positioning along diagonal - largest at bottom-right */
+        .mug-0 {
+            width: 200px;
+            height: 200px;
+            right: 100px;
+            bottom: 100px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0s;
+        }
+
+        .mug-1 {
+            width: 180px;
+            height: 180px;
+            right: 280px;
+            bottom: 200px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.2s;
+        }
+
+        .mug-2 {
+            width: 160px;
+            height: 160px;
+            right: 460px;
+            bottom: 300px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.4s;
+        }
+
+        .mug-3 {
+            width: 140px;
+            height: 140px;
+            right: 640px;
+            bottom: 400px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.6s;
+        }
+
+        .mug-4 {
+            width: 120px;
+            height: 120px;
+            right: 820px;
+            bottom: 500px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 0.8s;
+        }
+
+        .mug-5 {
+            width: 100px;
+            height: 100px;
+            right: 1000px;
+            bottom: 600px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.0s;
+        }
+
+        .mug-6 {
+            width: 80px;
+            height: 80px;
+            right: 1180px;
+            bottom: 700px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.2s;
+        }
+
+        .mug-7 {
+            width: 60px;
+            height: 60px;
+            right: 1360px;
+            bottom: 800px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.4s;
+        }
+
+        .mug-8 {
+            width: 40px;
+            height: 40px;
+            right: 1540px;
+            bottom: 900px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.6s;
+        }
+
+        .mug-9 {
+            width: 20px;
+            height: 20px;
+            right: 1720px;
+            bottom: 1000px;
+            animation: fadeReveal 4s infinite;
+            animation-delay: 1.8s;
+        }
+
+        /* Fade reveal animation - NO MOVEMENT */
+        @keyframes fadeReveal {
+            0% {
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Info display */
+        .info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: sans-serif;
+            z-index: 100;
+        }
+
+        .info h3 {
+            margin: 0 0 10px 0;
+            color: #0066FF;
+            font-size: 16px;
+        }
+
+        .info p {
+            margin: 5px 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #0066FF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0052CC;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h3>Static Diagonal Formation</h3>
+        <p>Position: Fixed diagonal line</p>
+        <p>Scale: 1.0 (bottom-right) → 0.1 (top-left)</p>
+        <p>Animation: Opacity fade only</p>
+        <p>Movement: NONE - Static positions</p>
+    </div>
+
+    <div class="video-container" id="videoContainer">
+        <div class="mug-diagonal" id="mugDiagonal">
+            <!-- 10 mugs in static diagonal positions - NO MOVEMENT -->
+            <div class="mug mug-0"></div>
+            <div class="mug mug-1"></div>
+            <div class="mug mug-2"></div>
+            <div class="mug mug-3"></div>
+            <div class="mug mug-4"></div>
+            <div class="mug mug-5"></div>
+            <div class="mug mug-6"></div>
+            <div class="mug mug-7"></div>
+            <div class="mug mug-8"></div>
+            <div class="mug mug-9"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="restartAnimation()">Restart Animation</button>
+    </div>
+
+    <script>
+        // Function to restart animation
+        function restartAnimation() {
+            const mugs = document.querySelectorAll('.mug');
+            mugs.forEach(mug => {
+                mug.style.animation = 'none';
+                void mug.offsetHeight; // Trigger reflow
+                mug.style.animation = null;
+            });
+        }
+
+        // Log animation details
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Static Diagonal Animation Running');
+            console.log('Mugs appear in fixed positions along diagonal');
+            console.log('NO translation or movement - only opacity changes');
+            console.log('Scale decreases from bottom-right (1.0) to top-left (0.1)');
+        });
+    </script>
+</body>
+</html>

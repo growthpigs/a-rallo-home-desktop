@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 
 // Import ALL sections directly for optimal performance (no lazy loading)
+import { NavigationHeader } from "./sections/NavigationHeader";
 import { HeaderSection } from "./sections/HeaderSection";
 import { GeneralLayoutSection } from "./sections/GeneralLayoutSection";
 import { ScrollExpandSection } from "./sections/ScrollExpandSection";
@@ -26,6 +27,7 @@ export const HomeDesktop = (): JSX.Element => {
   return (
     <div className="flex flex-col items-start w-full">
       {/* All sections loaded immediately for smooth scrolling */}
+      <NavigationHeader />
       <HeaderSection />
       <GeneralLayoutSection />
       <ScrollExpandSection />

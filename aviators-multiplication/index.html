@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviators Multiplication - Warp Speed Effect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+            overflow: hidden;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            perspective: 2000px;
+            perspective-origin: center center;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .aviator-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 150px;
+            background-image: url('rallo-aviators.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform-origin: center center;
+            transform: translate(-50%, -50%);
+            filter: brightness(1.1) contrast(1.05);
+            border: 2px solid rgba(0,0,0,0.1);
+            border-radius: 15px;
+        }
+
+        .controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .start-button {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .start-button:hover {
+            transform: scale(1.05);
+        }
+
+        .start-button:active {
+            transform: scale(0.95);
+        }
+
+        /* 70s/80s retro styling */
+        .aviator.retro {
+            filter: brightness(1.2) contrast(1.1) saturate(1.3);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Optimized animation keyframes for infinite tunnel effect */
+        @keyframes infiniteTunnel {
+            0% {
+                transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(1) rotateZ(0deg);
+                opacity: 1;
+                filter: brightness(1.2) contrast(1.1) saturate(1.2) blur(0px);
+            }
+            20% {
+                transform: translate(-50%, -50%) translate3d(0, 0, -200px) scale(0.8) rotateZ(72deg);
+                opacity: 0.9;
+                filter: brightness(1.2) contrast(1.1) saturate(1.2) blur(0.5px);
+            }
+            50% {
+                transform: translate(-50%, -50%) translate3d(0, 0, -1000px) scale(0.4) rotateZ(180deg);
+                opacity: 0.6;
+                filter: brightness(1.2) contrast(1.1) saturate(1.2) blur(1px);
+            }
+            80% {
+                transform: translate(-50%, -50%) translate3d(0, 0, -3000px) scale(0.1) rotateZ(288deg);
+                opacity: 0.2;
+                filter: brightness(1.2) contrast(1.1) saturate(1.2) blur(2px);
+            }
+            100% {
+                transform: translate(-50%, -50%) translate3d(0, 0, -5000px) scale(0.01) rotateZ(360deg);
+                opacity: 0;
+                filter: brightness(1.2) contrast(1.1) saturate(1.2) blur(3px);
+            }
+        }
+
+        /* Continuous loop animation */
+        @keyframes continuousWarp {
+            0% {
+                transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(1) rotateZ(0deg);
+                opacity: 1;
+                filter: brightness(1.2) contrast(1.1) saturate(1.2) blur(0px);
+            }
+            100% {
+                transform: translate(-50%, -50%) translate3d(0, 0, -5000px) scale(0.01) rotateZ(720deg);
+                opacity: 0;
+                filter: brightness(1.2) contrast(1.1) saturate(1.2) blur(4px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- Base aviator image -->
+        <div class="aviator" id="baseAviator"></div>
+    </div>
+
+    <div class="controls">
+        <div><strong>Aviators Multiplication Effect</strong></div>
+        <div>70s/80s Warp Speed Tunnel</div>
+        <button class="start-button" onclick="startWarpSpeed()">Start Warp Speed</button>
+        <button class="start-button" onclick="startContinuousLoop()">Continuous Loop</button>
+        <button class="start-button" onclick="resetAnimation()">Reset</button>
+    </div>
+
+    <script>
+        let animationRunning = false;
+        let continuousRunning = false;
+        let aviatorCount = 0;
+        const maxAviators = 200;
+        let animationFrame;
+
+        function createOptimizedAviator(delay, angle, spiralFactor, isContinuous = false) {
+            if (aviatorCount >= maxAviators && !isContinuous) return;
+
+            const aviator = document.createElement('div');
+            aviator.className = 'aviator retro';
+            aviator.id = `aviator-${aviatorCount++}`;
+
+            // Enhanced spiral helical pattern calculation
+            const spiralRadius = 30 + (spiralFactor * 20);
+            const helicalX = Math.cos(angle + spiralFactor) * spiralRadius;
+            const helicalY = Math.sin(angle + spiralFactor) * spiralRadius;
+
+            // Set initial position with helical spiral offset
+            aviator.style.left = `calc(50% + ${helicalX}px)`;
+            aviator.style.top = `calc(50% + ${helicalY}px)`;
+
+            // Randomized rotation for organic movement
+            const rotationDirection = Math.random() > 0.5 ? 1 : -1;
+            const totalRotation = 360 + (Math.random() * 1080); // 1-4 full rotations
+
+            // Calculate explosive radial trajectory
+            const explosionRadius = 3000 + Math.random() * 2000;
+            const finalX = Math.cos(angle) * explosionRadius;
+            const finalY = Math.sin(angle) * explosionRadius;
+
+            document.getElementById('container').appendChild(aviator);
+
+            // Stagger the animation start with optimized timing
+            setTimeout(() => {
+                // Apply the optimized infinite tunnel animation
+                aviator.style.animation = `infiniteTunnel 4s cubic-bezier(0.19, 1, 0.22, 1) forwards`;
+                
+                // Apply hardware-accelerated transforms
+                aviator.style.transform = `
+                    translate(-50%, -50%) 
+                    translate3d(${finalX}px, ${finalY}px, -5000px) 
+                    scale(0.01) 
+                    rotateZ(${totalRotation * rotationDirection}deg)
+                `;
+
+                // Cleanup after animation with performance optimization
+                setTimeout(() => {
+                    if (aviator.parentNode) {
+                        aviator.parentNode.removeChild(aviator);
+                    }
+                }, 4100);
+            }, delay);
+        }
+
+        function startWarpSpeed() {
+            if (animationRunning) return;
+            
+            animationRunning = true;
+            aviatorCount = 0;
+
+            // Create optimized burst of aviators
+            for (let i = 0; i < maxAviators; i++) {
+                const delay = i * 30; // Faster stagger for denser effect
+                const angle = (i / maxAviators) * Math.PI * 12; // More spiral rotations
+                const spiralFactor = i * 0.15; // Tighter spiral progression
+                
+                createOptimizedAviator(delay, angle, spiralFactor);
+            }
+
+            // Reset flag after all animations complete
+            setTimeout(() => {
+                animationRunning = false;
+            }, 10000);
+        }
+
+        function startContinuousLoop() {
+            if (continuousRunning) {
+                continuousRunning = false;
+                return;
+            }
+
+            continuousRunning = true;
+            let continuousCount = 0;
+            
+            function continuousSpawn() {
+                if (!continuousRunning) return;
+
+                // Spawn 3 aviators at a time for smoother flow
+                for (let i = 0; i < 3; i++) {
+                    const angle = (continuousCount / 60) * Math.PI * 2; // Full circle every 60 spawns
+                    const spiralFactor = continuousCount * 0.1;
+                    
+                    createOptimizedAviator(i * 20, angle, spiralFactor, true);
+                    continuousCount++;
+                }
+
+                // Recursive call for continuous spawning
+                animationFrame = requestAnimationFrame(() => {
+                    setTimeout(continuousSpawn, 100); // 10 FPS spawn rate
+                });
+            }
+
+            continuousSpawn();
+        }
+
+        function resetAnimation() {
+            // Stop continuous loop
+            continuousRunning = false;
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+
+            // Remove all animated aviators
+            const aviators = document.querySelectorAll('.aviator:not(#baseAviator)');
+            aviators.forEach(aviator => {
+                if (aviator.parentNode) {
+                    aviator.parentNode.removeChild(aviator);
+                }
+            });
+            
+            animationRunning = false;
+            aviatorCount = 0;
+        }
+
+        // Performance optimizations
+        function optimizePerformance() {
+            // Enable hardware acceleration for the container
+            const container = document.getElementById('container');
+            container.style.transform = 'translate3d(0, 0, 0)';
+            container.style.backfaceVisibility = 'hidden';
+        }
+
+        // Auto-start demo after page load
+        window.addEventListener('load', () => {
+            optimizePerformance();
+            setTimeout(() => {
+                startWarpSpeed();
+            }, 1000);
+        });
+
+        // Enhanced keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                startWarpSpeed();
+            } else if (e.code === 'Enter') {
+                e.preventDefault();
+                startContinuousLoop();
+            } else if (e.code === 'Escape') {
+                resetAnimation();
+            }
+        });
+
+        // Touch controls for mobile
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('container') || e.target.tagName === 'BODY') {
+                startWarpSpeed();
+            }
+        });
+    </script>
+</body>
+</html>

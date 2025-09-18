@@ -18,28 +18,28 @@ export const MainContentSection = (): JSX.Element => {
     {
       id: 1,
       number: "01",
-      title: "Step One",
-      content: "Record your expertise once using our intuitive studio. Simply speak naturally about your products, services, and processes. Our AI captures your knowledge, tone, and personality to create your digital representative. No complex setup or technical skills required - just be yourself and let Rallo do the rest.",
+      title: "Record",
+      content: "Record your expertise once using our intuitive studio. Simply speak naturally about your products and services. Our AI captures your knowledge, tone, and personality to create your digital representative.",
       image: extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__m6ipw32q4rk22i39nvv4_3
     },
     {
       id: 2,
       number: "02", 
-      title: "Step Two",
-      content: "Deploy your AI agents across all customer touchpoints instantly. Video calls, live chat, voice support, and more - your digital twin works 24/7 across every channel. Configure workflows visually with our drag-and-drop interface. No coding required, just point and click to create sophisticated automation.",
+      title: "Distribute",
+      content: "Deploy your AI agents across all customer touchpoints instantly. Video calls, live chat, voice support, and more. Your digital twin works 24/7 across every channel with visual workflow configuration.",
       image: "/images/ultra_macro_of_nostril_with_geometric_particles_analyzing_breath_composition_translucent_interface__jmgoglja7mo2apr10yub_0.png"
     },
     {
       id: 3,
       number: "03",
-      title: "Step Three",
-      content: "Watch your AI agents engage customers everywhere automatically. They remember every conversation, handle complex inquiries, and escalate to humans when needed. You focus on strategy while your digital workforce scales infinitely. Real-time analytics show exactly how your AI agents are performing and improving your business.",
+      title: "Engage",
+      content: "Watch your AI agents engage customers everywhere automatically. They remember every conversation, handle complex inquiries, and escalate to humans when needed. You focus on strategy while your digital workforce scales.",
       image: "/images/macro_shot_of_eye_looking_up_at_floating_geometric_interface_elements_tiny_holographic_particles_vi_xpz1vt4h0wncwoga2686_0.png"
     }
   ];
 
   return (
-    <section ref={scrollRef} className="flex flex-col items-center gap-10 px-16 pt-[70px] pb-3 relative self-stretch w-full flex-[0_0_auto] bg-[#e6e6e6]">
+    <section ref={scrollRef} className="flex flex-col items-center gap-10 px-16 pt-[70px] pb-3 relative self-stretch w-full flex-[0_0_auto] bg-[#a19f9fff]">
       <div className="flex flex-col max-w-screen-xl items-start gap-10 relative w-full flex-[0_0_auto]">
         {/* Header with scroll-driven animation */}
         <div 

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telescope Duplication Effect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .telescope-container {
+            perspective: 1000px;
+            perspective-origin: center center;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mug-layer {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-image: url('mug.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform-origin: center center;
+        }
+
+        /* 5-second smooth telescope animation */
+        @keyframes telescopeZoom {
+            0% {
+                transform: translateZ(0px) scale(1);
+                opacity: 1;
+            }
+            20% {
+                transform: translateZ(-200px) scale(0.7);
+                opacity: 0.9;
+            }
+            40% {
+                transform: translateZ(-500px) scale(0.5);
+                opacity: 0.7;
+            }
+            60% {
+                transform: translateZ(-900px) scale(0.3);
+                opacity: 0.5;
+            }
+            80% {
+                transform: translateZ(-1400px) scale(0.15);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateZ(-2000px) scale(0.05);
+                opacity: 0;
+            }
+        }
+
+        @keyframes autoTelescopeEffect {
+            0% {
+                transform: translateZ(0px) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateZ(-1500px) scale(0.1);
+                opacity: 0.1;
+            }
+        }
+
+        /* Each layer gets progressively smaller and more distant */
+        .layer-0 { 
+            transform: translateZ(0px) scale(1); 
+            opacity: 1;
+            z-index: 50;
+        }
+        
+        .layer-1 { 
+            transform: translateZ(-40px) scale(0.98); 
+            opacity: 0.98;
+            z-index: 49;
+        }
+        
+        .layer-2 { 
+            transform: translateZ(-80px) scale(0.96); 
+            opacity: 0.96;
+            z-index: 48;
+        }
+        
+        .layer-3 { 
+            transform: translateZ(-120px) scale(0.94); 
+            opacity: 0.94;
+            z-index: 47;
+        }
+        
+        .layer-4 { 
+            transform: translateZ(-160px) scale(0.92); 
+            opacity: 0.92;
+            z-index: 46;
+        }
+        
+        .layer-5 { 
+            transform: translateZ(-200px) scale(0.90); 
+            opacity: 0.90;
+            z-index: 45;
+        }
+
+        /* Animation for smooth telescopic effect - exactly 5 seconds */
+        .animate-telescope {
+            animation: telescopeZoom 5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .animate-loop {
+            animation: telescopeZoom 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        .controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .controls h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Vignette effect for telescope view */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: radial-gradient(
+                circle at center,
+                transparent 0%,
+                transparent 40%,
+                rgba(0, 0, 0, 0.4) 60%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
+            z-index: 60;
+        }
+    </style>
+</head>
+<body>
+    <!-- Vignette overlay for telescope effect -->
+    <div class="vignette"></div>
+
+    <!-- Container for telescope view -->
+    <div class="telescope-container" id="container">
+        <!-- Layers will be added here by JavaScript -->
+    </div>
+
+    <div class="controls">
+        <h3>Telescope Duplication - 5s Animation</h3>
+        <button class="btn" onclick="start5SecondAnimation()">Play 5s Animation</button>
+        <button class="btn" onclick="createStaticLayers()">Static Layers</button>
+        <button class="btn" onclick="createLoopAnimation()">Loop Animation</button>
+        <button class="btn" onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        let animationInterval;
+
+        // Create static layers (telescope view)
+        function createStaticLayers() {
+            reset();
+            const numLayers = 50;
+            
+            for (let i = 0; i < numLayers; i++) {
+                const layer = document.createElement('div');
+                layer.className = 'mug-layer';
+                
+                // Calculate depth and scale
+                const depth = i * 40; // 40px depth between each layer
+                const scale = Math.max(0.05, 1 - (i * 0.02)); // Decrease by 2% each layer
+                const opacity = Math.max(0, 1 - (i * 0.02)); // Fade out gradually
+                
+                // Apply transforms
+                layer.style.transform = `translateZ(-${depth}px) scale(${scale})`;
+                layer.style.opacity = opacity;
+                layer.style.zIndex = numLayers - i;
+                
+                // Add slight rotation for variety
+                if (i > 10) {
+                    const rotation = Math.sin(i * 0.1) * 2; // Slight oscillation
+                    layer.style.transform += ` rotate(${rotation}deg)`;
+                }
+                
+                container.appendChild(layer);
+            }
+        }
+
+        // Create 5-second animation with multiple mug layers
+        function start5SecondAnimation() {
+            reset();
+            const numLayers = 30; // Number of mug copies
+            
+            for (let i = 0; i < numLayers; i++) {
+                setTimeout(() => {
+                    const layer = document.createElement('div');
+                    layer.className = 'mug-layer animate-telescope';
+                    
+                    // Stagger the animation slightly for each layer
+                    layer.style.animationDelay = `${i * 0.15}s`;
+                    layer.style.animationDuration = '5s';
+                    
+                    container.appendChild(layer);
+                    
+                    // Remove layer after animation completes
+                    setTimeout(() => {
+                        if (layer.parentNode) {
+                            layer.parentNode.removeChild(layer);
+                        }
+                    }, 5000 + (i * 150));
+                }, i * 50);
+            }
+        }
+
+        // Create looping animation
+        function createLoopAnimation() {
+            reset();
+            const numLayers = 20;
+            
+            for (let i = 0; i < numLayers; i++) {
+                const layer = document.createElement('div');
+                layer.className = 'mug-layer animate-loop';
+                layer.style.animationDelay = `${i * 0.25}s`;
+                layer.style.animationDuration = '5s';
+                container.appendChild(layer);
+            }
+        }
+
+        // Reset the view
+        function reset() {
+            if (animationInterval) {
+                clearInterval(animationInterval);
+            }
+            container.innerHTML = '';
+        }
+
+        // Auto-start 5-second animation on load
+        window.addEventListener('load', () => {
+            // Wait for image to load, then start animation
+            const testImg = new Image();
+            testImg.onload = () => {
+                // Start the 5-second animation automatically
+                setTimeout(() => {
+                    start5SecondAnimation();
+                }, 500); // Small delay for visual impact
+            };
+            testImg.onerror = () => {
+                // If image doesn't load, still create the effect
+                console.log('Using placeholder - add mug.jpg to folder');
+                setTimeout(() => {
+                    start5SecondAnimation();
+                }, 500);
+            };
+            testImg.src = 'mug.jpg';
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case '1':
+                    createStaticLayers();
+                    break;
+                case '2':
+                    createAnimatedLayers();
+                    break;
+                case '3':
+                    createContinuousLayers();
+                    break;
+                case 'Escape':
+                    reset();
+                    break;
+            }
+        });
+
+        // Mouse wheel zoom effect
+        let currentZoom = 0;
+        document.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            currentZoom += e.deltaY * 0.01;
+            container.style.transform = `translateZ(${currentZoom}px)`;
+        });
+    </script>
+</body>
+</html>
