@@ -47,8 +47,8 @@ export const DemoIcons: React.FC<DemoIconsProps> = ({ onIconClick }) => {
     <div 
       className="inline-flex items-center gap-5" 
       style={{
-        border: '3px solid green', // DEBUG: Visual indicator
-        transform: 'translateX(55px) translateY(-24px)' // Move right 55px, up 24px (4px more up)
+        transform: 'translateX(9px) translateY(-14px) scale(1.15)', // 115% size (15% increase)
+        transformOrigin: 'top left' // Scale from top-left corner, expanding down and right
       }}
     >
       {icons.map((icon) => (

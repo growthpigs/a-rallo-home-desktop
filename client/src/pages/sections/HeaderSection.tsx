@@ -88,8 +88,6 @@ export const HeaderSection = (): JSX.Element => {
   const descriptionTransform = progress * 20;     // Description text moves RIGHT slightly
   const iconsTransform = progress * -25;          // Icons move LEFT
   
-  // DEBUG: Log values to console
-  console.log('🚀 HeaderSection Debug:', { progress, iconsTransform, youTextTransform });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -202,10 +200,7 @@ export const HeaderSection = (): JSX.Element => {
                   y: -20, // Move 20px up 
                   scale: 0.7
                 }}
-                style={{
-                  border: '2px solid red' // DEBUG: Visual indicator
-                }}
-                onMouseEnter={() => console.log('DESKTOP ICONS - Transform:', `translateX(${iconsTransform - 30}px) scale(0.7)`, 'iconsTransform:', iconsTransform)}
+                style={{}}
               >
                 <DemoIcons onIconClick={setActiveDemo} />
               </motion.div>

@@ -45,7 +45,7 @@ export const CallToActionSection = (): JSX.Element => {
 
               <Button
                 variant="ghost"
-                className="inline-flex items-center justify-center gap-0.5 px-6 py-3 relative flex-[0_0_auto] bg-transparent border border-solid border-white h-auto font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-white text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-white hover:text-[#4077baff]">
+                className="inline-flex items-center justify-center gap-0.5 px-5 py-2.5 relative flex-[0_0_auto] bg-transparent border border-solid border-white h-auto font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-white text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-white hover:text-[#4077baff]">
                 Book Demo
               </Button>
             </div>
