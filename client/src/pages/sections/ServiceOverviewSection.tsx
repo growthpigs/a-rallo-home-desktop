@@ -121,14 +121,15 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
       </div>
 
       <div 
-        className="flex-col h-[349px] items-start gap-2 flex-1 grow flex relative bg-white z-10"
+        className="flex-col h-[349px] items-start gap-2 flex-1 grow flex relative z-10"
         style={{
           transform: `translateX(${200 - (progress * 200)}px)`,  // Start +200px (from middle-right), slide LEFT to 0
           opacity: 1,  // NO FADE - Always 100% opacity
           padding: '24px',
           marginLeft: '-24px',
+          backgroundColor: '#ebe6daff',
           borderRadius: '8px',
-          boxShadow: '0 0 0 1px rgba(0,0,0,0.1)'
+          boxShadow: 'none'
         }}
       >
         <div className="relative self-stretch w-full h-0.5 bg-[#0000001a]">
@@ -171,8 +172,8 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
 
 export const ServiceOverviewSection = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-center gap-20 px-16 pt-28 relative self-stretch w-full flex-[0_0_auto] bg-white" style={{ paddingBottom: '360px' }}>
-      <div className="flex-col max-w-screen-xl items-start justify-center gap-20 w-full flex-[0_0_auto] flex relative">
+    <section className="flex flex-col items-center gap-20 px-16 pt-28 relative self-stretch w-full flex-[0_0_auto]" style={{ backgroundColor: '#ebe6daff', paddingBottom: '360px' }}>
+      <div className="flex-col max-w-screen-xl items-start justify-center gap-32 w-full flex-[0_0_auto] flex relative">
         {/* Force refresh - updated content with Record/Distribute/Engage */}
         {serviceItems.map((item, index) => (
           <ServiceItem key={`service-${index}-v2`} item={item} index={index} />

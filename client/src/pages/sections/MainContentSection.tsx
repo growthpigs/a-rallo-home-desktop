@@ -39,7 +39,7 @@ export const MainContentSection = (): JSX.Element => {
   ];
 
   return (
-    <section ref={scrollRef} className="flex flex-col items-center gap-10 px-16 pt-[70px] pb-3 relative self-stretch w-full flex-[0_0_auto] bg-[#a19f9fff]">
+    <section ref={scrollRef} className="flex flex-col items-center gap-10 px-16 pt-[70px] pb-3 relative self-stretch w-full flex-[0_0_auto] bg-gray-100">
       <div className="flex flex-col max-w-screen-xl items-start gap-10 relative w-full flex-[0_0_auto]">
         {/* Header with scroll-driven animation */}
         <div 

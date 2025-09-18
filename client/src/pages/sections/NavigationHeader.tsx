@@ -50,11 +50,11 @@ export const NavigationHeader = ({ isDark = false }: NavigationHeaderProps = {})
       </div>
       
       <div 
-        className="flex items-center gap-2 mr-14 lg:mr-18"
+        className="flex items-center gap-0.5 mr-14 lg:mr-18"
       >
         <Link 
           href="/" 
-          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase px-8 py-4 rounded-sm inline-block ${
+          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase pl-6 pr-3 py-4 rounded-sm inline-block ${
             location === "/" 
               ? 'text-orange-500 font-bold'
               : (isHomepage && !isScrolled) || (isPricingPage && !isScrolled)
@@ -68,7 +68,7 @@ export const NavigationHeader = ({ isDark = false }: NavigationHeaderProps = {})
         
         <Link 
           href="/product" 
-          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase px-8 py-4 rounded-sm inline-block ${
+          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase pl-3 pr-3 py-4 rounded-sm inline-block ${
             location === "/product" 
               ? 'text-orange-500 font-bold'
               : (isHomepage && !isScrolled) || (isPricingPage && !isScrolled)
@@ -82,7 +82,7 @@ export const NavigationHeader = ({ isDark = false }: NavigationHeaderProps = {})
         
         <Link 
           href="/pricing" 
-          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase px-8 py-4 rounded-sm inline-block ${
+          className={`font-['JetBrains_Mono'] text-[15px] tracking-[0.2em] transition-all duration-200 ease-out uppercase pl-3 pr-8 py-4 rounded-sm inline-block ${
             location === "/pricing" 
               ? isPricingPage && !isScrolled
                 ? 'text-orange-500 font-bold'
