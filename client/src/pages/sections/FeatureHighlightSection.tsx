@@ -69,7 +69,7 @@ export const FeatureHighlightSection = (): JSX.Element => {
             </div>
 
             <img
-              className="w-80 h-80 relative object-cover"
+              className="w-80 h-80 relative object-cover rounded-xl"
               alt="Placeholder image"
               src={professional_hands_interacting_with_translucent_holographic_interfaces_soft_blue_lighting_minimal_m_k8vlwf5k7vwf24l6v228_1}
               style={{
@@ -80,7 +80,7 @@ export const FeatureHighlightSection = (): JSX.Element => {
           </div>
 
           <img
-            className="w-[608px] h-[608px] relative object-cover"
+            className="w-[608px] h-[608px] relative object-cover rounded-xl"
             alt="Placeholder image"
             src={ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_40ibrxn743hsyg31iyzi_1}
             style={{

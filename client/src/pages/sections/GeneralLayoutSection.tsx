@@ -90,7 +90,7 @@ export const GeneralLayoutSection = (): JSX.Element => {
               }}
             >
               <img
-                className="w-[444px] h-[444px] object-cover"
+                className="w-[444px] h-[444px] object-cover rounded-xl"
                 alt="Man with crosshairs - forward and backward loop"
                 src="/videos/man-crosshairs-loop.webp"
                 width={444}

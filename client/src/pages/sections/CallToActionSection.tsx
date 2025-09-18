@@ -52,7 +52,7 @@ export const CallToActionSection = (): JSX.Element => {
           </div>
 
           <img
-            className="flex-1 grow h-[400px] relative object-cover"
+            className="flex-1 grow h-[400px] relative object-cover rounded-xl"
             alt="Placeholder image"
             src={single_professional_at_clean_desk_with_multiple_translucent_screens_showing_data_flows_overhead_sho_jvba04vzdp9ow2gv89cz_3}
             style={{

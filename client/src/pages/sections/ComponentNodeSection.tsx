@@ -134,7 +134,7 @@ export const ComponentNodeSection = (): JSX.Element => {
 
             <AnimatedElement delay={0.6} direction="up" distance={80}>
               <img
-                className="w-[400px] h-[400px] relative object-cover"
+                className="w-[400px] h-[400px] relative object-cover rounded-xl"
                 alt="Placeholder image"
                 src={clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3}
               />
@@ -146,7 +146,7 @@ export const ComponentNodeSection = (): JSX.Element => {
               <div className="justify-end gap-0.5 pt-[148px] pb-0 px-0 flex-1 grow flex items-start relative">
                 <AnimatedElement delay={0.6} direction="left" distance={100}>
                   <img
-                    className="w-[296px] h-[296px] relative object-cover"
+                    className="w-[296px] h-[296px] relative object-cover rounded-xl"
                     alt="Placeholder image"
                     src={extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0}
                   />

@@ -207,7 +207,7 @@ const ProductCard = ({ item, direction, waveApi }: {
               {/* Using LazyWebP for optimized loading */}
               {typeof item.image === 'string' && item.image.endsWith('.webp') ? (
                 <LazyWebP
-                  className={`w-[400px] ${item.imageHeight} relative object-cover`}
+                  className={`w-[400px] ${item.imageHeight} relative object-cover rounded-xl`}
                   alt={item.title}
                   src={item.image}
                   width={400}
@@ -215,7 +215,7 @@ const ProductCard = ({ item, direction, waveApi }: {
                 />
               ) : (
                 <img
-                  className={`w-[400px] ${item.imageHeight} relative object-cover opacity-100`}
+                  className={`w-[400px] ${item.imageHeight} relative object-cover opacity-100 rounded-xl`}
                   alt={item.title}
                   src={item.image}
                   width={400}
@@ -230,7 +230,7 @@ const ProductCard = ({ item, direction, waveApi }: {
                 <img
                   src={item.icon}
                   alt={item.title}
-                  className="w-8 h-8 object-contain"
+                  className="w-8 h-8 object-contain rounded-md"
                   style={{ filter: 'brightness(0) saturate(100%)' }}
                 />
                 <h3 className="text-[length:var(--heading-h4-font-size)] leading-[var(--heading-h4-line-height)] font-heading-h4 font-[number:var(--heading-h4-font-weight)] text-black tracking-[var(--heading-h4-letter-spacing)] [font-style:var(--heading-h4-font-style)]">
