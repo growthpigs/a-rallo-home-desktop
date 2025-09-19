@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rallo Multi-Word Letter Animation - 16:9 HD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* 16:9 Container for HD/4K export */
+        .animation-viewport {
+            width: 1920px;
+            height: 1080px;
+            background: #fff;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-origin: center;
+        }
+
+        /* Scale for different screen sizes */
+        @media (max-width: 1920px) {
+            .animation-viewport {
+                transform: scale(0.8);
+            }
+        }
+
+        @media (max-width: 1536px) {
+            .animation-viewport {
+                transform: scale(0.6);
+            }
+        }
+
+        /* Word container - centers any word higher in frame */
+        .word-container {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px; /* Tighter gap for better word cohesion */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            top: 40%; /* Move up from center for better vertical positioning */
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .word-container.active {
+            opacity: 1;
+        }
+
+        /* Individual letter container - sized for INTERACTIVE at 85% width */
+        .letter-slot {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Scale INTERACTIVE to 85% frame width (11 letters) */
+        .word-container.interactive .letter-slot {
+            width: calc(1920px * 0.85 / 11 - 5px); /* ~148px per letter */
+            height: calc(1920px * 0.85 / 11 - 5px);
+        }
+
+        /* Keep other words proportional */
+        .word-container.chat .letter-slot,
+        .word-container.voice .letter-slot,
+        .word-container.video .letter-slot,
+        .word-container.rallo .letter-slot {
+            width: 148px; /* Same as INTERACTIVE letters */
+            height: 148px;
+        }
+
+        .letter-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.15s ease-in-out;
+        }
+
+        .letter-image.visible {
+            opacity: 1;
+        }
+
+        /* Control panel */
+        .controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 15px 30px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            padding: 10px 20px;
+            background: #4077ba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+
+        .control-btn:hover {
+            background: #fd815a;
+        }
+
+        .control-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        /* Timeline display */
+        .timeline {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        .timeline-bar {
+            width: 400px;
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-progress {
+            height: 100%;
+            background: #fd815a;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Export indicator */
+        .export-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            display: none;
+            z-index: 2000;
+            text-align: center;
+        }
+
+        .export-indicator.active {
+            display: block;
+        }
+
+        .export-progress {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #fd815a;
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-viewport" id="animationViewport">
+        <!-- Word containers will be dynamically created -->
+        <div id="wordDisplay"></div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+        <div id="currentWord">Ready to Start</div>
+        <div id="timeDisplay">0.0s / 22.0s</div>
+        <div class="timeline-bar">
+            <div class="timeline-progress" id="timelineProgress"></div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="control-btn" id="playBtn">Play</button>
+        <button class="control-btn" id="pauseBtn">Pause</button>
+        <button class="control-btn" id="resetBtn">Reset</button>
+        <button class="control-btn" id="exportBtn">Export HD Video</button>
+    </div>
+
+    <!-- Export Indicator -->
+    <div class="export-indicator" id="exportIndicator">
+        <h2>Exporting High Resolution Video</h2>
+        <div class="export-progress" id="exportProgress">0%</div>
+        <div>Capturing frame <span id="currentFrame">0</span> of <span id="totalFrames">0</span></div>
+    </div>
+
+    <script src="multi-word-controller-v2.js"></script>
+</body>
+</html>

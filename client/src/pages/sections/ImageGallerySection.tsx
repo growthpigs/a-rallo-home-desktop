@@ -7,10 +7,7 @@ import { useScrollLinkedAnimation } from "@/hooks/useScrollLinkedAnimation";
 import { ChevronRightIcon } from "lucide-react";
 import { Waves } from "@/components/ui/wave-background";
 
-import close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__xio25a8gqhbcn1vd88kw_0 from "@assets/close-up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__xio25a8gqhbcn1vd88kw_0.png";
-import ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_hdrkrns7demlr81y8tz4_3 from "@assets/ultra_close-up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_hdrkrns7demlr81y8tz4_3.png";
-import extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0 from "@assets/extreme_macro_of_lips_with_geometric_sound_wave_visualizations_emanating_from_mouth_translucent_ora_xxtbq6yc36jkg2eo00ck_0.png";
-import finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2 from "@assets/finger_pressing_and_holding_floating_holographic_button_interface_element_glowing_brighter_under_su_dz93kguyzfln5bo11mzu_2.png";
+// Removed unused PNG imports - now using video files
 
 const galleryItems = [
   {
@@ -39,7 +36,7 @@ const galleryItems = [
     description: "AI-powered video agents that engage visitors with personalized content.",
     icon: "/icons/Video-pyramid.svg",
     demoType: "video" as const,
-    image: close_up_of_hand_in_motion_swiping_across_holographic_display_motion_blur_trails_showing_geometric__xio25a8gqhbcn1vd88kw_0,
+    image: "/videos/avatar-rallo-video.mp4",
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
   },
@@ -49,7 +46,7 @@ const galleryItems = [
     description: "Natural voice AI assistants for seamless conversations.",
     icon: "/icons/Voice-hexagon.svg", 
     demoType: "voice" as const,
-    image: ultra_close_up_of_slightly_parted_lips_with_floating_geometric_particles_responding_to_breath_inter_hdrkrns7demlr81y8tz4_3,
+    image: "/videos/face-voice-chat.mp4",
     imageHeight: "h-[400px]",
     maxWidth: "max-w-[400px]",
   },
@@ -204,8 +201,19 @@ const ProductCard = ({ item, direction, waveApi }: {
         <Card className={`flex-col ${item.maxWidth} items-start gap-2 w-full flex-[0_0_auto] flex relative border-none shadow-none bg-transparent`}>
           <CardContent className="p-0 w-full">
             <div>
-              {/* Using LazyWebP for optimized loading */}
-              {typeof item.image === 'string' && item.image.endsWith('.webp') ? (
+              {/* Support for videos, WebP, and regular images */}
+              {typeof item.image === 'string' && item.image.endsWith('.mp4') ? (
+                <video
+                  className={`w-[400px] ${item.imageHeight} relative object-cover rounded-xl`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src={item.image} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : typeof item.image === 'string' && item.image.endsWith('.webp') ? (
                 <LazyWebP
                   className={`w-[400px] ${item.imageHeight} relative object-cover rounded-xl`}
                   alt={item.title}

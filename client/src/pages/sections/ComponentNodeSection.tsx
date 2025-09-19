@@ -1,9 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-
-import clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3 from "@assets/clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3.png";
-
-import extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0 from "@assets/extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0.png";
+import { useLocation } from "wouter";
 
 // Individual element component with STANDARDIZED intersection observer
 const AnimatedElement = ({ children, delay = 0, direction = 'up', distance = 60 }: { 
@@ -103,6 +100,8 @@ const AnimatedElement = ({ children, delay = 0, direction = 'up', distance = 60 
 };
 
 export const ComponentNodeSection = (): JSX.Element => {
+  const [, setLocation] = useLocation();
+  
   return (
     <section className="flex flex-col items-center gap-20 px-16 py-28 relative self-stretch w-full flex-[0_0_auto]" style={{ backgroundColor: '#fd815aff' }}>
       <div className="flex flex-col max-w-screen-xl items-start gap-20 relative w-full flex-[0_0_auto]">
@@ -133,11 +132,17 @@ export const ComponentNodeSection = (): JSX.Element => {
             </header>
 
             <AnimatedElement delay={0.6} direction="up" distance={80}>
-              <img
+              <video
                 className="w-[400px] h-[400px] relative object-cover rounded-xl"
-                alt="Placeholder image"
-                src={clean_minimal_control_room_with_large_geometric_displays_showing_organized_workflows_natural_lighti_zlk2rp9lxeueapcf5yow_3}
-              />
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src="/videos/F-mission-control-optimized.webm" type="video/webm" />
+                <source src="/videos/F-mission-control.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </AnimatedElement>
           </div>
 
@@ -145,11 +150,17 @@ export const ComponentNodeSection = (): JSX.Element => {
             <div className="items-start justify-end gap-2 self-stretch w-full flex-[0_0_auto] flex relative">
               <div className="justify-end gap-0.5 pt-[148px] pb-0 px-0 flex-1 grow flex items-start relative">
                 <AnimatedElement delay={0.6} direction="left" distance={100}>
-                  <img
+                  <video
                     className="w-[296px] h-[296px] relative object-cover rounded-xl"
-                    alt="Placeholder image"
-                    src={extreme_macro_of_ear_with_geometric_sound_wave_patterns_entering_canal_translucent_audio_interface__0rtmu3o5u74o14cj9xcg_0}
-                  />
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/videos/F-ear-wave-optimized.webm" type="video/webm" />
+                    <source src="/videos/F-ear-wave.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </AnimatedElement>
               </div>
             </div>
@@ -165,6 +176,7 @@ export const ComponentNodeSection = (): JSX.Element => {
                 <div className="inline-flex items-center gap-1 relative flex-[0_0_auto] mt-6">
                   <Button
                     variant="ghost"
+                    onClick={() => setLocation('/pricing')}
                     className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
                   >
                     Start Building

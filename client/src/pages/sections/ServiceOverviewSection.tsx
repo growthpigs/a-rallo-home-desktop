@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 
 const serviceItems = [
   {
@@ -19,7 +20,7 @@ const serviceItems = [
     heading: "Businesses capturing every<br />lead",
     description:
       "Never miss a potential customer again. Your AI agents qualify leads, book meetings, and nurture prospects while you focus on closing deals.",
-    primaryButton: "See Demo",
+    primaryButton: "Get Started",
     secondaryButton: "Case Study",
   },
   {
@@ -29,13 +30,13 @@ const serviceItems = [
     heading: "Agencies selling high-value<br />branded AI suites",
     description:
       "Offer cutting-edge AI solutions under your brand. Complete white-label platform lets you deliver enterprise-grade automation to your clients.",
-    primaryButton: "Partner Program",
+    primaryButton: "Get Started",
     secondaryButton: "Pricing",
   },
 ];
 
 // Individual item component with its own intersection observer
-const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: number }) => {
+const ServiceItem = ({ item, index, onPrimaryClick }: { item: typeof serviceItems[0], index: number, onPrimaryClick: () => void }) => {
   const itemRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
 
@@ -185,6 +186,7 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
           >
             <Button
               variant="ghost"
+              onClick={onPrimaryClick}
               className="h-auto px-6 py-3 bg-transparent border border-black text-black hover:bg-black hover:text-white font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)]"
             >
               {item.primaryButton}
@@ -197,12 +199,18 @@ const ServiceItem = ({ item, index }: { item: typeof serviceItems[0], index: num
 };
 
 export const ServiceOverviewSection = (): JSX.Element => {
+  const [, setLocation] = useLocation();
+
+  const handleGetStarted = () => {
+    setLocation('/pricing');
+  };
+
   return (
     <section className="flex flex-col items-center gap-20 px-16 pt-28 relative self-stretch w-full flex-[0_0_auto]" style={{ backgroundColor: '#ebe6daff', paddingBottom: '360px' }}>
       <div className="flex-col max-w-screen-xl items-start justify-center gap-32 w-full flex-[0_0_auto] flex relative">
         {/* Force refresh - updated content with Record/Distribute/Engage */}
         {serviceItems.map((item, index) => (
-          <ServiceItem key={`service-${index}-v2`} item={item} index={index} />
+          <ServiceItem key={`service-${index}-v2`} item={item} index={index} onPrimaryClick={handleGetStarted} />
         ))}
       </div>
     </section>

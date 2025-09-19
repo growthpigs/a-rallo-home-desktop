@@ -134,7 +134,7 @@ export const PricingComparisonSection = (): JSX.Element => {
         </header>
 
         <div className="flex-col gap-16 w-full flex">
-          <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-lg">
+          <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white">
             <Table className="w-full border-collapse">
               <TableHeader>
                 <TableRow className="border-b-2 border-gray-200 bg-gray-50">

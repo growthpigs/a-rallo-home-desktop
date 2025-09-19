@@ -47,8 +47,30 @@ const ScrollExpandMedia = ({
 
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
+    
+    // Listen for custom event to trigger video expansion
+    const handleTriggerExpansion = () => {
+      // Simulate scrolling to trigger expansion
+      if (containerRef.current) {
+        // Force the video to expand by setting scroll progress to 1
+        setScrollProgress(1);
+        setShowContent(true);
+        
+        // Scroll to the correct position to maintain expansion
+        const targetScrollPosition = containerRef.current.offsetTop + 480; // Animation distance
+        window.scrollTo({
+          top: targetScrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    };
+    
+    window.addEventListener('triggerVideoExpansion', handleTriggerExpansion);
 
-    return () => window.removeEventListener('resize', checkIfMobile);
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener('triggerVideoExpansion', handleTriggerExpansion);
+    };
   }, []);
 
   useEffect(() => {

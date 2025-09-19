@@ -91,7 +91,7 @@ export const BookDemoPage = (): JSX.Element => {
 
             {/* Process Steps */}
             <div className="grid md:grid-cols-2 gap-8 w-full">
-              <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-200">
+              <div className="bg-white border border-gray-200 rounded-lg p-8  transition-all duration-200">
                 <div className="flex items-start gap-6">
                   <div className="bg-black text-white w-12 h-12 rounded-lg flex items-center justify-center font-['JetBrains_Mono'] font-medium text-lg">
                     01
@@ -107,7 +107,7 @@ export const BookDemoPage = (): JSX.Element => {
                 </div>
               </div>
 
-              <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-200">
+              <div className="bg-white border border-gray-200 rounded-lg p-8  transition-all duration-200">
                 <div className="flex items-start gap-6">
                   <div className="bg-black text-white w-12 h-12 rounded-lg flex items-center justify-center font-['JetBrains_Mono'] font-medium text-lg">
                     02
@@ -123,7 +123,7 @@ export const BookDemoPage = (): JSX.Element => {
                 </div>
               </div>
 
-              <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-200">
+              <div className="bg-white border border-gray-200 rounded-lg p-8  transition-all duration-200">
                 <div className="flex items-start gap-6">
                   <div className="bg-black text-white w-12 h-12 rounded-lg flex items-center justify-center font-['JetBrains_Mono'] font-medium text-lg">
                     03
@@ -139,7 +139,7 @@ export const BookDemoPage = (): JSX.Element => {
                 </div>
               </div>
 
-              <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-200">
+              <div className="bg-white border border-gray-200 rounded-lg p-8  transition-all duration-200">
                 <div className="flex items-start gap-6">
                   <div className="bg-black text-white w-12 h-12 rounded-lg flex items-center justify-center font-['JetBrains_Mono'] font-medium text-lg">
                     04
@@ -222,8 +222,8 @@ export const BookDemoPage = (): JSX.Element => {
 
             <Button 
               onClick={() => setIsModalOpen(true)}
-              className="text-white border-0 px-10 py-5 rounded-lg font-['JetBrains_Mono'] font-medium text-lg tracking-[0.2em] uppercase shadow-2xl transition-all duration-300 transform hover:scale-105"
-              style={{ backgroundColor: '#fd815aff', boxShadow: '0 20px 40px rgba(253, 129, 90, 0.3)' }}
+              className="text-white border-0 px-10 py-5 rounded-lg font-['JetBrains_Mono'] font-medium text-lg tracking-[0.2em] uppercase transition-all duration-300 transform hover:scale-105"
+              style={{ backgroundColor: '#fd815aff' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ff9570'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fd815aff'}
               data-testid="button-book-demo-cta"

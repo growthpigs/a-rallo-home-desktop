@@ -64,7 +64,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose, type }) =
               <p className="text-sm text-white">Hi! How can I help you today?</p>
             </motion.div>
             <motion.div
-              className="bg-[#fd815a] text-white p-3 rounded-lg shadow-sm max-w-[70%] ml-auto"
+              className="bg-[#fd815a] text-white p-3 rounded-lg max-w-[70%] ml-auto"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}

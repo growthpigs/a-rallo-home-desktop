@@ -2,8 +2,6 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useUnifiedScrollAnimation } from "@/hooks/useUnifiedScrollAnimation";
 
-import single_professional_at_clean_desk_with_multiple_translucent_screens_showing_data_flows_overhead_sho_jvba04vzdp9ow2gv89cz_3 from "@assets/single_professional_at_clean_desk_with_multiple_translucent_screens_showing_data_flows_overhead_sho_jvba04vzdp9ow2gv89cz_3.png";
-
 export const CallToActionSection = (): JSX.Element => {
   const { ref: scrollRef, progress } = useUnifiedScrollAnimation({
     animationDistance: 350,
@@ -51,14 +49,20 @@ export const CallToActionSection = (): JSX.Element => {
             </div>
           </div>
 
-          <img
+          <video
             className="flex-1 grow h-[400px] relative object-cover rounded-xl"
-            alt="Placeholder image"
-            src={single_professional_at_clean_desk_with_multiple_translucent_screens_showing_data_flows_overhead_sho_jvba04vzdp9ow2gv89cz_3}
+            autoPlay
+            loop
+            muted
+            playsInline
             style={{
               transform: `translateX(${rightMovement}px)`
             }}
-          />
+          >
+            <source src="/videos/panels-move-optimized.webm" type="video/webm" />
+            <source src="/videos/panels-move.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </section>

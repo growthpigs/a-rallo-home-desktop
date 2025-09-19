@@ -53,7 +53,7 @@ export const PricingTestimonialSection = (): JSX.Element => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="flex flex-col gap-6 p-8 border border-gray-200 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+              className="flex flex-col gap-6 p-8 border border-gray-200 bg-white rounded-lg transition-all duration-200"
             >
               <div className="flex gap-1">
                 {[...Array(testimonial.rating)].map((_, starIndex) => (

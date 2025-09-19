@@ -82,7 +82,7 @@ export const PricingOptionsSection = (): JSX.Element => {
                 onClick={() => setSelectedBilling(option.id)}
                 className={`inline-flex items-center justify-center gap-2 px-6 py-2 rounded-md font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase whitespace-nowrap transition-all duration-200 ${
                   selectedBilling === option.id
-                    ? "bg-black text-white shadow-lg"
+                    ? "bg-black text-white"
                     : "bg-transparent text-black hover:bg-gray-200"
                 }`}
               >
@@ -98,13 +98,13 @@ export const PricingOptionsSection = (): JSX.Element => {
                   key={index}
                   className={`flex flex-col items-end justify-between p-8 h-full bg-white border rounded-lg transition-all duration-200 relative ${
                     plan.recommended 
-                      ? "border-2 border-orange-500 shadow-xl" 
-                      : "border border-gray-200 hover:border-gray-300 hover:shadow-lg"
+                      ? "border-2 border-orange-500" 
+                      : "border border-gray-200 hover:border-gray-300"
                   }`}
                 >
                   {plan.recommended && (
                     <div className="absolute top-0 right-6 transform -translate-y-1/2">
-                      <Badge className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-['JetBrains_Mono'] tracking-wider uppercase shadow-lg border-0">
+                      <Badge className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-['JetBrains_Mono'] tracking-wider uppercase border-0">
                         RECOMMENDED
                       </Badge>
                     </div>
@@ -153,7 +153,7 @@ export const PricingOptionsSection = (): JSX.Element => {
                   <div className="flex flex-col gap-4 w-full items-start mt-8">
                     <Button className={`flex items-center justify-center gap-2 px-6 py-3 w-full border font-['JetBrains_Mono'] font-normal text-sm tracking-[0.2em] uppercase rounded-lg transition-all duration-200 ${
                       plan.recommended
-                        ? "bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600 shadow-lg"
+                        ? "bg-orange-500 border-orange-500 text-white hover:bg-orange-600 hover:border-orange-600"
                         : "bg-black border-black text-white hover:bg-gray-800 hover:border-gray-800"
                     }`}>
                       GET STARTED

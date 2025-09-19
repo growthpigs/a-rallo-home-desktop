@@ -22,8 +22,8 @@ export const DemoIcons: React.FC<DemoIconsProps> = ({ onIconClick }) => {
       path: '/icons/diamond-interactive.svg', 
       label: 'Interactive',
       hoverText: 'Click for Demo',
-      width: 60,
-      height: 60
+      width: 54,
+      height: 54
     },
     { 
       type: 'video' as const, 

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 
 // Individual element component with STANDARDIZED intersection observer
 const AnimatedElement = ({ children, delay = 0, direction = 'up', distance = 60 }: { 
@@ -175,6 +176,7 @@ const AnimatedGlobe = () => {
 };
 
 export const LayoutContainerSection = (): JSX.Element => {
+  const [, setLocation] = useLocation();
   
   return (
     <section className="flex flex-col items-center relative w-full" style={{ backgroundColor: '#ded8ca', paddingTop: '120px', paddingBottom: '110px', minHeight: '575px' }}>
@@ -215,6 +217,7 @@ export const LayoutContainerSection = (): JSX.Element => {
               <div className="inline-flex items-center gap-1 mt-6">
                 <Button
                   variant="ghost"
+                  onClick={() => setLocation('/pricing')}
                   className="h-auto px-6 py-3 bg-transparent border border-black text-black font-text-regular-normal font-[number:var(--text-regular-normal-font-weight)] uppercase text-[length:var(--text-regular-normal-font-size)] tracking-[var(--text-regular-normal-letter-spacing)] leading-[var(--text-regular-normal-line-height)] [font-style:var(--text-regular-normal-font-style)] hover:bg-black hover:text-white"
                 >
                   GET STARTED
